@@ -1,0 +1,632 @@
+﻿<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Curso completo y gratuito de HTML y CSS. Aprende desde cero hasta nivel profesional con ejemplos practicos, proyectos reales y las mejores practicas de desarrollo web moderno.">
+  <meta name="keywords" content="HTML, CSS, curso web, desarrollo web, aprendizaje, tutorial, flexbox, grid, responsive, accesibilidad">
+  <meta name="author" content="Tu Nombre">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Curso Completo de HTML y CSS 2026">
+  <meta property="og:description" content="Aprende HTML y CSS desde cero hasta nivel profesional. Curso practico con proyectos reales.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tusitio.com">
+  <meta property="og:image" content="https://tusitio.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Curso Completo de HTML y CSS 2026">
+  <meta name="twitter:description" content="Aprende HTML y CSS desde cero hasta nivel profesional.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Curso Completo de HTML y CSS 2026 | Aprende Desarrollo Web</title>
+</head>
+<body>
+
+  <!-- HEADER Y NAVEGACION -->
+  <header class="site-header" id="site-header" role="banner">
+    <nav class="navbar" aria-label="Navegacion principal">
+      <a href="#" class="navbar__logo" aria-label="Curso HTML CSS - Inicio">
+        <span class="navbar__logo-icon" aria-hidden="true">&lt;/&gt;</span>
+        <span class="navbar__logo-text">CursoHTML CSS</span>
+      </a>
+      <ul class="navbar__menu" role="menubar">
+        <li role="none"><a href="#sobre-mi" class="navbar__link" role="menuitem">Sobre Mi</a></li>
+        <li role="none"><a href="#contenido" class="navbar__link" role="menuitem">Contenido</a></li>
+        <li role="none"><a href="#modulo-1" class="navbar__link" role="menuitem">Modulos</a></li>
+        <li role="none"><a href="#proyectos" class="navbar__link" role="menuitem">Proyectos</a></li>
+        <li role="none"><a href="#recursos" class="navbar__link" role="menuitem">Recursos</a></li>
+        <li role="none"><a href="#contacto" class="navbar__link" role="menuitem">Contacto</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <button class="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
+          <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">&#9788;</span>
+          <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">&#9790;</span>
+        </button>
+        <button class="navbar__hamburger" type="button" aria-label="Abrir menu de navegacion" aria-expanded="false" aria-controls="navbar-menu">
+          <span class="navbar__hamburger-line" aria-hidden="true"></span>
+          <span class="navbar__hamburger-line" aria-hidden="true"></span>
+          <span class="navbar__hamburger-line" aria-hidden="true"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="site-main" id="site-main">
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero__content">
+          <span class="hero__badge" aria-label="Edicion del curso">Curso 2026</span>
+          <h1 class="hero__title" id="hero-title">
+            Curso Completo de <span class="hero__title-gradient">HTML y CSS</span>
+          </h1>
+          <p class="hero__subtitle">
+            Aprende desarrollo web frontend desde cero hasta nivel profesional.
+            Domina HTML semantico, CSS moderno, Flexbox, Grid, animaciones y
+            mucho mas con proyectos practicos reales.
+          </p>
+          <div class="hero__cta">
+            <a href="#contenido" class="btn btn-primary" role="button">Ver Contenido</a>
+            <a href="#modulo-1" class="btn btn-secondary" role="button">Empezar Ahora</a>
+          </div>
+          <div class="hero__stats" role="list" aria-label="Estadisticas del curso">
+            <div class="hero__stat" role="listitem">
+              <strong class="hero__stat-number">10</strong>
+              <span class="hero__stat-label">Modulos</span>
+            </div>
+            <div class="hero__stat" role="listitem">
+              <strong class="hero__stat-number">80+</strong>
+              <span class="hero__stat-label">Lecciones</span>
+            </div>
+            <div class="hero__stat" role="listitem">
+              <strong class="hero__stat-number">5</strong>
+              <span class="hero__stat-label">Proyectos</span>
+            </div>
+            <div class="hero__stat" role="listitem">
+              <strong class="hero__stat-number">100%</strong>
+              <span class="hero__stat-label">Practico</span>
+            </div>
+          </div>
+        </div>
+        <aside class="hero__preview" aria-label="Vista previa de codigo HTML">
+          <pre class="code-block" aria-hidden="true"><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-string">"es"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-string">"UTF-8"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;title&gt;</span><span class="code-comment">&lt;!-- Tu sitio --&gt;</span><span class="code-tag">&lt;/title&gt;</span>
+  <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-string">"stylesheet"</span>
+        <span class="code-attr">href</span>=<span class="code-string">"styles.css"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+  <span class="code-tag">&lt;header</span> <span class="code-attr">role</span>=<span class="code-string">"banner"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;nav</span> <span class="code-attr">aria-label</span>=<span class="code-string">"Principal"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"/"</span><span class="code-tag">&gt;</span>Inicio<span class="code-tag">&lt;/a&gt;</span>
+    <span class="code-tag">&lt;/nav&gt;</span>
+  <span class="code-tag">&lt;/header&gt;</span>
+  <span class="code-tag">&lt;main&gt;</span>
+    <span class="code-tag">&lt;h1&gt;</span>Hola Mundo<span class="code-tag">&lt;/h1&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>Mi primer sitio web<span class="code-tag">&lt;/p&gt;</span>
+  <span class="code-tag">&lt;/main&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SOBRE MI -->
+    <section class="section sobre-mi" id="sobre-mi" aria-labelledby="sobre-mi-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title" id="sobre-mi-title">Sobre Mi</h2>
+          <p class="section-subtitle">Conoce al autor del curso</p>
+        </header>
+        <article class="about">
+          <figure class="about__avatar" aria-label="Foto de perfil">
+            <div class="about__avatar-placeholder" aria-hidden="true"><span>TN</span></div>
+            <figcaption class="sr-only">Foto de Tu Nombre</figcaption>
+          </figure>
+          <div class="about__info">
+            <h3 class="about__name">Hola, soy Tu Nombre</h3>
+            <p class="about__bio">
+              Soy un desarrollador web apasionado por crear experiencias digitales excepcionales.
+              Con mas de 5 anos de experiencia en el desarrollo frontend, he trabajado con
+              empresas de todos los tamanos para construir sitios web modernos, accesibles y
+              rapidos. Mi objetivo es compartir todo lo que he aprendido para que puedas
+              dominar HTML y CSS y comenzar tu carrera en el desarrollo web.
+            </p>
+            <p class="about__bio">
+              Creo firmemente que todo el mundo puede aprender a programar. Por eso he disenado
+              este curso de manera practica y progresiva, donde cada concepto se aplica con
+              ejemplos reales. No solo aprenderas sintaxis, sino que entenderas los principios
+              detras del codigo que escribes, preparandote para resolver problemas reales
+              en el mundo del desarrollo web profesional.
+            </p>
+            <ul class="about__skills" role="list" aria-label="Habilidades">
+              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> HTML5 Semantico</li>
+              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> CSS3 Moderno</li>
+              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> Responsive Design</li>
+              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> Accesibilidad Web</li>
+              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> CSS Grid &amp; Flexbox</li>
+              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> Animaciones CSS</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTENIDO / TABLA DE CONTENIDOS -->
+    <section class="section section-alt contenido" id="contenido" aria-labelledby="contenido-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title" id="contenido-title">Contenido del Curso</h2>
+          <p class="section-subtitle">10 modulos disenados para llevarte desde cero hasta nivel profesional</p>
+        </header>
+        <nav aria-label="Lista de modulos del curso">
+          <ol class="lesson-list" role="list">
+            <li class="lesson-list__item">
+              <a href="#modulo-1" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">01</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">Fundamentos de HTML</strong>
+                  <span class="lesson-list__desc">Elementos, atributos, estructura del documento y mucho mas.</span>
+                </span>
+                <span class="lesson-list__count">8 lecciones</span>
+              </a>
+            </li>
+            <li class="lesson-list__item">
+              <a href="#modulo-2" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">02</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">HTML Semantico y Accesibilidad</strong>
+                  <span class="lesson-list__desc">Elementos semanticos, ARIA y buenas practicas de accesibilidad.</span>
+                </span>
+                <span class="lesson-list__count">8 lecciones</span>
+              </a>
+            </li>
+            <li class="lesson-list__item">
+              <a href="#modulo-3" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">03</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">Formularios y Validacion</strong>
+                  <span class="lesson-list__desc">Inputs, validacion nativa, accesibilidad y formularios completos.</span>
+                </span>
+                <span class="lesson-list__count">7 lecciones</span>
+              </a>
+            </li>
+            <li class="lesson-list__item">
+              <a href="#modulo-4" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">04</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">Fundamentos de CSS</strong>
+                  <span class="lesson-list__desc">Selectores, modelo de caja, unidades, colores y tipografia.</span>
+                </span>
+                <span class="lesson-list__count">9 lecciones</span>
+              </a>
+            </li>
+            <li class="lesson-list__item">
+              <a href="#modulo-5" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">05</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">Layout con Flexbox</strong>
+                  <span class="lesson-list__desc">Ejes, alineacion, patrones comunes y tecnicas de layout flex.</span>
+                </span>
+                <span class="lesson-list__count">7 lecciones</span>
+              </a>
+            </li>
+            <li class="lesson-list__item">
+              <a href="#modulo-6" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">06</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">Layout con CSS Grid</strong>
+                  <span class="lesson-list__desc">Grid basico, funciones, colocacion, areas y subgrid.</span>
+                </span>
+                <span class="lesson-list__count">8 lecciones</span>
+              </a>
+            </li>
+            <li class="lesson-list__item">
+              <a href="#modulo-7" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">07</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">Responsive Design</strong>
+                  <span class="lesson-list__desc">Media queries, mobile-first, unidades relativas y container queries.</span>
+                </span>
+                <span class="lesson-list__count">7 lecciones</span>
+              </a>
+            </li>
+            <li class="lesson-list__item">
+              <a href="#modulo-8" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">08</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">Animaciones y Transiciones</strong>
+                  <span class="lesson-list__desc">Transiciones, transformaciones 2D/3D y keyframes.</span>
+                </span>
+                <span class="lesson-list__count">6 lecciones</span>
+              </a>
+            </li>
+            <li class="lesson-list__item">
+              <a href="#modulo-9" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">09</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">CSS Avanzado</strong>
+                  <span class="lesson-list__desc">Variables, funciones CSS, @layer, @scope y arquitectura.</span>
+                </span>
+                <span class="lesson-list__count">8 lecciones</span>
+              </a>
+            </li>
+            <li class="lesson-list__item">
+              <a href="#modulo-10" class="lesson-list__link">
+                <span class="lesson-list__number" aria-hidden="true">10</span>
+                <span class="lesson-list__info">
+                  <strong class="lesson-list__title">Proyecto Final Integrador</strong>
+                  <span class="lesson-list__desc">Construye un portfolio completo aplicando todo lo aprendido.</span>
+                </span>
+                <span class="lesson-list__count">10 lecciones</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- MODULO 1: FUNDAMENTOS DE HTML -->
+    <section class="section module" id="modulo-1" aria-labelledby="modulo-1-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">01</span>
+          <h2 class="module__title" id="modulo-1-title">Modulo 1: Fundamentos de HTML</h2>
+          <p class="module__description">
+            En este modulo aprenderas los cimientos de toda pagina web. HTML es el lenguaje
+            que estructura el contenido y es el primer paso para convertirte en desarrollador web.
+          </p>
+        </header>
+
+        <!-- Leccion 1.1 -->
+        <article class="lesson" id="leccion-1-1" aria-labelledby="leccion-1-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-1-1-title">1.1 Que es HTML y como funciona</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              <strong>HTML</strong> significa <em>HyperText Markup Language</em> (Lenguaje de Marcado de HiperTexto).
+              Es el lenguaje estandar para crear paginas web. HTML no es un lenguaje de programacion,
+              sino de <strong>marcado</strong>: usa "etiquetas" (tags) para definir la estructura y el
+              significado del contenido.
+            </p>
+            <h4 id="subtema-elementos">Elementos HTML</h4>
+            <p>
+              Un elemento HTML esta compuesto por una <strong>etiqueta de apertura</strong>,
+              <strong>contenido</strong> y una <strong>etiqueta de cierre</strong>:
+            </p>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Elemento completo: etiqueta + contenido + cierre --&gt;</span>
+<span class="code-tag">&lt;p&gt;</span>Este es un parrafo.<span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-comment">&lt;!-- Elemento con atributo --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"https://ejemplo.com"</span><span class="code-tag">&gt;</span>Enlace<span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Elemento vacio (sin contenido ni cierre) --&gt;</span>
+<span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"foto.jpg"</span> <span class="code-attr">alt</span>=<span class="code-string">"Descripcion"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;br&gt;</span>
+<span class="code-tag">&lt;hr&gt;</span></code></pre>
+            <h4 id="subtema-atributos">Atributos HTML</h4>
+            <p>
+              Los atributos proporcionan informacion adicional sobre los elementos.
+              Se colocan en la etiqueta de apertura y siguen la sintaxis <code>nombre="valor"</code>:
+            </p>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Atributo comun: class para CSS --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"contenedor"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- Atributo id: identificador unico --&gt;</span>
+<span class="code-tag">&lt;section</span> <span class="code-attr">id</span>=<span class="code-string">"principal"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/section&gt;</span>
+
+<span class="code-comment">&lt;!-- Atributo booleano (se escribe solo el nombre) --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">required</span> <span class="code-attr">disabled</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- Atributo data-*: datos personalizados --&gt;</span>
+<span class="code-tag">&lt;article</span> <span class="code-attr">data-category</span>=<span class="code-string">"tecnologia"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/article&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 1.2 -->
+        <article class="lesson" id="leccion-1-2" aria-labelledby="leccion-1-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-1-2-title">1.2 DOCTYPE y estructura del documento</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              Todo documento HTML5 comienza con la declaracion <code>&lt;!DOCTYPE html&gt;</code>,
+              que le indica al navegador que debe interpretar el documento como HTML5.
+            </p>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Declaracion del tipo de documento --&gt;</span>
+<span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+
+<span class="code-comment">&lt;!-- Etiqueta raiz con idioma --&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-string">"es"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-comment">&lt;!-- Contenedor de metadatos --&gt;</span>
+  <span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-string">"UTF-8"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"viewport"</span>
+          <span class="code-attr">content</span>=<span class="code-string">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Mi Pagina<span class="code-tag">&lt;/title&gt;</span>
+  <span class="code-tag">&lt;/head&gt;</span>
+
+  <span class="code-comment">&lt;!-- Contenido visible --&gt;</span>
+  <span class="code-tag">&lt;body&gt;</span>
+    <span class="code-tag">&lt;h1&gt;</span>Mi primera pagina<span class="code-tag">&lt;/h1&gt;</span>
+  <span class="code-tag">&lt;/body&gt;</span>
+
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+            <div class="callout callout-info" role="note">
+              <strong>Nota:</strong> En HTML5 la declaracion DOCTYPE no distingue entre mayusculas
+              y minusculas. Puedes escribir <code>&lt;!doctype html&gt;</code> o <code>&lt;!DOCTYPE HTML&gt;</code>.
+            </div>
+          </div>
+        </article>
+
+        <!-- Leccion 1.3 -->
+        <article class="lesson" id="leccion-1-3" aria-labelledby="leccion-1-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-1-3-title">1.3 El elemento head y metaetiquetas</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              El elemento <code>&lt;head&gt;</code> contiene metadatos sobre el documento que
+              no se muestran directamente en la pagina pero son esenciales para su correcto
+              funcionamiento.
+            </p>
+            <h4 id="subtema-meta-basicas">Metaetiquetas esenciales</h4>
+            <pre class="code-block"><code><span class="code-tag">&lt;head&gt;</span>
+  <span class="code-comment">&lt;!-- Codificacion de caracteres --&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-string">"UTF-8"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-comment">&lt;!-- Viewport para diseno responsivo --&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"viewport"</span>
+        <span class="code-attr">content</span>=<span class="code-string">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-comment">&lt;!-- Titulo en la pestana del navegador --&gt;</span>
+  <span class="code-tag">&lt;title&gt;</span>Mi Pagina<span class="code-tag">&lt;/title&gt;</span>
+
+  <span class="code-comment">&lt;!-- Descripcion para motores de busqueda --&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"description"</span>
+        <span class="code-attr">content</span>=<span class="code-string">"Descripcion de mi pagina web"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-comment">&lt;!-- Favicon --&gt;</span>
+  <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-string">"icon"</span> <span class="code-attr">href</span>=<span class="code-string">"favicon.ico"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-comment">&lt;!-- Hoja de estilos --&gt;</span>
+  <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-string">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-string">"styles.css"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span></code></pre>
+            <h4 id="subtema-open-graph">Open Graph y Redes Sociales</h4>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Open Graph para Facebook, LinkedIn, etc. --&gt;</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">property</span>=<span class="code-string">"og:title"</span> <span class="code-attr">content</span>=<span class="code-string">"Titulo de la pagina"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">property</span>=<span class="code-string">"og:description"</span> <span class="code-attr">content</span>=<span class="code-string">"Descripcion"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">property</span>=<span class="code-string">"og:image"</span> <span class="code-attr">content</span>=<span class="code-string">"https://ejemplo.com/imagen.jpg"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">property</span>=<span class="code-string">"og:url"</span> <span class="code-attr">content</span>=<span class="code-string">"https://ejemplo.com"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- Twitter Card --&gt;</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"twitter:card"</span> <span class="code-attr">content</span>=<span class="code-string">"summary_large_image"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"twitter:title"</span> <span class="code-attr">content</span>=<span class="code-string">"Titulo"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"twitter:description"</span> <span class="code-attr">content</span>=<span class="code-string">"Descripcion"</span><span class="code-tag">&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 1.4 -->
+        <article class="lesson" id="leccion-1-4" aria-labelledby="leccion-1-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-1-4-title">1.4 Jerarquia de titulos H1 a H6</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              Los titulos van desde <code>&lt;h1&gt;</code> (el mas importante) hasta
+              <code>&lt;h6&gt;</code> (el menos importante). Cada pagina debe tener
+              <strong>un solo h1</strong> y los demas se usan en orden jerarquico.
+            </p>
+            <div class="demo-box" role="region" aria-label="Demostracion de titulos">
+              <h1 style="font-size:2.5rem;margin-bottom:0.5rem">Titulo H1 - El principal</h1>
+              <h2 style="font-size:2rem;margin-bottom:0.5rem">Titulo H2 - Seccion</h2>
+              <h3 style="font-size:1.75rem;margin-bottom:0.5rem">Titulo H3 - Subseccion</h3>
+              <h4 style="font-size:1.5rem;margin-bottom:0.5rem">Titulo H4 - Grupo</h4>
+              <h5 style="font-size:1.25rem;margin-bottom:0.5rem">Titulo H5 - Subgrupo</h5>
+              <h6 style="font-size:1rem;margin-bottom:0.5rem">Titulo H6 - Menor</h6>
+            </div>
+            <pre class="code-block"><code><span class="code-tag">&lt;h1&gt;</span>Titulo Principal de la Pagina<span class="code-tag">&lt;/h1&gt;</span>
+<span class="code-tag">&lt;h2&gt;</span>Titulo de Seccion<span class="code-tag">&lt;/h2&gt;</span>
+<span class="code-tag">&lt;h3&gt;</span>Titulo de Subseccion<span class="code-tag">&lt;/h3&gt;</span>
+<span class="code-tag">&lt;h4&gt;</span>Titulo de Grupo<span class="code-tag">&lt;/h4&gt;</span>
+<span class="code-tag">&lt;h5&gt;</span>Titulo de Subgrupo<span class="code-tag">&lt;/h5&gt;</span>
+<span class="code-tag">&lt;h6&gt;</span>Titulo de menor importancia<span class="code-tag">&lt;/h6&gt;</span></code></pre>
+            <div class="callout callout-warning" role="alert">
+              <strong>Importante:</strong> Nunca saltes niveles de jerarquia (por ejemplo,
+              de h2 a h4 sin un h3 intermedio). Esto afecta la accesibilidad y el SEO.
+            </div>
+          </div>
+        </article>
+
+        <!-- Leccion 1.5 -->
+        <article class="lesson" id="leccion-1-5" aria-labelledby="leccion-1-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-1-5-title">1.5 Parrafos, saltos y formato de texto</h3>
+          </header>
+          <div class="lesson-content">
+            <h4 id="subtema-parrafos">Parrafos</h4>
+            <p>
+              El parrafo es el bloque basico de texto. El navegador agrega espacio automaticamente
+              entre parrafos.
+            </p>
+            <pre class="code-block"><code><span class="code-tag">&lt;p&gt;</span>Este es mi primer parrafo en HTML.<span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;p&gt;</span>Este es el segundo parrafo. Se separa automaticamente.<span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-comment">&lt;!-- Salto de linea --&gt;</span>
+<span class="code-tag">&lt;p&gt;</span>Primera linea<span class="code-tag">&lt;br&gt;</span>Segunda linea<span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-comment">&lt;!-- Linea horizontal --&gt;</span>
+<span class="code-tag">&lt;hr&gt;</span></code></pre>
+            <h4 id="subtema-formato">Formato de texto inline</h4>
+            <pre class="code-block"><code><span class="code-tag">&lt;p&gt;</span>
+  <span class="code-tag">&lt;strong&gt;</span>Texto en negrita semantica<span class="code-tag">&lt;/strong&gt;</span>
+  <span class="code-tag">&lt;em&gt;</span>Texto en italica semantica<span class="code-tag">&lt;/em&gt;</span>
+  <span class="code-tag">&lt;b&gt;</span>Negrita visual (sin enfasis semantico)<span class="code-tag">&lt;/b&gt;</span>
+  <span class="code-tag">&lt;i&gt;</span>Italica visual<span class="code-tag">&lt;/i&gt;</span>
+  <span class="code-tag">&lt;u&gt;</span>Texto subrayado<span class="code-tag">&lt;/u&gt;</span>
+  <span class="code-tag">&lt;s&gt;</span>Texto tachado<span class="code-tag">&lt;/s&gt;</span>
+  <span class="code-tag">&lt;mark&gt;</span>Texto resaltado<span class="code-tag">&lt;/mark&gt;</span>
+  <span class="code-tag">&lt;small&gt;</span>Texto pequenio<span class="code-tag">&lt;/small&gt;</span>
+  <span class="code-tag">&lt;sub&gt;</span>Subindice (H&lt;sub&gt;2&lt;/sub&gt;O)<span class="code-tag">&lt;/sub&gt;</span>
+  <span class="code-tag">&lt;sup&gt;</span>Superindice (E=mc&lt;sup&gt;2&lt;/sup&gt;)<span class="code-tag">&lt;/sup&gt;</span>
+  <span class="code-tag">&lt;code&gt;</span>Codigo en linea<span class="code-tag">&lt;/code&gt;</span>
+  <span class="code-tag">&lt;abbr</span> <span class="code-attr">title</span>=<span class="code-string">"HyperText Markup Language"</span><span class="code-tag">&gt;</span>HTML<span class="code-tag">&lt;/abbr&gt;</span>
+<span class="code-tag">&lt;/p&gt;</span></code></pre>
+            <h4 id="subtema-bloque-codigo">Bloque de codigo preformateado</h4>
+            <pre class="code-block"><code><span class="code-tag">&lt;pre&gt;</span><span class="code-tag">&lt;code&gt;</span>
+  function saludar(nombre) {
+    console.log(`Hola, ${nombre}!`);
+  }
+<span class="code-tag">&lt;/code&gt;</span><span class="code-tag">&lt;/pre&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 1.6 -->
+        <article class="lesson" id="leccion-1-6" aria-labelledby="leccion-1-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-1-6-title">1.6 Listas: ordenadas, desordenadas y de definicion</h3>
+          </header>
+          <div class="lesson-content">
+            <p>HTML soporta tres tipos principales de listas:</p>
+            <div class="three-columns">
+              <div class="demo-box">
+                <h4>Lista Ordenada</h4>
+                <ol><li>Primer elemento</li><li>Segundo elemento</li><li>Tercer elemento</li></ol>
+              </div>
+              <div class="demo-box">
+                <h4>Lista Desordenada</h4>
+                <ul><li>Item A</li><li>Item B</li><li>Item C</li></ul>
+              </div>
+              <div class="demo-box">
+                <h4>Lista de Definicion</h4>
+                <dl class="definition-list">
+                  <dt>HTML</dt><dd>Lenguaje de marcado para estructura</dd>
+                  <dt>CSS</dt><dd>Lenguaje de estilos para diseno</dd>
+                </dl>
+              </div>
+            </div>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Lista Ordenada --&gt;</span>
+<span class="code-tag">&lt;ol&gt;</span>
+  <span class="code-tag">&lt;li&gt;</span>Primero<span class="code-tag">&lt;/li&gt;</span>
+  <span class="code-tag">&lt;li&gt;</span>Segundo<span class="code-tag">&lt;/li&gt;</span>
+  <span class="code-tag">&lt;li&gt;</span>Tercero<span class="code-tag">&lt;/li&gt;</span>
+<span class="code-tag">&lt;/ol&gt;</span>
+
+<span class="code-comment">&lt;!-- Lista Ordenada con tipo --&gt;</span>
+<span class="code-tag">&lt;ol</span> <span class="code-attr">type</span>=<span class="code-string">"A"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;li&gt;</span>Opcion A<span class="code-tag">&lt;/li&gt;</span>
+  <span class="code-tag">&lt;li&gt;</span>Opcion B<span class="code-tag">&lt;/li&gt;</span>
+<span class="code-tag">&lt;/ol&gt;</span>
+
+<span class="code-comment">&lt;!-- Lista Desordenada --&gt;</span>
+<span class="code-tag">&lt;ul&gt;</span>
+  <span class="code-tag">&lt;li&gt;</span>Manzana<span class="code-tag">&lt;/li&gt;</span>
+  <span class="code-tag">&lt;li&gt;</span>Pera<span class="code-tag">&lt;/li&gt;</span>
+  <span class="code-tag">&lt;li&gt;</span>Naranja<span class="code-tag">&lt;/li&gt;</span>
+<span class="code-tag">&lt;/ul&gt;</span>
+
+<span class="code-comment">&lt;!-- Lista de Definicion --&gt;</span>
+<span class="code-tag">&lt;dl&gt;</span>
+  <span class="code-tag">&lt;dt&gt;</span>HTML<span class="code-tag">&lt;/dt&gt;</span>
+  <span class="code-tag">&lt;dd&gt;</span>HyperText Markup Language<span class="code-tag">&lt;/dd&gt;</span>
+  <span class="code-tag">&lt;dt&gt;</span>CSS<span class="code-tag">&lt;/dt&gt;</span>
+  <span class="code-tag">&lt;dd&gt;</span>Cascading Style Sheets<span class="code-tag">&lt;/dd&gt;</span>
+<span class="code-tag">&lt;/dl&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 1.7 -->
+        <article class="lesson" id="leccion-1-7" aria-labelledby="leccion-1-7-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-1-7-title">1.7 Enlaces y navegacion</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              Los enlaces (<code>&lt;a&gt;</code>) son la base de la navegacion web.
+              Permiten conectar paginas entre si.
+            </p>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Enlace basico --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"https://ejemplo.com"</span><span class="code-tag">&gt;</span>Visitar ejemplo<span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Abrir en nueva pestana --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"https://ejemplo.com"</span>
+   <span class="code-attr">target</span>=<span class="code-string">"_blank"</span>
+   <span class="code-attr">rel</span>=<span class="code-string">"noopener noreferrer"</span><span class="code-tag">&gt;</span>
+  Externo
+<span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Enlace de correo --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"mailto:correo@ejemplo.com"</span><span class="code-tag">&gt;</span>Enviar email<span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Enlace de telefono --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"tel:+34600000000"</span><span class="code-tag">&gt;</span>Llamar<span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Descarga de archivo --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"archivo.pdf"</span> <span class="code-attr">download</span><span class="code-tag">&gt;</span>Descargar PDF<span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Ancla interna --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#seccion-contacto"</span><span class="code-tag">&gt;</span>Ir a Contacto<span class="code-tag">&lt;/a&gt;</span>
+...
+<span class="code-tag">&lt;section</span> <span class="code-attr">id</span>=<span class="code-string">"seccion-contacto"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/section&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 1.8 -->
+        <article class="lesson" id="leccion-1-8" aria-labelledby="leccion-1-8-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-1-8-title">1.8 Imagenes, audio y video</h3>
+          </header>
+          <div class="lesson-content">
+            <h4 id="subtema-imagenes">Imagenes con img y picture</h4>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Imagen basica con texto alternativo --&gt;</span>
+<span class="code-tag">&lt;img</span>
+  <span class="code-attr">src</span>=<span class="code-string">"foto.webp"</span>
+  <span class="code-attr">alt</span>=<span class="code-string">"Paisaje montanoso al atardecer"</span>
+  <span class="code-attr">width</span>=<span class="code-string">"800"</span>
+  <span class="code-attr">height</span>=<span class="code-string">"600"</span>
+  <span class="code-attr">loading</span>=<span class="code-string">"lazy"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- Imagen responsiva con picture --&gt;</span>
+<span class="code-tag">&lt;picture&gt;</span>
+  <span class="code-tag">&lt;source</span> <span class="code-attr">media</span>=<span class="code-string">"(min-width: 800px)"</span>
+          <span class="code-attr">srcset</span>=<span class="code-string">"imagen-grande.webp"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;source</span> <span class="code-attr">media</span>=<span class="code-string">"(min-width: 400px)"</span>
+          <span class="code-attr">srcset</span>=<span class="code-string">"imagen-mediana.webp"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"imagen-pequena.webp"</span>
+       <span class="code-attr">alt</span>=<span class="code-string">"Descripcion fallback"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/picture&gt;</span>
+
+<span class="code-comment">&lt;!-- Imagen con figura y caption --&gt;</span>
+<span class="code-tag">&lt;figure&gt;</span>
+  <span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"grafico.png"</span> <span class="code-attr">alt</span>=<span class="code-string">"Grafico de ventas"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;figcaption&gt;</span>Ventas trimestrales 2026<span class="code-tag">&lt;/figcaption&gt;</span>
+<span class="code-tag">&lt;/figure&gt;</span></code></pre>
+            <h4 id="subtema-audio-video">Audio y Video</h4>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Audio --&gt;</span>
+<span class="code-tag">&lt;audio</span> <span class="code-attr">controls</span> <span class="code-attr">preload</span>=<span class="code-string">"metadata"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;source</span> <span class="code-attr">src</span>=<span class="code-string">"audio.mp3"</span> <span class="code-attr">type</span>=<span class="code-string">"audio/mpeg"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;source</span> <span class="code-attr">src</span>=<span class="code-string">"audio.ogg"</span> <span class="code-attr">type</span>=<span class="code-string">"audio/ogg"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;p&gt;</span>Tu navegador no soporta audio.
+    <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"audio.mp3"</span><span class="code-tag">&gt;</span>Descargar<span class="code-tag">&lt;/a&gt;</span>
+  <span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;/audio&gt;</span>
+
+<span class="code-comment">&lt;!-- Video --&gt;</span>
+<span class="code-tag">&lt;video</span> <span class="code-attr">controls</span> <span class="code-attr">width</span>=<span class="code-string">"720"</span>
+       <span class="code-attr">poster</span>=<span class="code-string">"miniatura.jpg"</span>
+       <span class="code-attr">preload</span>=<span class="code-string">"metadata"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;source</span> <span class="code-attr">src</span>=<span class="code-string">"video.mp4"</span> <span class="code-attr">type</span>=<span class="code-string">"video/mp4"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;source</span> <span class="code-attr">src</span>=<span class="code-string">"video.webm"</span> <span class="code-attr">type</span>=<span class="code-string">"video/webm"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;track</span> <span class="code-attr">kind</span>=<span class="code-string">"subtitles"</span> <span class="code-attr">src</span>=<span class="code-string">"subs.vtt"</span>
+         <span class="code-attr">srclang</span>=<span class="code-string">"es"</span> <span class="code-attr">label</span>=<span class="code-string">"Espanol"</span> <span class="code-attr">default</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;p&gt;</span>Tu navegador no soporta video HTML5.<span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;/video&gt;</span></code></pre>
+          </div>
+        </article>
+      </div>
+    </section>
