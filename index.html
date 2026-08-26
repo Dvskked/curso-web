@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Curso completo y gratuito de HTML y CSS. Aprende desde cero hasta nivel profesional con ejemplos practicos, proyectos reales y las mejores practicas de desarrollo web moderno.">
   <meta name="keywords" content="HTML, CSS, curso web, desarrollo web, aprendizaje, tutorial, flexbox, grid, responsive, accesibilidad">
-  <meta name="author" content="Tu Nombre">
+  <meta name="author" content="Andres Felipe Forero Sanchez">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Curso Completo de HTML y CSS 2026">
   <meta property="og:description" content="Aprende HTML y CSS desde cero hasta nivel profesional. Curso practico con proyectos reales.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tusitio.com">
-  <meta property="og:image" content="https://tusitio.com/og-image.png">
+  <meta property="og:url" content="https://dvskked.github.io/andres.github.io/">
+  <meta property="og:image" content="https://dvskked.github.io/andres.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Curso Completo de HTML y CSS 2026">
   <meta name="twitter:description" content="Aprende HTML y CSS desde cero hasta nivel profesional.">
@@ -24,73 +24,74 @@
   <!-- HEADER Y NAVEGACION -->
   <header class="site-header" id="site-header" role="banner">
     <nav class="navbar" aria-label="Navegacion principal">
-      <a href="#" class="navbar__logo" aria-label="Curso HTML CSS - Inicio">
-        <span class="navbar__logo-icon" aria-hidden="true">&lt;/&gt;</span>
-        <span class="navbar__logo-text">CursoHTML CSS</span>
+      <a href="#" class="nav-logo" aria-label="Curso HTML CSS - Inicio">
+        <span class="logo-icon" aria-hidden="true">&lt;/&gt;</span>
+        <span>Curso<span class="logo-accent">HTML</span>CSS</span>
       </a>
-      <ul class="navbar__menu" role="menubar">
-        <li role="none"><a href="#sobre-mi" class="navbar__link" role="menuitem">Sobre Mi</a></li>
-        <li role="none"><a href="#contenido" class="navbar__link" role="menuitem">Contenido</a></li>
-        <li role="none"><a href="#modulo-1" class="navbar__link" role="menuitem">Modulos</a></li>
-        <li role="none"><a href="#proyectos" class="navbar__link" role="menuitem">Proyectos</a></li>
-        <li role="none"><a href="#recursos" class="navbar__link" role="menuitem">Recursos</a></li>
-        <li role="none"><a href="#contacto" class="navbar__link" role="menuitem">Contacto</a></li>
+      <ul class="nav-links" id="navLinks" role="menubar" aria-hidden="true">
+        <li role="none"><a href="#sobre-mi" class="nav-link" role="menuitem">Sobre Mi</a></li>
+        <li role="none"><a href="#contenido" class="nav-link" role="menuitem">Contenido</a></li>
+        <li role="none"><a href="#proyectos" class="nav-link" role="menuitem">Proyectos</a></li>
+        <li role="none"><a href="#recursos" class="nav-link" role="menuitem">Recursos</a></li>
+        <li role="none"><a href="#contacto" class="nav-link" role="menuitem">Contacto</a></li>
       </ul>
       <div class="navbar__actions">
-        <button class="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
-          <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">&#9788;</span>
-          <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">&#9790;</span>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
+          <span class="theme-icon-light" aria-hidden="true">&#9788;</span>
+          <span class="theme-icon-dark" aria-hidden="true">&#9790;</span>
         </button>
-        <button class="navbar__hamburger" type="button" aria-label="Abrir menu de navegacion" aria-expanded="false" aria-controls="navbar-menu">
-          <span class="navbar__hamburger-line" aria-hidden="true"></span>
-          <span class="navbar__hamburger-line" aria-hidden="true"></span>
-          <span class="navbar__hamburger-line" aria-hidden="true"></span>
+        <button class="nav-hamburger" id="hamburger" type="button" aria-label="Abrir menu de navegacion" aria-expanded="false" aria-controls="navLinks">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </button>
       </div>
     </nav>
   </header>
+  <div class="progress-bar" aria-hidden="true"></div>
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="site-main" id="site-main">
 
     <!-- HERO SECTION -->
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-gradient" aria-hidden="true"></div>
       <div class="container">
-        <div class="hero__content">
-          <span class="hero__badge" aria-label="Edicion del curso">Curso 2026</span>
-          <h1 class="hero__title" id="hero-title">
-            Curso Completo de <span class="hero__title-gradient">HTML y CSS</span>
+        <div class="hero-content">
+          <span class="hero-badge" aria-label="Edicion del curso">Curso 2026</span>
+          <h1 class="hero-title" id="hero-title">
+            Curso Completo de <span class="text-gradient">HTML y CSS</span>
           </h1>
-          <p class="hero__subtitle">
+          <p class="hero-subtitle">
             Aprende desarrollo web frontend desde cero hasta nivel profesional.
             Domina HTML semantico, CSS moderno, Flexbox, Grid, animaciones y
             mucho mas con proyectos practicos reales.
           </p>
-          <div class="hero__cta">
-            <a href="#contenido" class="btn btn-primary" role="button">Ver Contenido</a>
-            <a href="#modulo-1" class="btn btn-secondary" role="button">Empezar Ahora</a>
+          <div class="hero-cta">
+            <a href="#contenido" class="btn btn-primary btn-lg" role="button">Ver Contenido</a>
+            <a href="#modulo-1" class="btn btn-secondary btn-lg" role="button">Empezar Ahora</a>
           </div>
-          <div class="hero__stats" role="list" aria-label="Estadisticas del curso">
-            <div class="hero__stat" role="listitem">
-              <strong class="hero__stat-number">10</strong>
-              <span class="hero__stat-label">Modulos</span>
+          <div class="hero-stats" role="list" aria-label="Estadisticas del curso">
+            <div class="stat" role="listitem">
+              <strong>10</strong>
+              <span>Modulos</span>
             </div>
-            <div class="hero__stat" role="listitem">
-              <strong class="hero__stat-number">80+</strong>
-              <span class="hero__stat-label">Lecciones</span>
+            <div class="stat" role="listitem">
+              <strong>80+</strong>
+              <span>Lecciones</span>
             </div>
-            <div class="hero__stat" role="listitem">
-              <strong class="hero__stat-number">5</strong>
-              <span class="hero__stat-label">Proyectos</span>
+            <div class="stat" role="listitem">
+              <strong>5</strong>
+              <span>Proyectos</span>
             </div>
-            <div class="hero__stat" role="listitem">
-              <strong class="hero__stat-number">100%</strong>
-              <span class="hero__stat-label">Practico</span>
+            <div class="stat" role="listitem">
+              <strong>100%</strong>
+              <span>Practico</span>
             </div>
           </div>
         </div>
-        <aside class="hero__preview" aria-label="Vista previa de codigo HTML">
-          <pre class="code-block" aria-hidden="true"><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+        <aside class="hero-visual" aria-label="Vista previa de codigo HTML">
+          <pre class="code-block glass-effect" aria-hidden="true"><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
 <span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-string">"es"</span><span class="code-tag">&gt;</span>
 <span class="code-tag">&lt;head&gt;</span>
   <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-string">"UTF-8"</span><span class="code-tag">&gt;</span>
@@ -115,157 +116,243 @@
     </section>
 
     <!-- SOBRE MI -->
-    <section class="section sobre-mi" id="sobre-mi" aria-labelledby="sobre-mi-title">
+    <section class="about" id="sobre-mi" aria-labelledby="sobre-mi-title">
       <div class="container">
         <header class="section-header">
           <h2 class="section-title" id="sobre-mi-title">Sobre Mi</h2>
           <p class="section-subtitle">Conoce al autor del curso</p>
         </header>
-        <article class="about">
+        <div class="about-grid">
           <figure class="about__avatar" aria-label="Foto de perfil">
-            <div class="about__avatar-placeholder" aria-hidden="true"><span>TN</span></div>
-            <figcaption class="sr-only">Foto de Tu Nombre</figcaption>
+            <div class="avatar-placeholder" aria-hidden="true">AF</div>
+            <figcaption class="sr-only">Foto de Andres Felipe Forero Sanchez</figcaption>
           </figure>
-          <div class="about__info">
-            <h3 class="about__name">Hola, soy Tu Nombre</h3>
-            <p class="about__bio">
-              Soy un desarrollador web apasionado por crear experiencias digitales excepcionales.
-              Con mas de 5 anos de experiencia en el desarrollo frontend, he trabajado con
-              empresas de todos los tamanos para construir sitios web modernos, accesibles y
-              rapidos. Mi objetivo es compartir todo lo que he aprendido para que puedas
+          <div class="about-text">
+            <h3>Hola, soy <span class="highlight">Andres Forero</span></h3>
+            <p>
+              Aprendiz de Analisis y Desarrollo de Software en el SENA CSET de Bucaramanga, Colombia.
+              Apasionado por el desarrollo web y las tecnologias frontend. He trabajado con
+              HTML5, CSS3, JavaScript, Python, PHP, MySQL, GitHub, C#, PostgreSQL y Docker.
+            </p>
+            <p>
+              Mi objetivo es compartir todo lo que he aprendido para que puedas
               dominar HTML y CSS y comenzar tu carrera en el desarrollo web.
+              Creo firmemente que todo el mundo puede aprender a programar.
             </p>
-            <p class="about__bio">
-              Creo firmemente que todo el mundo puede aprender a programar. Por eso he disenado
-              este curso de manera practica y progresiva, donde cada concepto se aplica con
-              ejemplos reales. No solo aprenderas sintaxis, sino que entenderas los principios
-              detras del codigo que escribes, preparandote para resolver problemas reales
-              en el mundo del desarrollo web profesional.
-            </p>
-            <ul class="about__skills" role="list" aria-label="Habilidades">
-              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> HTML5 Semantico</li>
-              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> CSS3 Moderno</li>
-              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> Responsive Design</li>
-              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> Accesibilidad Web</li>
-              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> CSS Grid &amp; Flexbox</li>
-              <li class="about__skill" role="listitem"><span class="about__skill-icon" aria-hidden="true">&#10003;</span> Animaciones CSS</li>
+            <ul class="about-skills" role="list" aria-label="Habilidades">
+              <li role="listitem">HTML5</li>
+              <li role="listitem">CSS3</li>
+              <li role="listitem">JavaScript</li>
+              <li role="listitem">Python</li>
+              <li role="listitem">PHP</li>
+              <li role="listitem">MySQL</li>
+              <li role="listitem">GitHub</li>
+              <li role="listitem">Docker</li>
             </ul>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
     <!-- CONTENIDO / TABLA DE CONTENIDOS -->
-    <section class="section section-alt contenido" id="contenido" aria-labelledby="contenido-title">
+    <section class="section section-alt" id="contenido" aria-labelledby="contenido-title">
       <div class="container">
         <header class="section-header">
           <h2 class="section-title" id="contenido-title">Contenido del Curso</h2>
           <p class="section-subtitle">10 modulos disenados para llevarte desde cero hasta nivel profesional</p>
         </header>
-        <nav aria-label="Lista de modulos del curso">
-          <ol class="lesson-list" role="list">
-            <li class="lesson-list__item">
-              <a href="#modulo-1" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">01</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">Fundamentos de HTML</strong>
-                  <span class="lesson-list__desc">Elementos, atributos, estructura del documento y mucho mas.</span>
-                </span>
-                <span class="lesson-list__count">8 lecciones</span>
-              </a>
-            </li>
-            <li class="lesson-list__item">
-              <a href="#modulo-2" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">02</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">HTML Semantico y Accesibilidad</strong>
-                  <span class="lesson-list__desc">Elementos semanticos, ARIA y buenas practicas de accesibilidad.</span>
-                </span>
-                <span class="lesson-list__count">8 lecciones</span>
-              </a>
-            </li>
-            <li class="lesson-list__item">
-              <a href="#modulo-3" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">03</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">Formularios y Validacion</strong>
-                  <span class="lesson-list__desc">Inputs, validacion nativa, accesibilidad y formularios completos.</span>
-                </span>
-                <span class="lesson-list__count">7 lecciones</span>
-              </a>
-            </li>
-            <li class="lesson-list__item">
-              <a href="#modulo-4" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">04</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">Fundamentos de CSS</strong>
-                  <span class="lesson-list__desc">Selectores, modelo de caja, unidades, colores y tipografia.</span>
-                </span>
-                <span class="lesson-list__count">9 lecciones</span>
-              </a>
-            </li>
-            <li class="lesson-list__item">
-              <a href="#modulo-5" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">05</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">Layout con Flexbox</strong>
-                  <span class="lesson-list__desc">Ejes, alineacion, patrones comunes y tecnicas de layout flex.</span>
-                </span>
-                <span class="lesson-list__count">7 lecciones</span>
-              </a>
-            </li>
-            <li class="lesson-list__item">
-              <a href="#modulo-6" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">06</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">Layout con CSS Grid</strong>
-                  <span class="lesson-list__desc">Grid basico, funciones, colocacion, areas y subgrid.</span>
-                </span>
-                <span class="lesson-list__count">8 lecciones</span>
-              </a>
-            </li>
-            <li class="lesson-list__item">
-              <a href="#modulo-7" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">07</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">Responsive Design</strong>
-                  <span class="lesson-list__desc">Media queries, mobile-first, unidades relativas y container queries.</span>
-                </span>
-                <span class="lesson-list__count">7 lecciones</span>
-              </a>
-            </li>
-            <li class="lesson-list__item">
-              <a href="#modulo-8" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">08</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">Animaciones y Transiciones</strong>
-                  <span class="lesson-list__desc">Transiciones, transformaciones 2D/3D y keyframes.</span>
-                </span>
-                <span class="lesson-list__count">6 lecciones</span>
-              </a>
-            </li>
-            <li class="lesson-list__item">
-              <a href="#modulo-9" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">09</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">CSS Avanzado</strong>
-                  <span class="lesson-list__desc">Variables, funciones CSS, @layer, @scope y arquitectura.</span>
-                </span>
-                <span class="lesson-list__count">8 lecciones</span>
-              </a>
-            </li>
-            <li class="lesson-list__item">
-              <a href="#modulo-10" class="lesson-list__link">
-                <span class="lesson-list__number" aria-hidden="true">10</span>
-                <span class="lesson-list__info">
-                  <strong class="lesson-list__title">Proyecto Final Integrador</strong>
-                  <span class="lesson-list__desc">Construye un portfolio completo aplicando todo lo aprendido.</span>
-                </span>
-                <span class="lesson-list__count">10 lecciones</span>
-              </a>
-            </li>
-          </ol>
-        </nav>
+        <div class="module-grid">
+          <!-- Modulo 1 -->
+          <article class="module-card animate-on-scroll" id="module-card-1">
+            <div class="module-card-header">
+              <span class="module-card-number">01</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">Fundamentos de HTML</h3>
+            <p class="module-card-desc">Elementos, atributos, estructura del documento y mucho mas.</p>
+            <div class="module-card-meta">
+              <span>8 lecciones</span>
+              <span class="lesson-count-badge">Basico</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-1" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+          <!-- Modulo 2 -->
+          <article class="module-card animate-on-scroll" id="module-card-2">
+            <div class="module-card-header">
+              <span class="module-card-number">02</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">HTML Semantico y Accesibilidad</h3>
+            <p class="module-card-desc">Elementos semanticos, ARIA y buenas practicas de accesibilidad.</p>
+            <div class="module-card-meta">
+              <span>8 lecciones</span>
+              <span class="lesson-count-badge">Basico</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-2" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+          <!-- Modulo 3 -->
+          <article class="module-card animate-on-scroll" id="module-card-3">
+            <div class="module-card-header">
+              <span class="module-card-number">03</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">Formularios y Validacion</h3>
+            <p class="module-card-desc">Inputs, validacion nativa, accesibilidad y formularios completos.</p>
+            <div class="module-card-meta">
+              <span>7 lecciones</span>
+              <span class="lesson-count-badge">Intermedio</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-3" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+          <!-- Modulo 4 -->
+          <article class="module-card animate-on-scroll" id="module-card-4">
+            <div class="module-card-header">
+              <span class="module-card-number">04</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">Fundamentos de CSS</h3>
+            <p class="module-card-desc">Selectores, modelo de caja, unidades, colores y tipografia.</p>
+            <div class="module-card-meta">
+              <span>9 lecciones</span>
+              <span class="lesson-count-badge">Basico</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-4" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+          <!-- Modulo 5 -->
+          <article class="module-card animate-on-scroll" id="module-card-5">
+            <div class="module-card-header">
+              <span class="module-card-number">05</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">Layout con Flexbox</h3>
+            <p class="module-card-desc">Ejes, alineacion, patrones comunes y tecnicas de layout flex.</p>
+            <div class="module-card-meta">
+              <span>7 lecciones</span>
+              <span class="lesson-count-badge">Intermedio</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-5" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+          <!-- Modulo 6 -->
+          <article class="module-card animate-on-scroll" id="module-card-6">
+            <div class="module-card-header">
+              <span class="module-card-number">06</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">Layout con CSS Grid</h3>
+            <p class="module-card-desc">Grid basico, funciones, colocacion, areas y subgrid.</p>
+            <div class="module-card-meta">
+              <span>8 lecciones</span>
+              <span class="lesson-count-badge">Intermedio</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-6" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+          <!-- Modulo 7 -->
+          <article class="module-card animate-on-scroll" id="module-card-7">
+            <div class="module-card-header">
+              <span class="module-card-number">07</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">Responsive Design</h3>
+            <p class="module-card-desc">Media queries, mobile-first, unidades relativas y container queries.</p>
+            <div class="module-card-meta">
+              <span>7 lecciones</span>
+              <span class="lesson-count-badge">Intermedio</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-7" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+          <!-- Modulo 8 -->
+          <article class="module-card animate-on-scroll" id="module-card-8">
+            <div class="module-card-header">
+              <span class="module-card-number">08</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">Animaciones y Transiciones</h3>
+            <p class="module-card-desc">Transiciones, transformaciones 2D/3D y keyframes.</p>
+            <div class="module-card-meta">
+              <span>6 lecciones</span>
+              <span class="lesson-count-badge">Avanzado</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-8" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+          <!-- Modulo 9 -->
+          <article class="module-card animate-on-scroll" id="module-card-9">
+            <div class="module-card-header">
+              <span class="module-card-number">09</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">CSS Avanzado</h3>
+            <p class="module-card-desc">Variables, funciones CSS, @layer, @scope y arquitectura.</p>
+            <div class="module-card-meta">
+              <span>8 lecciones</span>
+              <span class="lesson-count-badge">Avanzado</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-9" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+          <!-- Modulo 10 -->
+          <article class="module-card animate-on-scroll" id="module-card-10">
+            <div class="module-card-header">
+              <span class="module-card-number">10</span>
+              <span class="module-status not-started">No iniciado</span>
+            </div>
+            <h3 class="module-card-title">Proyecto Final Integrador</h3>
+            <p class="module-card-desc">Construye un portfolio completo aplicando todo lo aprendido.</p>
+            <div class="module-card-meta">
+              <span>10 lecciones</span>
+              <span class="lesson-count-badge">Avanzado</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="module-card-actions">
+              <a href="#modulo-10" class="btn btn-primary btn-sm module-start-btn">Iniciar</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -934,7 +1021,7 @@
           <div class="lesson-content">
             <ol>
               <li>Siempre incluye <code>alt</code> descriptivo en imagenes. Si es decorativa, usa <code>alt=""</code></li>
-              <li>Usa un solo <code>&lt;h1&gt;</code> por pagina y mantén la jerarquia de titulos</li>
+              <li>Usa un solo <code>&lt;h1&gt;</code> por pagina y mant�n la jerarquia de titulos</li>
               <li>Los enlaces deben tener texto descriptivo, nunca "haz clic aqui"</li>
               <li>Usa <code>&lt;label&gt;</code> asociado a cada campo de formulario</li>
               <li>Maintene un orden de tabulacion logico con <code>tabindex="0"</code> cuando sea necesario</li>
@@ -3384,23 +3471,23 @@ toggle.addEventListener(<span class="code-string">'click'</span>, () => {
             <h3>Otros canales</h3>
             <ul class="contacto-links">
               <li>
-                <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub">
+                <a href="https://github.com/Dvskked" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub">
                   <span aria-hidden="true">&#60;/&#62;</span> GitHub
                 </a>
               </li>
               <li>
-                <a href="mailto:correo@ejemplo.com" aria-label="Enviar correo electronico">
-                  <span aria-hidden="true">&#9993;</span> correo@ejemplo.com
+                <a href="mailto:siriusplanet76@gmail.com" aria-label="Enviar correo electronico">
+                  <span aria-hidden="true">&#9993;</span> siriusplanet76@gmail.com
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Twitter/X">
-                  <span aria-hidden="true">&#120143;</span> Twitter / X
+                <a href="https://www.instagram.com/_andres.nox/" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Instagram">
+                  <span aria-hidden="true">&#9733;</span> Instagram
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn">
-                  <span aria-hidden="true">&#105;&#110;</span> LinkedIn
+                <a href="https://dvskked.github.io/andres.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
+                  <span aria-hidden="true">&#105;&#110;</span> Portfolio
                 </a>
               </li>
             </ul>
@@ -3424,13 +3511,13 @@ toggle.addEventListener(<span class="code-string">'click'</span>, () => {
         </ul>
       </nav>
       <div class="footer-social" aria-label="Redes sociales">
-        <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <a href="https://github.com/Dvskked" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <span aria-hidden="true">&#60;/&#62;</span>
         </a>
-        <a href="https://twitter.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-          <span aria-hidden="true">&#120143;</span>
+        <a href="https://www.instagram.com/_andres.nox/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <span aria-hidden="true">&#9733;</span>
         </a>
-        <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <a href="https://dvskked.github.io/andres.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
           <span aria-hidden="true">&#105;&#110;</span>
         </a>
       </div>

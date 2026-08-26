@@ -743,6 +743,295 @@ const initResponsive = () => {
 // Esta función existe para mantener la numeración del enunciado.
 
 // ============================================================
+// 16. TRACKING DE PROGRESO DE MÓDULOS
+// ============================================================
+
+const COURSE_PROGRESS_KEY = 'course-progress';
+
+/** Lee el progreso del curso desde localStorage. */
+const getCourseProgress = () => {
+  try {
+    const raw = localStorage.getItem(COURSE_PROGRESS_KEY);
+    return raw ? JSON.parse(raw) : { modules: {} };
+  } catch {
+    return { modules: {} };
+  }
+};
+
+/** Guarda el progreso del curso en localStorage. */
+const saveCourseProgress = (progress) => {
+  try {
+    localStorage.setItem(COURSE_PROGRESS_KEY, JSON.stringify(progress));
+  } catch (err) {
+    console.warn('[Progreso] No se pudo guardar en localStorage:', err);
+  }
+};
+
+/** Recopila todas las lecciones y módulos del DOM. */
+const getCourseStructure = () => {
+  const modules = $$('.module[id]');
+  const structure = {};
+
+  modules.forEach((mod) => {
+    const moduleId = mod.id;
+    const lessons = $$('.lesson-header', mod);
+    structure[moduleId] = {
+      totalLessons: lessons.length,
+      lessonIds: lessons.map((l) => l.getAttribute('data-lesson-id') || l.id || ''),
+    };
+  });
+
+  return structure;
+};
+
+const initModuleProgress = () => {
+  const progress = getCourseProgress();
+  const structure = getCourseStructure();
+  const allModuleIds = Object.keys(structure);
+
+  // Inicializar módulos que no existan aún en el progreso
+  allModuleIds.forEach((id) => {
+    if (!progress.modules[id]) {
+      progress.modules[id] = { started: false, completedLessons: [] };
+    }
+  });
+
+  saveCourseProgress(progress);
+
+  // Aplicar estado visual a cada módulo
+  allModuleIds.forEach((moduleId) => {
+    const modData = progress.modules[moduleId];
+    const modEl = $(`#${moduleId}`);
+    if (!modEl) return;
+
+    const startBtn = $('.module-start-btn', modEl);
+    if (startBtn) {
+      startBtn.textContent = modData.started ? 'Continuar' : 'Iniciar';
+    }
+
+    // Marcar lecciones completadas
+    modData.completedLessons.forEach((lessonId) => {
+      if (!lessonId) return;
+      const checkbox = $(`.lesson-complete-checkbox[data-lesson-id="${lessonId}"]`, modEl);
+      if (checkbox) checkbox.checked = true;
+
+      const lessonItem = checkbox?.closest('.lesson-item') || checkbox?.closest('li');
+      if (lessonItem) {
+        lessonItem.classList.add('completed');
+        const title = $('.lesson-title, h3, h4', lessonItem);
+        if (title) title.classList.add('strikethrough');
+      }
+    });
+
+    // Actualizar barra de progreso del módulo
+    updateModuleProgressBar(moduleId);
+  });
+
+  // Actualizar progreso general
+  updateOverallProgress();
+
+  console.log('[Progreso módulos] Inicializado.');
+};
+
+// ============================================================
+// 17. BOTÓN INICIAR / CONTINUAR MÓDULO
+// ============================================================
+
+const initModuleStartButtons = () => {
+  const startButtons = $$('.module-start-btn');
+
+  startButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const modEl = btn.closest('.module[id]') || btn.closest('section[id]');
+      if (!modEl) return;
+
+      const moduleId = modEl.id;
+      const progress = getCourseProgress();
+
+      if (!progress.modules[moduleId]) {
+        progress.modules[moduleId] = { started: false, completedLessons: [] };
+      }
+
+      progress.modules[moduleId].started = true;
+      saveCourseProgress(progress);
+
+      btn.textContent = 'Continuar';
+
+      // Scroll a la primera lección del módulo
+      const firstLesson = $('.lesson-header', modEl);
+      if (firstLesson) {
+        const top = firstLesson.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+
+      console.log(`[Iniciar módulo] "${moduleId}" marcado como iniciado.`);
+    });
+  });
+
+  console.log(`[Botones iniciar] ${startButtons.length} botones configurados.`);
+};
+
+// ============================================================
+// 18. TOGGLE DE COMPLETADO DE LECCIÓN
+// ============================================================
+
+const updateModuleProgressBar = (moduleId) => {
+  const modEl = $(`#${moduleId}`);
+  if (!modEl) return;
+
+  const progress = getCourseProgress();
+  const modData = progress.modules[moduleId];
+  if (!modData) return;
+
+  const totalCheckboxes = $$('.lesson-complete-checkbox', modEl);
+  const total = totalCheckboxes.length || 1;
+  const completed = modData.completedLessons.filter(Boolean).length;
+  const pct = Math.round((completed / total) * 100);
+
+  const bar = $('.module-progress-fill', modEl);
+  if (bar) bar.style.width = `${pct}%`;
+
+  const text = $('.module-progress-text', modEl);
+  if (text) text.textContent = `${pct}%`;
+};
+
+const updateOverallProgress = () => {
+  const structure = getCourseStructure();
+  const progress = getCourseProgress();
+  let totalLessons = 0;
+  let completedLessons = 0;
+
+  Object.keys(structure).forEach((moduleId) => {
+    totalLessons += structure[moduleId].totalLessons;
+    const modData = progress.modules[moduleId];
+    if (modData) {
+      completedLessons += modData.completedLessons.filter(Boolean).length;
+    }
+  });
+
+  const overallText = $('.overall-progress-text');
+  if (overallText) {
+    overallText.textContent = `${completedLessons} de ${totalLessons} lecciones completadas`;
+  }
+
+  const overallFill = $('.overall-progress-fill');
+  if (overallFill) {
+    const pct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+    overallFill.style.width = `${pct}%`;
+  }
+};
+
+const initLessonCompletion = () => {
+  const checkboxes = $$('.lesson-complete-checkbox');
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+      const lessonId = checkbox.getAttribute('data-lesson-id') || '';
+      const modEl = checkbox.closest('.module[id]') || checkbox.closest('section[id]');
+      if (!modEl) return;
+
+      const moduleId = modEl.id;
+      const progress = getCourseProgress();
+
+      if (!progress.modules[moduleId]) {
+        progress.modules[moduleId] = { started: false, completedLessons: [] };
+      }
+
+      const modData = progress.modules[moduleId];
+
+      if (checkbox.checked) {
+        // Añadir lección completada
+        if (!modData.completedLessons.includes(lessonId)) {
+          modData.completedLessons.push(lessonId);
+        }
+
+        // Feedback visual
+        const lessonItem = checkbox.closest('.lesson-item') || checkbox.closest('li');
+        if (lessonItem) {
+          lessonItem.classList.add('completed');
+          const title = $('.lesson-title, h3, h4', lessonItem);
+          if (title) title.classList.add('strikethrough');
+        }
+      } else {
+        // Quitar lección completada
+        modData.completedLessons = modData.completedLessons.filter((id) => id !== lessonId);
+
+        // Quitar feedback visual
+        const lessonItem = checkbox.closest('.lesson-item') || checkbox.closest('li');
+        if (lessonItem) {
+          lessonItem.classList.remove('completed');
+          const title = $('.lesson-title, h3, h4', lessonItem);
+          if (title) title.classList.remove('strikethrough');
+        }
+      }
+
+      // Marcar módulo como iniciado si no lo estaba
+      modData.started = true;
+      const startBtn = $('.module-start-btn', modEl);
+      if (startBtn) startBtn.textContent = 'Continuar';
+
+      saveCourseProgress(progress);
+
+      // Actualizar barras de progreso
+      updateModuleProgressBar(moduleId);
+      updateOverallProgress();
+
+      console.log(`[Lección] "${lessonId}" ${checkbox.checked ? 'completada' : 'desmarcada'}.`);
+    });
+  });
+
+  console.log(`[Completado lecciones] ${checkboxes.length} checkboxes configurados.`);
+};
+
+// ============================================================
+// 19. DISPLAY DE PROGRESO GENERAL
+// ============================================================
+
+const initOverallProgress = () => {
+  updateOverallProgress();
+  console.log('[Progreso general] Inicializado.');
+};
+
+// ============================================================
+// 20. NAVEGACIÓN SUAVE A MÓDULOS
+// ============================================================
+
+const initModuleNavigation = () => {
+  $$('.module-card, .toc-item a[href^="#"]').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      let targetId = null;
+
+      // Si es un enlace con href
+      if (card.tagName === 'A') {
+        targetId = card.getAttribute('href');
+      } else {
+        // Buscar el id del módulo asociado
+        targetId = card.getAttribute('data-target') || card.getAttribute('href');
+      }
+
+      if (!targetId) {
+        // Intentar extraer de data-module o clase
+        const moduleAttr = card.getAttribute('data-module');
+        if (moduleAttr) targetId = `#${moduleAttr}`;
+      }
+
+      if (!targetId) return;
+
+      const target = $(targetId);
+      if (!target) return;
+
+      e.preventDefault();
+
+      const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+      window.scrollTo({ top, behavior: 'smooth' });
+      history.pushState(null, '', targetId);
+    });
+  });
+
+  console.log('[Navegación módulos] Inicializada.');
+};
+
+// ============================================================
 // INICIALIZACIÓN PRINCIPAL
 // ============================================================
 
@@ -766,6 +1055,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initTOCScrollSpy();          // 13. Scroll Spy TOC
   initResponsive();             // 14. Manejo responsive
   // 15. Persistencia de tema (ya incluida en initThemeToggle)
+
+  // --- Nuevos módulos de progreso ---
+  initModuleProgress();         // 16. Tracking de progreso de módulos
+  initModuleStartButtons();     // 17. Botones iniciar / continuar
+  initLessonCompletion();       // 18. Toggle completado de lecciones
+  initOverallProgress();        // 19. Display de progreso general
+  initModuleNavigation();       // 20. Navegación suave a módulos
 
   console.log('========================================');
   console.log(' Todos los módulos inicializados.');

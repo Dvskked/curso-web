@@ -432,7 +432,7 @@ A lo largo del curso construirás **5 proyectos reales** que demuestran todo lo 
 
 ```bash
 # Opción A: Clonar con Git
-git clone https://github.com/tu-usuario/curso-html-css.git
+git clone https://github.com/Dvskked/curso-htmlcss.git
 
 # Opción B: Descargar como ZIP
 # Haz clic en el botón "Code" → "Download ZIP" en GitHub
@@ -603,7 +603,7 @@ Las contribuciones son bienvenidas y valoradas. Sigue estos pasos:
 ### 2. Clona tu fork
 
 ```bash
-git clone https://github.com/tu-usuario/curso-html-css.git
+git clone https://github.com/Dvskked/curso-htmlcss.git
 cd curso-html-css
 ```
 
@@ -662,7 +662,7 @@ git push origin feature/nueva-funcionalidad
 ```
 MIT License
 
-Copyright (c) 2024 Tu Nombre
+Copyright (c) 2024 Andres Felipe Forero Sanchez
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -697,11 +697,11 @@ Este proyecto está bajo la licencia **MIT**. Esto significa que puedes:
 
 | Plataforma | Enlace |
 |:---|:---|
-| 🐙 **GitHub** | [github.com/tu-usuario](https://github.com/tu-usuario) |
-| 📧 **Email** | [tu@email.com](mailto:tu@email.com) |
-| 💼 **LinkedIn** | [linkedin.com/in/tu-usuario](https://linkedin.com/in/tu-usuario) |
+| 🐙 **GitHub** | [github.com/Dvskked](https://github.com/Dvskked) |
+| 📧 **Email** | [siriusplanet76@gmail.com](mailto:siriusplanet76@gmail.com) |
+| 💼 **Portfolio** | [dvskked.github.io/andres.github.io](https://dvskked.github.io/andres.github.io/) |
 
-> 💬 ¿Tienes preguntas, sugerencias o encontraste un error? No dudes en contactarme o abrir un [issue](https://github.com/tu-usuario/curso-html-css/issues) en el repositorio.
+> 💬 ¿Tienes preguntas, sugerencias o encontraste un error? No dudes en contactarme o abrir un [issue](https://github.com/Dvskked/curso-htmlcss/issues) en el repositorio.
 
 ---
 
@@ -713,10 +713,10 @@ Si este curso te resultó útil, considera darle una **estrella** ⭐ al reposit
 
 <p align="center">
 
-### Hecho con ❤️ y mucho ☕ por [Tu Nombre]
+### Hecho con ❤️ y mucho ☕ por [Andres Felipe Forero Sanchez]
 
 *"El mejor momento para empezar a aprender fue ayer. El segundo mejor momento es ahora."*
 
-![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Ftu-usuario%2Fcurso-html-css&countColor=%2337d67a&style=for-the-badge)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FDvskked%2Fcurso-htmlcss&countColor=%2337d67a&style=for-the-badge)
 
 </p>
