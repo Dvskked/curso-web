@@ -1762,3 +1762,1683 @@ formulario.addEventListener(<span class="code-string">'submit'</span>, (<span cl
         </article>
       </div>
     </section>
+
+    <!-- MODULO 6: LAYOUT CON CSS GRID -->
+    <section class="section section-alt module" id="modulo-6" aria-labelledby="modulo-6-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">06</span>
+          <h2 class="module__title" id="modulo-6-title">Modulo 6: Layout con CSS Grid</h2>
+          <p class="module__description">
+            CSS Grid Layout es un sistema de layout bidimensional que permite crear estructuras
+            complejas de pagina con filas y columnas de forma intuitiva.
+          </p>
+        </header>
+
+        <!-- Leccion 6.1 -->
+        <article class="lesson" id="leccion-6-1" aria-labelledby="leccion-6-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-6-1-title">6.1 Grid basico</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-selector">.grid</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+
+  <span class="code-comment">/* Definir columnas */</span>
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">200px 1fr 200px</span>; <span class="code-comment">/* 3 columnas */</span>
+
+  <span class="code-comment">/* Definir filas */</span>
+  <span class="code-property">grid-template-rows</span>: <span class="code-value">auto 1fr auto</span>;
+
+  <span class="code-comment">/* Espacio entre items */</span>
+  <span class="code-property">gap</span>: <span class="code-value">1rem</span>;
+  <span class="code-property">row-gap</span>: <span class="code-value">1rem</span>;
+  <span class="code-property">column-gap</span>: <span class="code-value">2rem</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 6.2 -->
+        <article class="lesson" id="leccion-6-2" aria-labelledby="leccion-6-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-6-2-title">6.2 Funciones: repeat, minmax, fr, auto-fit, auto-fill</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* repeat: repetir patron */</span>
+<span class="code-selector">.grid</span> {
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">repeat(3, 1fr)</span>; <span class="code-comment">/* 3 columnas iguales */</span>
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">repeat(2, 200px 1fr)</span>; <span class="code-comment">/* patron repetido */</span>
+}
+
+<span class="code-comment">/* minmax: rango de tamano */</span>
+<span class="code-selector">.grid</span> {
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">repeat(3, minmax(250px, 1fr))</span>;
+}
+
+<span class="code-comment">/* fr: fraccion del espacio disponible */</span>
+<span class="code-selector">.grid</span> {
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">1fr 2fr 1fr</span>; <span class="code-comment">/* 25% 50% 25% */</span>
+}
+
+<span class="code-comment">/* auto-fit: colapsa items vacios */</span>
+<span class="code-selector">.grid</span> {
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">repeat(auto-fit, minmax(300px, 1fr))</span>;
+}
+
+<span class="code-comment">/* auto-fill: mantiene espacios vacios */</span>
+<span class="code-selector">.grid</span> {
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">repeat(auto-fill, minmax(300px, 1fr))</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 6.3 -->
+        <article class="lesson" id="leccion-6-3" aria-labelledby="leccion-6-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-6-3-title">6.3 Colocacion de items</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Ubicacion por linea */</span>
+<span class="code-selector">.item-header</span> {
+  <span class="code-property">grid-column</span>: <span class="code-value">1 / -1</span>; <span class="code-comment">/* De linea 1 hasta la ultima */</span>
+}
+
+<span class="code-comment">/* Span: ocupar multiples celdas */</span>
+<span class="code-selector">.item-featured</span> {
+  <span class="code-property">grid-column</span>: <span class="code-value">span 2</span>;
+  <span class="code-property">grid-row</span>: <span class="code-value">span 3</span>;
+}
+
+<span class="code-comment">/* Grid Template Areas (nombres visuales) */</span>
+<span class="code-selector">.layout</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">250px 1fr</span>;
+  <span class="code-property">grid-template-rows</span>: <span class="code-value">auto 1fr auto</span>;
+  <span class="code-property">grid-template-areas</span>:
+    <span class="code-value">"header  header"</span>
+    <span class="code-value">"sidebar main"</span>
+    <span class="code-value">"footer  footer"</span>;
+}
+
+<span class="code-selector">.header</span>  { <span class="code-property">grid-area</span>: <span class="code-value">header</span>; }
+<span class="code-selector">.sidebar</span> { <span class="code-property">grid-area</span>: <span class="code-value">sidebar</span>; }
+<span class="code-selector">.main</span>    { <span class="code-property">grid-area</span>: <span class="code-value">main</span>; }
+<span class="code-selector">.footer</span>  { <span class="code-property">grid-area</span>: <span class="code-value">footer</span>; }</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 6.4 -->
+        <article class="lesson" id="leccion-6-4" aria-labelledby="leccion-6-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-6-4-title">6.4 Alineacion en Grid</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* En el contenedor */</span>
+<span class="code-selector">.grid</span> {
+  <span class="code-property">justify-items</span>: <span class="code-value">center</span>;   <span class="code-comment">/* Horizontal por celda */</span>
+  <span class="code-property">align-items</span>: <span class="code-value">center</span>;     <span class="code-comment">/* Vertical por celda */</span>
+  <span class="code-property">place-items</span>: <span class="code-value">center</span>;     <span class="code-comment">/* Shorthand */</span>
+
+  <span class="code-property">justify-content</span>: <span class="code-value">center</span>; <span class="code-comment">/* Horizontal del grid */</span>
+  <span class="code-property">align-content</span>: <span class="code-value">center</span>;   <span class="code-comment">/* Vertical del grid */</span>
+}
+
+<span class="code-comment">/* En un item individual */</span>
+<span class="code-selector">.item</span> {
+  <span class="code-property">justify-self</span>: <span class="code-value">end</span>;
+  <span class="code-property">align-self</span>: <span class="code-value">start</span>;
+  <span class="code-property">place-self</span>: <span class="code-value">center</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 6.5 -->
+        <article class="lesson" id="leccion-6-5" aria-labelledby="leccion-6-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-6-5-title">6.5 BEM naming con Grid</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* BEM: Block Element Modifier */</span>
+<span class="code-selector">.page-layout</span> {}
+<span class="code-selector">.page-layout__header</span> {}
+<span class="code-selector">.page-layout__sidebar</span> {}
+<span class="code-selector">.page-layout__main</span> {}
+<span class="code-selector">.page-layout__footer</span> {}
+<span class="code-selector">.page-layout__main--wide</span> {}
+
+<span class="code-selector">.page-layout</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">200px 1fr</span>;
+  <span class="code-property">grid-template-areas</span>:
+    <span class="code-value">"header  header"</span>
+    <span class="code-value">"sidebar main"</span>
+    <span class="code-value">"footer  footer"</span>;
+}
+
+<span class="code-selector">.page-layout__header</span>  { <span class="code-property">grid-area</span>: <span class="code-value">header</span>; }
+<span class="code-selector">.page-layout__sidebar</span> { <span class="code-property">grid-area</span>: <span class="code-value">sidebar</span>; }
+<span class="code-selector">.page-layout__main</span>    { <span class="code-property">grid-area</span>: <span class="code-value">main</span>; }
+<span class="code-selector">.page-layout__footer</span>  { <span class="code-property">grid-area</span>: <span class="code-value">footer</span>; }
+
+<span class="code-comment">/* Modificador */</span>
+<span class="code-selector">.page-layout__main--wide</span> {
+  <span class="code-property">grid-column</span>: <span class="code-value">span 2</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 6.6 -->
+        <article class="lesson" id="leccion-6-6" aria-labelledby="leccion-6-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-6-6-title">6.6 Ejercicio: Layout de pagina completa</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Layout completo con grid-template-areas */</span>
+<span class="code-selector">.page</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">min-height</span>: <span class="code-value">100dvh</span>;
+  <span class="code-property">grid-template-rows</span>: <span class="code-value">auto 1fr auto</span>;
+}
+
+<span class="code-selector">.page__content</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">minmax(200px, 250px) 1fr</span>;
+  <span class="code-property">gap</span>: <span class="code-value">2rem</span>;
+}
+
+<span class="code-comment">/* Responsive: apilar en movil */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">max-width: 768px</span>) {
+  <span class="code-selector">.page__content</span> {
+    <span class="code-property">grid-template-columns</span>: <span class="code-value">1fr</span>;
+  }
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 6.7 -->
+        <article class="lesson" id="leccion-6-7" aria-labelledby="leccion-6-7-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-6-7-title">6.7 Subgrid</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              Subgrid permite que un elemento Grid anidado se alinee con las lineas de su contenedor padre.
+            </p>
+            <pre class="code-block"><code><span class="code-comment">/* Contenedor con 3 columnas */</span>
+<span class="code-selector">.grid-padre</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">repeat(3, 1fr)</span>;
+  <span class="code-property">gap</span>: <span class="code-value">2rem</span>;
+}
+
+<span class="code-comment">/* Item que hereda las columnas del padre */</span>
+<span class="code-selector">.card</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">grid-column</span>: <span class="code-value">span 2</span>;
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">subgrid</span>;
+  <span class="code-property">grid-template-rows</span>: <span class="code-value">subgrid</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 6.8 -->
+        <article class="lesson" id="leccion-6-8" aria-labelledby="leccion-6-8-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-6-8-title">6.8 Grid vs Flexbox: cuando usar cada uno</h3>
+          </header>
+          <div class="lesson-content">
+            <div class="comparison">
+              <div class="comparison-good">
+                <h4>Usa Flexbox cuando:</h4>
+                <ul>
+                  <li>Necesitas layout en UNA dimension (fila o columna)</li>
+                  <li>Los items deben adaptarse al contenido</li>
+                  <li>Estas construyendo componentes (navbar, cards, footer)</li>
+                  <li>Quieres centrar un elemento facilmente</li>
+                </ul>
+              </div>
+              <div class="comparison-good">
+                <h4>Usa Grid cuando:</h4>
+                <ul>
+                  <li>Necesitas layout en DOS dimensiones (filas y columnas)</li>
+                  <li>Quieres control preciso sobre el layout</li>
+                  <li>Estas construyendo el layout de una pagina completa</li>
+                  <li>Necesitas superposicion de elementos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MODULO 7: RESPONSIVE DESIGN -->
+    <section class="section module" id="modulo-7" aria-labelledby="modulo-7-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">07</span>
+          <h2 class="module__title" id="modulo-7-title">Modulo 7: Responsive Design</h2>
+          <p class="module__description">
+            Aprende a crear sitios que se adapten a cualquier tamano de pantalla, desde
+            moviles hasta pantallas gigantes, usando las tecnicas modernas de diseno responsivo.
+          </p>
+        </header>
+
+        <!-- Leccion 7.1 -->
+        <article class="lesson" id="leccion-7-1" aria-labelledby="leccion-7-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-7-1-title">7.1 Viewport y meta viewport</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              La meta etiqueta viewport es esencial para el diseno responsivo. Sin ella,
+              los navegadores moviles renderizan la pagina a 960px de ancho.
+            </p>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Viewport estandar (RECOMENDADO) --&gt;</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"viewport"</span>
+      <span class="code-attr">content</span>=<span class="code-string">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- Viewport con mas control --&gt;</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"viewport"</span>
+      <span class="code-attr">content</span>=<span class="code-string">"width=device-width, initial-scale=1.0,
+             minimum-scale=1.0, maximum-scale=5.0,
+             viewport-fit=cover"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- Evita esto (bloquea zoom) --&gt;</span>
+<span class="code-comment">&lt;!-- &lt;meta name="viewport" content="user-scalable=no"&gt; --&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 7.2 -->
+        <article class="lesson" id="leccion-7-2" aria-labelledby="leccion-7-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-7-2-title">7.2 Enfoque Mobile-first</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              Mobile-first significa disenar primero para moviles y luego agregar estilos
+              para pantallas mayores con <code>min-width</code>.
+            </p>
+            <pre class="code-block"><code><span class="code-comment">/* Estilos base: movil (sin media query) */</span>
+<span class="code-selector">.grid</span> {
+  <span class="code-property">display</span>: <span class="code-value">flex</span>;
+  <span class="code-property">flex-direction</span>: <span class="code-value">column</span>;
+  <span class="code-property">gap</span>: <span class="code-value">1rem</span>;
+}
+
+<span class="code-comment">/* Tablet: 768px en adelante */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">min-width: 768px</span>) {
+  <span class="code-selector">.grid</span> {
+    <span class="code-property">flex-direction</span>: <span class="code-value">row</span>;
+    <span class="code-property">flex-wrap</span>: <span class="code-value">wrap</span>;
+  }
+}
+
+<span class="code-comment">/* Desktop: 1024px en adelante */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">min-width: 1024px</span>) {
+  <span class="code-selector">.grid</span> {
+    <span class="code-property">display</span>: <span class="code-value">grid</span>;
+    <span class="code-property">grid-template-columns</span>: <span class="code-value">repeat(3, 1fr)</span>;
+  }
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 7.3 -->
+        <article class="lesson" id="leccion-7-3" aria-labelledby="leccion-7-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-7-3-title">7.3 Media queries</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Ancho */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">min-width: 768px</span>) { <span class="code-comment">/* Tablet+ */</span> }
+<span class="code-keyword">@media</span> (<span class="code-selector">max-width: 767px</span>) { <span class="code-comment">/* Movil */</span> }
+
+<span class="code-comment">/* Alto */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">min-height: 600px</span>) { }
+
+<span class="code-comment">/* Orientacion */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">orientation: landscape</span>) { }
+<span class="code-keyword">@media</span> (<span class="code-selector">orientation: portrait</span>) { }
+
+<span class="code-comment">/* Resolucion */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">min-resolution: 2dppx</span>) { <span class="code-comment">/* Retina */</span> }
+
+<span class="code-comment">/* Preferencias del sistema */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">prefers-color-scheme: dark</span>) {
+  <span class="code-selector">body</span> { <span class="code-property">background</span>: <span class="code-value">#1a1a2e</span>; <span class="code-property">color</span>: <span class="code-value">#fff</span>; }
+}
+
+<span class="code-keyword">@media</span> (<span class="code-selector">prefers-reduced-motion: reduce</span>) {
+  <span class="code-selector">*</span> { <span class="code-property">animation</span>: <span class="code-value">none !important</span>; <span class="code-property">transition</span>: <span class="code-value">none !important</span>; }
+}
+
+<span class="code-comment">/* Combinar queries */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">min-width: 768px</span>) <span class="code-keyword">and</span> (<span class="code-selector">orientation: landscape</span>) { }</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 7.4 -->
+        <article class="lesson" id="leccion-7-4" aria-labelledby="leccion-7-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-7-4-title">7.4 Unidades relativas para responsive</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Tipografia fluida */</span>
+<span class="code-selector">h1</span> {
+  <span class="code-property">font-size</span>: <span class="code-value">clamp(1.5rem, 4vw, 3.5rem)</span>;
+}
+
+<span class="code-comment">/* Ancho responsivo */</span>
+<span class="code-selector">.contenedor</span> {
+  <span class="code-property">width</span>: <span class="code-value">min(90%, 1200px)</span>;
+  <span class="code-property">margin-inline</span>: <span class="code-value">auto</span>;
+}
+
+<span class="code-comment">/* Altura del viewport */</span>
+<span class="code-selector">.hero</span> {
+  <span class="code-property">min-height</span>: <span class="code-value">100dvh</span>; <span class="code-comment">/* Usa dvh para movil */</span>
+}
+
+<span class="code-comment">/* Espaciado basado en viewport */</span>
+<span class="code-selector">.seccion</span> {
+  <span class="code-property">padding</span>: <span class="code-value">clamp(2rem, 5vw, 6rem) clamp(1rem, 3vw, 4rem)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 7.5 -->
+        <article class="lesson" id="leccion-7-5" aria-labelledby="leccion-7-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-7-5-title">7.5 Imagenes responsivas</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* object-fit: como se adapta la imagen */</span>
+<span class="code-selector">.avatar</span> {
+  <span class="code-property">width</span>: <span class="code-value">100px</span>;
+  <span class="code-property">height</span>: <span class="code-value">100px</span>;
+  <span class="code-property">object-fit</span>: <span class="code-value">cover</span>;   <span class="code-comment">/* Recorta sin deformar */</span>
+  <span class="code-property">border-radius</span>: <span class="code-value">50%</span>;
+}
+
+<span class="code-comment">/* aspect-ratio: relacion de aspecto */</span>
+<span class="code-selector">.video-responsive</span> {
+  <span class="code-property">aspect-ratio</span>: <span class="code-value">16 / 9</span>;
+  <span class="code-property">width</span>: <span class="code-value">100%</span>;
+}
+
+<span class="code-comment">/* Imagenes con srcset */</span>
+<span class="code-tag">&lt;img</span>
+  <span class="code-attr">src</span>=<span class="code-string">"imagen-800.webp"</span>
+  <span class="code-attr">srcset</span>=<span class="code-string">"imagen-400.webp 400w,
+          imagen-800.webp 800w,
+          imagen-1200.webp 1200w"</span>
+  <span class="code-attr">sizes</span>=<span class="code-string">"(max-width: 600px) 100vw,
+          (max-width: 1024px) 50vw,
+          33vw"</span>
+  <span class="code-attr">alt</span>=<span class="code-string">"Descripcion"</span>
+  <span class="code-attr">loading</span>=<span class="code-string">"lazy"</span><span class="code-tag">&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 7.6 -->
+        <article class="lesson" id="leccion-7-6" aria-labelledby="leccion-7-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-7-6-title">7.6 Contenedores responsivos (Container Queries)</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              Container Queries permiten estilizar elementos basandose en el tamanho de su contenedor padre,
+              no del viewport.
+            </p>
+            <pre class="code-block"><code><span class="code-comment">/* Definir el contenedor */</span>
+<span class="code-selector">.card-container</span> {
+  <span class="code-property">container-type</span>: <span class="code-value">inline-size</span>;
+  <span class="code-property">container-name</span>: <span class="code-value">card</span>;
+}
+
+<span class="code-comment">/* Consultas basadas en el contenedor */</span>
+<span class="code-keyword">@container</span> <span class="code-selector">card</span> (<span class="code-selector">min-width: 400px</span>) {
+  <span class="code-selector">.card</span> {
+    <span class="code-property">display</span>: <span class="code-value">flex</span>;
+    <span class="code-property">flex-direction</span>: <span class="code-value">row</span>;
+  }
+}
+
+<span class="code-keyword">@container</span> <span class="code-selector">card</span> (<span class="code-selector">min-width: 700px</span>) {
+  <span class="code-selector">.card</span> {
+    <span class="code-property">grid-template-columns</span>: <span class="code-value">200px 1fr</span>;
+  }
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 7.7 -->
+        <article class="lesson" id="leccion-7-7" aria-labelledby="leccion-7-7-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-7-7-title">7.7 Breakpoints recomendados</h3>
+          </header>
+          <div class="lesson-content">
+            <table class="units-table" aria-label="Breakpoints recomendados para diseno responsivo">
+              <thead>
+                <tr><th scope="col">Dispositivo</th><th scope="col">Breakpoint</th><th scope="col">Tipo</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Movil pequenio</td><td><code>&lt; 375px</code></td><td>movil</td></tr>
+                <tr><td>Movil</td><td><code>&lt; 576px</code></td><td>movil</td></tr>
+                <tr><td>Tablet</td><td><code>&lt; 768px</code></td><td>tablet</td></tr>
+                <tr><td>Laptop pequena</td><td><code>&lt; 992px</code></td><td>desktop</td></tr>
+                <tr><td>Desktop</td><td><code>&lt; 1200px</code></td><td>desktop</td></tr>
+                <tr><td>Desktop grande</td><td><code>&lt; 1400px</code></td><td>desktop-lg</td></tr>
+                <tr><td>Pantalla grande</td><td><code>1400px+</code></td><td>ultrawide</td></tr>
+              </tbody>
+            </table>
+            <div class="callout callout-info" role="note">
+              <strong>Consejo:</strong> Usa breakpoints basados en tu contenido, no en dispositivos
+              especificos. Ajusta las medidas cuando el diseno se vea roto.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MODULO 8: ANIMACIONES Y TRANSICIONES -->
+    <section class="section section-alt module" id="modulo-8" aria-labelledby="modulo-8-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">08</span>
+          <h2 class="module__title" id="modulo-8-title">Modulo 8: Animaciones y Transiciones</h2>
+          <p class="module__description">
+            Dale vida a tus interfaces con transiciones suaves, transformaciones 2D y 3D,
+            y animaciones complejas usando solo CSS puro.
+          </p>
+        </header>
+
+        <!-- Leccion 8.1 -->
+        <article class="lesson" id="leccion-8-1" aria-labelledby="leccion-8-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-8-1-title">8.1 Transiciones CSS</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-selector">.boton</span> {
+  <span class="code-property">background</span>: <span class="code-value">#333</span>;
+  <span class="code-property">color</span>: <span class="code-value">#fff</span>;
+  <span class="code-property">padding</span>: <span class="code-value">12px 24px</span>;
+  <span class="code-property">border</span>: <span class="code-value">none</span>;
+  <span class="code-property">border-radius</span>: <span class="code-value">8px</span>;
+
+  <span class="code-comment">/* Transicion */</span>
+  <span class="code-property">transition</span>: <span class="code-value">background 0.3s ease</span>;
+  <span class="code-comment">/* shorthand: propiedad duracion funcion-de-timing retardo */</span>
+
+  <span class="code-comment">/* Multiples transiciones */</span>
+  <span class="code-property">transition</span>:
+    <span class="code-value">background 0.3s ease</span>,
+    <span class="code-value">transform 0.2s ease-out</span>,
+    <span class="code-value">box-shadow 0.3s ease</span>;
+}
+
+<span class="code-comment">/* Todas las propiedades */</span>
+<span class="code-selector">.boton</span> {
+  <span class="code-property">transition</span>: <span class="code-value">all 0.3s ease</span>;
+}
+
+<span class="code-comment">/* Funciones de timing */</span>
+<span class="code-property">transition-timing-function</span>: <span class="code-value">ease</span>;          <span class="code-comment">/* default */</span>
+<span class="code-property">transition-timing-function</span>: <span class="code-value">linear</span>;
+<span class="code-property">transition-timing-function</span>: <span class="code-value">ease-in</span>;
+<span class="code-property">transition-timing-function</span>: <span class="code-value">ease-out</span>;
+<span class="code-property">transition-timing-function</span>: <span class="code-value">ease-in-out</span>;
+<span class="code-property">transition-timing-function</span>: <span class="code-value">cubic-bezier(0.68, -0.55, 0.27, 1.55)</span>;
+
+<span class="code-selector">.boton:hover</span> {
+  <span class="code-property">background</span>: <span class="code-value">#4ecdc4</span>;
+  <span class="code-property">transform</span>: <span class="code-value">translateY(-2px)</span>;
+  <span class="code-property">box-shadow</span>: <span class="code-value">0 4px 12px rgba(0,0,0,0.15)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 8.2 -->
+        <article class="lesson" id="leccion-8-2" aria-labelledby="leccion-8-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-8-2-title">8.2 Transformaciones 2D</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-selector">.elemento</span> {
+  <span class="code-property">transition</span>: <span class="code-value">transform 0.3s ease</span>;
+}
+
+<span class="code-selector">.elemento:hover</span> {
+  <span class="code-comment">/* Traslacion */</span>
+  <span class="code-property">transform</span>: <span class="code-value">translate(20px, -10px)</span>;
+  <span class="code-property">transform</span>: <span class="code-value">translateX(20px)</span>;
+  <span class="code-property">transform</span>: <span class="code-value">translateY(-10px)</span>;
+
+  <span class="code-comment">/* Rotacion */</span>
+  <span class="code-property">transform</span>: <span class="code-value">rotate(45deg)</span>;
+
+  <span class="code-comment">/* Escala */</span>
+  <span class="code-property">transform</span>: <span class="code-value">scale(1.2)</span>;
+  <span class="code-property">transform</span>: <span class="code-value">scale(1.5, 0.8)</span>;
+
+  <span class="code-comment">/* Inclinacion */</span>
+  <span class="code-property">transform</span>: <span class="code-value">skew(10deg, 5deg)</span>;
+
+  <span class="code-comment">/* Combinar transformaciones */</span>
+  <span class="code-property">transform</span>: <span class="code-value">translateY(-5px) scale(1.05) rotate(2deg)</span>;
+
+  <span class="code-comment">/* Transform-origin: punto de origen */</span>
+  <span class="code-property">transform-origin</span>: <span class="code-value">center center</span>;
+  <span class="code-property">transform-origin</span>: <span class="code-value">top left</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 8.3 -->
+        <article class="lesson" id="leccion-8-3" aria-labelledby="leccion-8-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-8-3-title">8.3 Transformaciones 3D</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Activar perspectiva en el contenedor */</span>
+<span class="code-selector">.escena-3d</span> {
+  <span class="code-property">perspective</span>: <span class="code-value">1000px</span>;
+}
+
+<span class="code-selector">.cubo</span> {
+  <span class="code-property">transition</span>: <span class="code-value">transform 0.6s ease</span>;
+  <span class="code-property">transform-style</span>: <span class="code-value">preserve-3d</span>;
+}
+
+<span class="code-selector">.cubo:hover</span> {
+  <span class="code-property">transform</span>: <span class="code-value">rotateY(180deg)</span>;
+}
+
+<span class="code-comment">/* Rotaciones 3D */</span>
+<span class="code-property">transform</span>: <span class="code-value">rotateX(45deg)</span>;
+<span class="code-property">transform</span>: <span class="code-value">rotateY(45deg)</span>;
+<span class="code-property">transform</span>: <span class="code-value">rotateZ(45deg)</span>;
+
+<span class="code-comment">/* Traslacion en Z */</span>
+<span class="code-property">transform</span>: <span class="code-value">translateZ(50px)</span>;
+
+<span class="code-comment">/* Backface visibility */</span>
+<span class="code-selector">.cara</span> {
+  <span class="code-property">backface-visibility</span>: <span class="code-value">hidden</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 8.4 -->
+        <article class="lesson" id="leccion-8-4" aria-labelledby="leccion-8-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-8-4-title">8.4 Animaciones con @keyframes</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Definir la animacion */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-selector">fadeInUp</span> {
+  <span class="code-selector">from</span> {
+    <span class="code-property">opacity</span>: <span class="code-value">0</span>;
+    <span class="code-property">transform</span>: <span class="code-value">translateY(30px)</span>;
+  }
+  <span class="code-selector">to</span> {
+    <span class="code-property">opacity</span>: <span class="code-value">1</span>;
+    <span class="code-property">transform</span>: <span class="code-value">translateY(0)</span>;
+  }
+}
+
+<span class="code-comment">/* Aplicar la animacion */</span>
+<span class="code-selector">.titulo-animado</span> {
+  <span class="code-property">animation-name</span>: <span class="code-value">fadeInUp</span>;
+  <span class="code-property">animation-duration</span>: <span class="code-value">0.8s</span>;
+  <span class="code-property">animation-timing-function</span>: <span class="code-value">ease-out</span>;
+  <span class="code-property">animation-delay</span>: <span class="code-value">0.2s</span>;
+  <span class="code-property">animation-iteration-count</span>: <span class="code-value">1</span>;
+  <span class="code-property">animation-direction</span>: <span class="code-value">normal</span>;
+  <span class="code-property">animation-fill-mode</span>: <span class="code-value">forwards</span>;
+
+  <span class="code-comment">/* Shorthand */</span>
+  <span class="code-property">animation</span>: <span class="code-value">fadeInUp 0.8s ease-out 0.2s forwards</span>;
+}
+
+<span class="code-comment">/* Iteracion infinita */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-selector">spin</span> {
+  <span class="code-selector">to</span> { <span class="code-property">transform</span>: <span class="code-value">rotate(360deg)</span>; }
+}
+
+<span class="code-selector">.loader</span> {
+  <span class="code-property">animation</span>: <span class="code-value">spin 1s linear infinite</span>;
+}
+
+<span class="code-comment">/* Direction alternado */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-selector">pulse</span> {
+  <span class="code-selector">0%, 100%</span> { <span class="code-property">transform</span>: <span class="code-value">scale(1)</span>; }
+  <span class="code-selector">50%</span>      { <span class="code-property">transform</span>: <span class="code-value">scale(1.1)</span>; }
+}
+
+<span class="code-selector">.pulso</span> {
+  <span class="code-property">animation</span>: <span class="code-value">pulse 2s ease-in-out infinite alternate</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 8.5 -->
+        <article class="lesson" id="leccion-8-5" aria-labelledby="leccion-8-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-8-5-title">8.5 Animaciones de carga y micro-interacciones</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Spinner de carga */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-selector">spinner</span> {
+  <span class="code-selector">to</span> { <span class="code-property">transform</span>: <span class="code-value">rotate(360deg)</span>; }
+}
+
+<span class="code-selector">.spinner</span> {
+  <span class="code-property">width</span>: <span class="code-value">40px</span>;
+  <span class="code-property">height</span>: <span class="code-value">40px</span>;
+  <span class="code-property">border</span>: <span class="code-value">4px solid #f3f3f3</span>;
+  <span class="code-property">border-top</span>: <span class="code-value">4px solid #3498db</span>;
+  <span class="code-property">border-radius</span>: <span class="code-value">50%</span>;
+  <span class="code-property">animation</span>: <span class="code-value">spinner 1s linear infinite</span>;
+}
+
+<span class="code-comment">/* Skeleton loading */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-selector">shimmer</span> {
+  <span class="code-selector">0%</span>   { <span class="code-property">background-position</span>: <span class="code-value">-200% 0</span>; }
+  <span class="code-selector">100%</span> { <span class="code-property">background-position</span>: <span class="code-value">200% 0</span>; }
+}
+
+<span class="code-selector">.skeleton</span> {
+  <span class="code-property">background</span>: <span class="code-value">linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%)</span>;
+  <span class="code-property">background-size</span>: <span class="code-value">200% 100%</span>;
+  <span class="code-property">animation</span>: <span class="code-value">shimmer 1.5s infinite</span>;
+}
+
+<span class="code-comment">/* Micro-interaccion: boton con ripple */</span>
+<span class="code-selector">.btn-ripple</span> {
+  <span class="code-property">position</span>: <span class="code-value">relative</span>;
+  <span class="code-property">overflow</span>: <span class="code-value">hidden</span>;
+}
+
+<span class="code-selector">.btn-ripple::after</span> {
+  <span class="code-property">content</span>: <span class="code-value">''</span>;
+  <span class="code-property">position</span>: <span class="code-value">absolute</span>;
+  <span class="code-property">width</span>: <span class="code-value">100%</span>;
+  <span class="code-property">height</span>: <span class="code-value">100%</span>;
+  <span class="code-property">top</span>: <span class="code-value">0</span>; <span class="code-property">left</span>: <span class="code-value">0</span>;
+  <span class="code-property">background</span>: <span class="code-value">radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%)</span>;
+  <span class="code-property">transform</span>: <span class="code-value">scale(10, 10)</span>;
+  <span class="code-property">opacity</span>: <span class="code-value">0</span>;
+  <span class="code-property">transition</span>: <span class="code-value">transform 0.5s, opacity 1s</span>;
+}
+
+<span class="code-selector">.btn-ripple:active::after</span> {
+  <span class="code-property">transform</span>: <span class="code-value">scale(0, 0)</span>;
+  <span class="code-property">opacity</span>: <span class="code-value">0.3</span>;
+  <span class="code-property">transition</span>: <span class="code-value">0s</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 8.6 -->
+        <article class="lesson" id="leccion-8-6" aria-labelledby="leccion-8-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-8-6-title">8.6 prefers-reduced-motion y performance</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Respeta la preferencia del usuario */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">prefers-reduced-motion: reduce</span>) {
+  <span class="code-selector">*</span> {
+    <span class="code-property">animation-duration</span>: <span class="code-value">0.01ms !important</span>;
+    <span class="code-property">animation-iteration-count</span>: <span class="code-value">1 !important</span>;
+    <span class="code-property">transition-duration</span>: <span class="code-value">0.01ms !important</span>;
+  }
+}
+
+<span class="code-comment">/* Solo animar propiedades de transform y opacity */</span>
+<span class="code-comment">/* para mejor rendimiento (GPU) */</span>
+<span class="code-selector">.elemento</span> {
+  <span class="code-comment">/* BIEN: propiedades aceleradas por GPU */</span>
+  <span class="code-property">transition</span>: <span class="code-value">transform 0.3s, opacity 0.3s</span>;
+
+  <span class="code-comment">/* MAL: forzar layout/repintado */</span>
+  <span class="code-comment">/* transition: width 0.3s, margin 0.3s; */</span>
+}</code></pre>
+            <div class="callout callout-warning" role="alert">
+              <strong>Regla de oro:</strong> Anima solo <code>transform</code> y <code>opacity</code>
+              para 60fps. Evita animar <code>width</code>, <code>height</code>, <code>margin</code>,
+              <code>padding</code>, <code>top</code>, <code>left</code> que causan reflow.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MODULO 9: CSS AVANZADO -->
+    <section class="section module" id="modulo-9" aria-labelledby="modulo-9-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">09</span>
+          <h2 class="module__title" id="modulo-9-title">Modulo 9: CSS Avanzado</h2>
+          <p class="module__description">
+            Domina las caracteristicas modernas de CSS que te permitiran crear estilos mas
+            potentes, mantenibles y eficientes. Variables, funciones, capas y mas.
+          </p>
+        </header>
+
+        <!-- Leccion 9.1 -->
+        <article class="lesson" id="leccion-9-1" aria-labelledby="leccion-9-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-9-1-title">9.1 Custom Properties (CSS Variables)</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Definir variables en :root */</span>
+<span class="code-selector">:root</span> {
+  <span class="code-property">--color-primary</span>: <span class="code-value">#667eea</span>;
+  <span class="code-property">--color-secondary</span>: <span class="code-value">#764ba2</span>;
+  <span class="code-property">--color-text</span>: <span class="code-value">#333</span>;
+  <span class="code-property">--color-bg</span>: <span class="code-value">#fff</span>;
+  <span class="code-property">--space-sm</span>: <span class="code-value">0.5rem</span>;
+  <span class="code-property">--space-md</span>: <span class="code-value">1rem</span>;
+  <span class="code-property">--space-lg</span>: <span class="code-value">2rem</span>;
+  <span class="code-property">--radius</span>: <span class="code-value">8px</span>;
+  <span class="code-property">--shadow</span>: <span class="code-value">0 2px 8px rgba(0,0,0,0.1)</span>;
+  <span class="code-property">--transition</span>: <span class="code-value">0.3s ease</span>;
+}
+
+<span class="code-comment">/* Usar variables */</span>
+<span class="code-selector">.card</span> {
+  <span class="code-property">background</span>: <span class="code-value">var(--color-bg)</span>;
+  <span class="code-property">color</span>: <span class="code-value">var(--color-text)</span>;
+  <span class="code-property">padding</span>: <span class="code-value">var(--space-lg)</span>;
+  <span class="code-property">border-radius</span>: <span class="code-value">var(--radius)</span>;
+  <span class="code-property">box-shadow</span>: <span class="code-value">var(--shadow)</span>;
+  <span class="code-property">transition</span>: <span class="code-value">all var(--transition)</span>;
+}
+
+<span class="code-comment">/* Variables con fallback */</span>
+<span class="code-selector">.card</span> {
+  <span class="code-property">background</span>: <span class="code-value">var(--color-card, #fff)</span>;
+}
+
+<span class="code-comment">/* Sobreescribir en tema oscuro */</span>
+<span class="code-selector">[data-theme="dark"]</span> {
+  <span class="code-property">--color-text</span>: <span class="code-value">#f0f0f0</span>;
+  <span class="code-property">--color-bg</span>: <span class="code-value">#1a1a2e</span>;
+}
+
+<span class="code-comment">/* Calcular con variables */</span>
+<span class="code-selector">.card</span> {
+  <span class="code-property">margin-bottom</span>: <span class="code-value">calc(var(--space-md) * 2)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 9.2 -->
+        <article class="lesson" id="leccion-9-2" aria-labelledby="leccion-9-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-9-2-title">9.2 Funciones CSS: calc(), min(), max(), clamp()</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* calc(): operaciones matematicas */</span>
+<span class="code-selector">.sidebar</span> {
+  <span class="code-property">width</span>: <span class="code-value">calc(100% - 280px)</span>;
+  <span class="code-property">margin-left</span>: <span class="code-value">calc(50% - 400px)</span>;
+  <span class="code-property">font-size</span>: <span class="code-value">calc(1rem + 0.5vw)</span>;
+}
+
+<span class="code-comment">/* min(): el menor de los valores */</span>
+<span class="code-selector">.contenedor</span> {
+  <span class="code-property">width</span>: <span class="code-value">min(90%, 1200px)</span>;
+}
+
+<span class="code-comment">/* max(): el mayor de los valores */</span>
+<span class="code-selector">.titulo</span> {
+  <span class="code-property">font-size</span>: <span class="code-value">max(2rem, 5vw)</span>;
+}
+
+<span class="code-comment">/* clamp(): valor entre minimo, preferido y maximo */</span>
+<span class="code-selector">h1</span> {
+  <span class="code-property">font-size</span>: <span class="code-value">clamp(1.5rem, 4vw + 1rem, 4rem)</span>;
+}
+
+<span class="code-selector">.padding-seccion</span> {
+  <span class="code-property">padding</span>: <span class="code-value">clamp(1rem, 5vw, 6rem)</span>;
+}
+
+<span class="code-selector">.ancho</span> {
+  <span class="code-property">width</span>: <span class="code-value">clamp(300px, 80%, 1200px)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 9.3 -->
+        <article class="lesson" id="leccion-9-3" aria-labelledby="leccion-9-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-9-3-title">9.3 Funciones de color: color-mix(), oklch(), oklab()</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* color-mix(): mezclar dos colores */</span>
+<span class="code-selector">.overlay</span> {
+  <span class="code-property">background</span>: <span class="code-value">color-mix(in oklch, var(--primary) 50%, transparent)</span>;
+}
+
+<span class="code-selector">.card-hover</span> {
+  <span class="code-property">--hover-bg</span>: <span class="code-value">color-mix(in oklch, var(--primary) 20%, var(--bg))</span>;
+  <span class="code-property">background</span>: <span class="code-value">var(--hover-bg)</span>;
+}
+
+<span class="code-comment">/* oklch(): perceptualmente uniforme */</span>
+<span class="code-selector">:root</span> {
+  <span class="code-property">--primary</span>: <span class="code-value">oklch(0.65 0.25 260)</span>;  <span class="code-comment">/* Azul vibrante */</span>
+  <span class="code-property">--secondary</span>: <span class="code-value">oklch(0.7 0.2 320)</span>; <span class="code-comment">/* Rosa */</span>
+  <span class="code-property">--success</span>: <span class="code-value">oklch(0.7 0.2 145)</span>;   <span class="code-comment">/* Verde */</span>
+}
+
+<span class="code-comment">/* oklab(): espacio de color moderno */</span>
+<span class="code-selector">.accento</span> {
+  <span class="code-property">color</span>: <span class="code-value">oklab(0.7 0.1 -0.05)</span>;
+}
+
+<span class="code-comment">/* Gamut de colores */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">color-gamut: p3</span>) {
+  <span class="code-selector">:root</span> {
+    <span class="code-property">--primary</span>: <span class="code-value">color(display-p3 0.4 0.2 0.9)</span>;
+  }
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 9.4 -->
+        <article class="lesson" id="leccion-9-4" aria-labelledby="leccion-9-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-9-4-title">9.4 Scroll Snap</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* En el contenedor scrolleable */</span>
+<span class="code-selector">.carrusel</span> {
+  <span class="code-property">display</span>: <span class="code-value">flex</span>;
+  <span class="code-property">overflow-x</span>: <span class="code-value">auto</span>;
+  <span class="code-property">scroll-snap-type</span>: <span class="code-value">x mandatory</span>;
+  <span class="code-property">scroll-snap-type</span>: <span class="code-value">x proximity</span>; <span class="code-comment">/* alternativa mas suave */</span>
+  <span class="code-property">gap</span>: <span class="code-value">1rem</span>;
+  <span class="code-property">padding</span>: <span class="code-value">1rem</span>;
+}
+
+<span class="code-comment">/* En cada slide */</span>
+<span class="code-selector">.slide</span> {
+  <span class="code-property">scroll-snap-align</span>: <span class="code-value">center</span>;
+  <span class="code-property">min-width</span>: <span class="code-value">80%</span>;
+  <span class="code-property">flex-shrink</span>: <span class="code-value">0</span>;
+}
+
+<span class="code-comment">/* Scroll vertical */</span>
+<span class="code-selector">.secciones</span> {
+  <span class="code-property">scroll-snap-type</span>: <span class="code-value">y mandatory</span>;
+  <span class="code-property">height</span>: <span class="code-value">100dvh</span>;
+  <span class="code-property">overflow-y</span>: <span class="code-value">scroll</span>;
+}
+
+<span class="code-selector">.seccion</span> {
+  <span class="code-property">scroll-snap-align</span>: <span class="code-value">start</span>;
+  <span class="code-property">min-height</span>: <span class="code-value">100dvh</span>;
+}
+
+<span class="code-comment">/* Ocultar scrollbar */</span>
+<span class="code-selector">.carrusel</span> {
+  <span class="code-property">scrollbar-width</span>: <span class="code-value">none</span>;
+}
+<span class="code-selector">.carrusel::-webkit-scrollbar</span> {
+  <span class="code-property">display</span>: <span class="code-value">none</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 9.5 -->
+        <article class="lesson" id="leccion-9-5" aria-labelledby="leccion-9-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-9-5-title">9.5 @layer (Cascade Layers)</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Definir orden de capas */</span>
+<span class="code-keyword">@layer</span> reset, base, componentes, utilidades;
+
+<span class="code-keyword">@layer</span> reset {
+  <span class="code-selector">*, *::before, *::after</span> {
+    <span class="code-property">box-sizing</span>: <span class="code-value">border-box</span>;
+    <span class="code-property">margin</span>: <span class="code-value">0</span>;
+  }
+}
+
+<span class="code-keyword">@layer</span> base {
+  <span class="code-selector">body</span> {
+    <span class="code-property">font-family</span>: <span class="code-value">system-ui</span>;
+    <span class="code-property">line-height</span>: <span class="code-value">1.6</span>;
+  }
+}
+
+<span class="code-keyword">@layer</span> componentes {
+  <span class="code-selector">.boton</span> {
+    <span class="code-property">padding</span>: <span class="code-value">0.75rem 1.5rem</span>;
+    <span class="code-property">border-radius</span>: <span class="code-value">8px</span>;
+  }
+}
+
+<span class="code-keyword">@layer</span> utilidades {
+  <span class="code-selector">.sr-only</span> {
+    <span class="code-property">position</span>: <span class="code-value">absolute</span>;
+    <span class="code-property">width</span>: <span class="code-value">1px</span>;
+    <span class="code-property">height</span>: <span class="code-value">1px</span>;
+    <span class="code-property">overflow</span>: <span class="code-value">hidden</span>;
+    <span class="code-property">clip</span>: <span class="code-value">rect(0, 0, 0, 0)</span>;
+  }
+}
+
+<span class="code-comment">/* Estilos sin capa tienen maxima especificidad */</span>
+<span class="code-selector">.override</span> {
+  <span class="code-property">color</span>: <span class="code-value">red</span>; <span class="code-comment">/* Sobre-escribe cualquier capa */</span>
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 9.6 -->
+        <article class="lesson" id="leccion-9-6" aria-labelledby="leccion-9-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-9-6-title">9.6 @scope</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Estilos limitados a un contexto */</span>
+<span class="code-keyword">@scope</span> (<span class="code-selector">.card</span>) {
+  <span class="code-selector">h3</span> {
+    <span class="code-property">color</span>: <span class="code-value">var(--primary)</span>;
+  }
+  <span class="code-selector">p</span> {
+    <span class="code-property">line-height</span>: <span class="code-value">1.5</span>;
+  }
+}
+
+<span class="code-comment">/* @scope con denominaador (evita anidar) */</span>
+<span class="code-keyword">@scope</span> (<span class="code-selector">.nav</span> <span class="code-selector">a</span>) <span class="code-keyword">to</span> (<span class="code-selector">.nav .submenu</span>) {
+  <span class="code-selector">a</span> {
+    <span class="code-property">color</span>: <span class="code-value">blue</span>;
+  }
+  <span class="code-comment">/* No aplica dentro de .submenu */</span>
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 9.7 -->
+        <article class="lesson" id="leccion-9-7" aria-labelledby="leccion-9-7-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-9-7-title">9.7 Container Queries</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Definir contenedor */</span>
+<span class="code-selector">.card-wrapper</span> {
+  <span class="code-property">container-type</span>: <span class="code-value">inline-size</span>;
+  <span class="code-property">container-name</span>: <span class="code-value">card</span>;
+}
+
+<span class="code-comment">/* Query basada en el contenedor */</span>
+<span class="code-keyword">@container</span> <span class="code-selector">card</span> (<span class="code-selector">width > 400px</span>) {
+  <span class="code-selector">.card</span> {
+    <span class="code-property">display</span>: <span class="code-value">grid</span>;
+    <span class="code-property">grid-template-columns</span>: <span class="code-value">150px 1fr</span>;
+  }
+}
+
+<span class="code-keyword">@container</span> <span class="code-selector">card</span> (<span class="code-selector">width > 700px</span>) {
+  <span class="code-selector">.card</span> {
+    <span class="code-property">grid-template-columns</span>: <span class="code-value">200px 1fr 150px</span>;
+  }
+}
+
+<span class="code-comment">/* Container query units */</span>
+<span class="code-selector">.card-title</span> {
+  <span class="code-property">font-size</span>: <span class="code-value">clamp(1rem, 4cqi, 2rem)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 9.8 -->
+        <article class="lesson" id="leccion-9-8" aria-labelledby="leccion-9-8-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-9-8-title">9.8 Arquitectura CSS (BEM, ITCSS, CUBE, utility-first)</h3>
+          </header>
+          <div class="lesson-content">
+            <h4>BEM (Block Element Modifier)</h4>
+            <pre class="code-block"><code><span class="code-comment">/* Block */</span>
+<span class="code-selector">.card</span> {}
+<span class="code-comment">/* Element */</span>
+<span class="code-selector">.card__image</span> {}
+<span class="code-selector">.card__title</span> {}
+<span class="code-selector">.card__text</span> {}
+<span class="code-comment">/* Modifier */</span>
+<span class="code-selector">.card--featured</span> {}
+<span class="code-selector">.card__title--large</span> {}</code></pre>
+            <h4>ITCSS (Inverted Triangle CSS)</h4>
+            <ol>
+              <li><strong>Settings</strong> - Variables, configuracion</li>
+              <li><strong>Tools</strong> - Mixins, funciones</li>
+              <li><strong>Generic</strong> - Reset, normalize</li>
+              <li><strong>Elements</strong> - Estilos de elementos HTML</li>
+              <li><strong>Objects</strong> - Layouts sin estilo visual</li>
+              <li><strong>Components</strong> - Componentes UI</li>
+              <li><strong>Utilities</strong> - Utilidades de alto nivel</li>
+            </ol>
+            <h4>CUBE CSS</h4>
+            <ul>
+              <li><strong>C</strong> Composition - Layouts de alta nivel</li>
+              <li><strong>U</strong> Utility - Clases de utilidad</li>
+              <li><strong>B</strong> Block - Componentes</li>
+              <li><strong>E</strong> Exception - Overrides y temas</li>
+            </ul>
+            <h4>Utility-First (como Tailwind)</h4>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Clases de utilidad en el HTML --&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"</span><span class="code-tag">&gt;</span>
+  Click me
+<span class="code-tag">&lt;/button&gt;</span></code></pre>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MODULO 10: PROYECTO FINAL INTEGRADOR -->
+    <section class="section section-alt module" id="modulo-10" aria-labelledby="modulo-10-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">10</span>
+          <h2 class="module__title" id="modulo-10-title">Modulo 10: Proyecto Final Integrador</h2>
+          <p class="module__description">
+            Aplica todo lo que has aprendido en un proyecto real: un portfolio personal completo
+            con dark mode, animaciones, accesibilidad y diseno responsive.
+          </p>
+        </header>
+
+        <!-- Leccion 10.1 -->
+        <article class="lesson" id="leccion-10-1" aria-labelledby="leccion-10-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-1-title">10.1 Planificacion y wireframe</h3>
+          </header>
+          <div class="lesson-content">
+            <p>Antes de escribir codigo, planifica la estructura del portfolio:</p>
+            <ol>
+              <li><strong>Secciones:</strong> Header, Hero, Sobre Mi, Habilidades, Proyectos, Contacto, Footer</li>
+              <li><strong>Wireframe:</strong> Boceto en papel o herramienta como Figma</li>
+              <li><strong>Paleta de colores:</strong> 2-3 colores principales + neutros</li>
+              <li><strong>Tipografia:</strong> 1-2 familias de fuentes</li>
+              <li><strong>Contenido:</strong> Textos, imagenes y proyectos reales</li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- Leccion 10.2 -->
+        <article class="lesson" id="leccion-10-2" aria-labelledby="leccion-10-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-2-title">10.2 Estructura HTML semantica completa</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-string">"es"</span> <span class="code-attr">data-theme</span>=<span class="code-string">"light"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>...<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+  <span class="code-tag">&lt;header</span> <span class="code-attr">class</span>=<span class="code-string">"site-header"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;nav</span> <span class="code-attr">class</span>=<span class="code-string">"navbar"</span> <span class="code-attr">aria-label</span>=<span class="code-string">"Principal"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;a</span> <span class="code-attr">class</span>=<span class="code-string">"logo"</span> <span class="code-attr">href</span>=<span class="code-string">"/"</span><span class="code-tag">&gt;</span>MiPortfolio<span class="code-tag">&lt;/a&gt;</span>
+      <span class="code-tag">&lt;ul</span> <span class="code-attr">class</span>=<span class="code-string">"nav-links"</span><span class="code-tag">&gt;</span>
+        <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#sobre-mi"</span><span class="code-tag">&gt;</span>Sobre Mi<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#proyectos"</span><span class="code-tag">&gt;</span>Proyectos<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#contacto"</span><span class="code-tag">&gt;</span>Contacto<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="code-tag">&lt;/ul&gt;</span>
+      <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"theme-toggle"</span> <span class="code-attr">aria-label</span>=<span class="code-string">"Cambiar tema"</span><span class="code-tag">&gt;</span>
+        <span class="code-tag">&lt;span</span> <span class="code-attr">aria-hidden</span>=<span class="code-string">"true"</span><span class="code-tag">&gt;</span>&#9788;<span class="code-tag">&lt;/span&gt;</span>
+      <span class="code-tag">&lt;/button&gt;</span>
+    <span class="code-tag">&lt;/nav&gt;</span>
+  <span class="code-tag">&lt;/header&gt;</span>
+
+  <span class="code-tag">&lt;main&gt;</span>
+    <span class="code-tag">&lt;section</span> <span class="code-attr">class</span>=<span class="code-string">"hero"</span> <span class="code-attr">id</span>=<span class="code-string">"inicio"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/section&gt;</span>
+    <span class="code-tag">&lt;section</span> <span class="code-attr">class</span>=<span class="code-string">"sobre-mi"</span> <span class="code-attr">id</span>=<span class="code-string">"sobre-mi"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/section&gt;</span>
+    <span class="code-tag">&lt;section</span> <span class="code-attr">class</span>=<span class="code-string">"habilidades"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/section&gt;</span>
+    <span class="code-tag">&lt;section</span> <span class="code-attr">class</span>=<span class="code-string">"proyectos"</span> <span class="code-attr">id</span>=<span class="code-string">"proyectos"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/section&gt;</span>
+    <span class="code-tag">&lt;section</span> <span class="code-attr">class</span>=<span class="code-string">"contacto"</span> <span class="code-attr">id</span>=<span class="code-string">"contacto"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/section&gt;</span>
+  <span class="code-tag">&lt;/main&gt;</span>
+
+  <span class="code-tag">&lt;footer</span> <span class="code-attr">class</span>=<span class="code-string">"site-footer"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/footer&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 10.3 -->
+        <article class="lesson" id="leccion-10-3" aria-labelledby="leccion-10-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-3-title">10.3 Variables CSS y reset/normalize</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* CSS Reset moderno */</span>
+<span class="code-selector">*, *::before, *::after</span> {
+  <span class="code-property">box-sizing</span>: <span class="code-value">border-box</span>;
+}
+
+<span class="code-selector">body, h1, h2, h3, h4, p, figure, blockquote, dl, dd</span> {
+  <span class="code-property">margin</span>: <span class="code-value">0</span>;
+}
+
+<span class="code-selector">ul, ol</span> {
+  <span class="code-property">list-style</span>: <span class="code-value">none</span>;
+  <span class="code-property">padding</span>: <span class="code-value">0</span>;
+}
+
+<span class="code-selector">img</span> {
+  <span class="code-property">max-width</span>: <span class="code-value">100%</span>;
+  <span class="code-property">display</span>: <span class="code-value">block</span>;
+}
+
+<span class="code-selector">input, button, textarea, select</span> {
+  <span class="code-property">font</span>: <span class="code-value">inherit</span>;
+}
+
+<span class="code-comment">/* Variables del proyecto */</span>
+<span class="code-selector">:root</span> {
+  <span class="code-property">--clr-primary</span>: <span class="code-value">#667eea</span>;
+  <span class="code-property">--clr-primary-light</span>: <span class="code-value">color-mix(in oklch, var(--clr-primary) 20%, white)</span>;
+  <span class="code-property">--clr-text</span>: <span class="code-value">#333</span>;
+  <span class="code-property">--clr-bg</span>: <span class="code-value">#fafafa</span>;
+  <span class="code-property">--clr-surface</span>: <span class="code-value">#fff</span>;
+  <span class="code-property">--clr-border</span>: <span class="code-value">#e0e0e0</span>;
+  <span class="code-property">--ff-sans</span>: <span class="code-value">'Inter', system-ui, sans-serif</span>;
+  <span class="code-property">--ff-mono</span>: <span class="code-value">'Fira Code', monospace</span>;
+  <span class="code-property">--space-xs</span>: <span class="code-value">0.25rem</span>;
+  <span class="code-property">--space-sm</span>: <span class="code-value">0.5rem</span>;
+  <span class="code-property">--space-md</span>: <span class="code-value">1rem</span>;
+  <span class="code-property">--space-lg</span>: <span class="code-value">2rem</span>;
+  <span class="code-property">--space-xl</span>: <span class="code-value">4rem</span>;
+  <span class="code-property">--radius</span>: <span class="code-value">8px</span>;
+  <span class="code-property">--shadow-sm</span>: <span class="code-value">0 1px 3px rgba(0,0,0,0.1)</span>;
+  <span class="code-property">--shadow-md</span>: <span class="code-value">0 4px 12px rgba(0,0,0,0.1)</span>;
+  <span class="code-property">--transition</span>: <span class="code-value">0.3s ease</span>;
+}
+
+<span class="code-selector">[data-theme="dark"]</span> {
+  <span class="code-property">--clr-text</span>: <span class="code-value">#f0f0f0</span>;
+  <span class="code-property">--clr-bg</span>: <span class="code-value">#0f0f23</span>;
+  <span class="code-property">--clr-surface</span>: <span class="code-value">#1a1a2e</span>;
+  <span class="code-property">--clr-border</span>: <span class="code-value">#2a2a4a</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 10.4 -->
+        <article class="lesson" id="leccion-10-4" aria-labelledby="leccion-10-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-4-title">10.4 Header y navegacion responsive</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-selector">.site-header</span> {
+  <span class="code-property">position</span>: <span class="code-value">sticky</span>;
+  <span class="code-property">top</span>: <span class="code-value">0</span>;
+  <span class="code-property">z-index</span>: <span class="code-value">100</span>;
+  <span class="code-property">backdrop-filter</span>: <span class="code-value">blur(10px)</span>;
+  <span class="code-property">background</span>: <span class="code-value">color-mix(in oklch, var(--clr-bg) 80%, transparent)</span>;
+}
+
+<span class="code-selector">.navbar</span> {
+  <span class="code-property">display</span>: <span class="code-value">flex</span>;
+  <span class="code-property">align-items</span>: <span class="code-value">center</span>;
+  <span class="code-property">justify-content</span>: <span class="code-value">space-between</span>;
+  <span class="code-property">max-width</span>: <span class="code-value">min(90%, 1200px)</span>;
+  <span class="code-property">margin-inline</span>: <span class="code-value">auto</span>;
+  <span class="code-property">padding</span>: <span class="code-value">var(--space-md)</span>;
+}
+
+<span class="code-comment">/* Responsive nav */</span>
+<span class="code-keyword">@media</span> (<span class="code-selector">max-width: 768px</span>) {
+  <span class="code-selector">.nav-links</span> {
+    <span class="code-property">position</span>: <span class="code-value">fixed</span>;
+    <span class="code-property">inset</span>: <span class="code-value">0</span>;
+    <span class="code-property">flex-direction</span>: <span class="code-value">column</span>;
+    <span class="code-property">justify-content</span>: <span class="code-value">center</span>;
+    <span class="code-property">align-items</span>: <span class="code-value">center</span>;
+    <span class="code-property">background</span>: <span class="code-value">var(--clr-bg)</span>;
+    <span class="code-property">transform</span>: <span class="code-value">translateX(100%)</span>;
+    <span class="code-property">transition</span>: <span class="code-value">transform var(--transition)</span>;
+  }
+  <span class="code-selector">.nav-links.active</span> {
+    <span class="code-property">transform</span>: <span class="code-value">translateX(0)</span>;
+  }
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 10.5 -->
+        <article class="lesson" id="leccion-10-5" aria-labelledby="leccion-10-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-5-title">10.5 Hero section con animaciones</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-keyword">@keyframes</span> <span class="code-selector">fadeInUp</span> {
+  <span class="code-selector">from</span> { <span class="code-property">opacity</span>: <span class="code-value">0</span>; <span class="code-property">transform</span>: <span class="code-value">translateY(30px)</span>; }
+  <span class="code-selector">to</span>   { <span class="code-property">opacity</span>: <span class="code-value">1</span>; <span class="code-property">transform</span>: <span class="code-value">translateY(0)</span>; }
+}
+
+<span class="code-selector">.hero</span> {
+  <span class="code-property">min-height</span>: <span class="code-value">100dvh</span>;
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">place-items</span>: <span class="code-value">center</span>;
+  <span class="code-property">text-align</span>: <span class="code-value">center</span>;
+}
+
+<span class="code-selector">.hero__titulo</span> {
+  <span class="code-property">font-size</span>: <span class="code-value">clamp(2rem, 5vw, 4rem)</span>;
+  <span class="code-property">animation</span>: <span class="code-value">fadeInUp 0.8s ease-out</span>;
+}
+
+<span class="code-selector">.hero__subtitulo</span> {
+  <span class="code-property">animation</span>: <span class="code-value">fadeInUp 0.8s ease-out 0.2s both</span>;
+}
+
+<span class="code-selector">.hero__cta</span> {
+  <span class="code-property">animation</span>: <span class="code-value">fadeInUp 0.8s ease-out 0.4s both</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 10.6 -->
+        <article class="lesson" id="leccion-10-6" aria-labelledby="leccion-10-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-6-title">10.6 Grid de proyectos/portfolio</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-selector">.projects-grid</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">repeat(auto-fit, minmax(320px, 1fr))</span>;
+  <span class="code-property">gap</span>: <span class="code-value">var(--space-lg)</span>;
+}
+
+<span class="code-selector">.project-card</span> {
+  <span class="code-property">border-radius</span>: <span class="code-value">var(--radius)</span>;
+  <span class="code-property">overflow</span>: <span class="code-value">hidden</span>;
+  <span class="code-property">background</span>: <span class="code-value">var(--clr-surface)</span>;
+  <span class="code-property">box-shadow</span>: <span class="code-value">var(--shadow-sm)</span>;
+  <span class="code-property">transition</span>: <span class="code-value">transform var(--transition), box-shadow var(--transition)</span>;
+}
+
+<span class="code-selector">.project-card:hover</span> {
+  <span class="code-property">transform</span>: <span class="code-value">translateY(-4px)</span>;
+  <span class="code-property">box-shadow</span>: <span class="code-value">var(--shadow-md)</span>;
+}
+
+<span class="code-selector">.project-card__image</span> {
+  <span class="code-property">aspect-ratio</span>: <span class="code-value">16/9</span>;
+  <span class="code-property">object-fit</span>: <span class="code-value">cover</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 10.7 -->
+        <article class="lesson" id="leccion-10-7" aria-labelledby="leccion-10-7-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-7-title">10.7 Seccion de habilidades y sobre mi</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-selector">.skills-grid</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">grid-template-columns</span>: <span class="code-value">repeat(auto-fit, minmax(150px, 1fr))</span>;
+  <span class="code-property">gap</span>: <span class="code-value">var(--space-md)</span>;
+}
+
+<span class="code-selector">.skill-item</span> {
+  <span class="code-property">text-align</span>: <span class="code-value">center</span>;
+  <span class="code-property">padding</span>: <span class="code-value">var(--space-lg)</span>;
+  <span class="code-property">background</span>: <span class="code-value">var(--clr-surface)</span>;
+  <span class="code-property">border-radius</span>: <span class="code-value">var(--radius)</span>;
+  <span class="code-property">transition</span>: <span class="code-value">transform var(--transition)</span>;
+}
+
+<span class="code-selector">.skill-item:hover</span> {
+  <span class="code-property">transform</span>: <span class="code-value">scale(1.05)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 10.8 -->
+        <article class="lesson" id="leccion-10-8" aria-labelledby="leccion-10-8-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-8-title">10.8 Formulario de contacto funcional</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-selector">.contact-form</span> {
+  <span class="code-property">max-width</span>: <span class="code-value">600px</span>;
+  <span class="code-property">margin-inline</span>: <span class="code-value">auto</span>;
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">gap</span>: <span class="code-value">var(--space-md)</span>;
+}
+
+<span class="code-selector">.form-group</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">gap</span>: <span class="code-value">var(--space-xs)</span>;
+}
+
+<span class="code-selector">.form-group label</span> {
+  <span class="code-property">font-weight</span>: <span class="code-value">600</span>;
+}
+
+<span class="code-selector">.form-group input,
+.form-group textarea</span> {
+  <span class="code-property">padding</span>: <span class="code-value">var(--space-sm) var(--space-md)</span>;
+  <span class="code-property">border</span>: <span class="code-value">2px solid var(--clr-border)</span>;
+  <span class="code-property">border-radius</span>: <span class="code-value">var(--radius)</span>;
+  <span class="code-property">background</span>: <span class="code-value">var(--clr-surface)</span>;
+  <span class="code-property">color</span>: <span class="code-value">var(--clr-text)</span>;
+  <span class="code-property">transition</span>: <span class="code-value">border-color var(--transition)</span>;
+}
+
+<span class="code-selector">.form-group input:focus,
+.form-group textarea:focus</span> {
+  <span class="code-property">outline</span>: <span class="code-value">none</span>;
+  <span class="code-property">border-color</span>: <span class="code-value">var(--clr-primary)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 10.9 -->
+        <article class="lesson" id="leccion-10-9" aria-labelledby="leccion-10-9-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-9-title">10.9 Footer y temas claro/oscuro</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Toggle de tema con JavaScript */</span>
+<span class="code-keyword">const</span> toggle = document.querySelector(<span class="code-string">'.theme-toggle'</span>);
+<span class="code-keyword">const</span> html = document.documentElement;
+
+toggle.addEventListener(<span class="code-string">'click'</span>, () => {
+  <span class="code-keyword">const</span> current = html.getAttribute(<span class="code-string">'data-theme'</span>);
+  <span class="code-keyword">const</span> next = current === <span class="code-string">'light'</span> ? <span class="code-string">'dark'</span> : <span class="code-string">'light'</span>;
+  html.setAttribute(<span class="code-string">'data-theme'</span>, next);
+  localStorage.setItem(<span class="code-string">'theme'</span>, next);
+});
+
+<span class="code-comment">/* Persistir preferencia */</span>
+<span class="code-keyword">const</span> saved = localStorage.getItem(<span class="code-string">'theme'</span>);
+<span class="code-keyword">if</span> (saved) html.setAttribute(<span class="code-string">'data-theme'</span>, saved);
+
+<span class="code-selector">.site-footer</span> {
+  <span class="code-property">display</span>: <span class="code-value">grid</span>;
+  <span class="code-property">place-items</span>: <span class="code-value">center</span>;
+  <span class="code-property">gap</span>: <span class="code-value">var(--space-md)</span>;
+  <span class="code-property">padding</span>: <span class="code-value">var(--space-xl) var(--space-md)</span>;
+  <span class="code-property">background</span>: <span class="code-value">var(--clr-surface)</span>;
+  <span class="code-property">border-top</span>: <span class="code-value">1px solid var(--clr-border)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 10.10 -->
+        <article class="lesson" id="leccion-10-10" aria-labelledby="leccion-10-10-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-10-10-title">10.10 Optimizacion, accesibilidad y deployment</h3>
+          </header>
+          <div class="lesson-content">
+            <ul>
+              <li><strong>Optimizacion:</strong> Usa <code>loading="lazy"</code> en imagenes, comprime assets, minifica CSS</li>
+              <li><strong>Accesibilidad:</strong> Prueba con Lighthouse, valida ARIA, verifica contraste</li>
+              <li><strong>SEO:</strong> Meta tags correctos, Open Graph, semantica HTML</li>
+              <li><strong>Performance:</strong> Core Web Vitals (LCP, FID, CLS)</li>
+              <li><strong>Deployment:</strong> GitHub Pages, Netlify, Vercel</li>
+            </ul>
+            <div class="callout callout-info" role="note">
+              <strong>Checklist de lanzamiento:</strong>
+              <ol>
+                <li>Validar HTML con W3C Validator</li>
+                <li>Probar en multiples navegadores</li>
+                <li>Verificar funcionamiento en movil</li>
+                <li>Ejecutar Lighthouse y mejorar puntuaciones</li>
+                <li>Probar con lector de pantalla</li>
+                <li>Verificar que prefers-reduced-motion funciona</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section class="section proyectos" id="proyectos" aria-labelledby="proyectos-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title" id="proyectos-title">Proyectos del Curso</h2>
+          <p class="section-subtitle">Pon en practica lo aprendido con proyectos reales y desafiantes</p>
+        </header>
+        <div class="projects-grid" role="list">
+          <article class="project-card" role="listitem">
+            <figure class="project-card__figure">
+              <div class="project-card__image-placeholder" aria-hidden="true">&#9998;</div>
+              <figcaption class="sr-only">Screenshot del proyecto Portfolio Personal</figcaption>
+            </figure>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Portfolio Personal</h3>
+              <p class="project-card__description">
+                Un sitio de portfolio completo con dark mode, animaciones CSS,
+                Grid layout y formulario de contacto funcional.
+              </p>
+              <ul class="project-card__tags" aria-label="Tecnologias usadas">
+                <li>HTML Semantico</li>
+                <li>CSS Grid</li>
+                <li>Flexbox</li>
+                <li>Dark Mode</li>
+              </ul>
+            </div>
+          </article>
+          <article class="project-card" role="listitem">
+            <figure class="project-card__figure">
+              <div class="project-card__image-placeholder" aria-hidden="true">&#9733;</div>
+              <figcaption class="sr-only">Screenshot del proyecto Landing Page de Producto</figcaption>
+            </figure>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Landing Page de Producto</h3>
+              <p class="project-card__description">
+                Pagina de aterrizaje para un producto SaaS con secciones de hero,
+                features, testimonios, pricing y FAQ.
+              </p>
+              <ul class="project-card__tags" aria-label="Tecnologias usadas">
+                <li>Mobile-First</li>
+                <li>Animaciones</li>
+                <li>Responsive</li>
+                <li>Accesibilidad</li>
+              </ul>
+            </div>
+          </article>
+          <article class="project-card" role="listitem">
+            <figure class="project-card__figure">
+              <div class="project-card__image-placeholder" aria-hidden="true">&#9993;</div>
+              <figcaption class="sr-only">Screenshot del proyecto Blog con CSS Grid</figcaption>
+            </figure>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Blog con CSS Grid</h3>
+              <p class="project-card__description">
+                Layout de blog con sidebar, grid de articulos, paginacion,
+                categorias y articulos con estilos de codigo.
+              </p>
+              <ul class="project-card__tags" aria-label="Tecnologias usadas">
+                <li>CSS Grid</li>
+                <li>Typography</li>
+                <li>Container Queries</li>
+                <li>Subgrid</li>
+              </ul>
+            </div>
+          </article>
+          <article class="project-card" role="listitem">
+            <figure class="project-card__figure">
+              <div class="project-card__image-placeholder" aria-hidden="true">&#9632;</div>
+              <figcaption class="sr-only">Screenshot del proyecto Dashboard Admin Panel</figcaption>
+            </figure>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Dashboard Admin Panel</h3>
+              <p class="project-card__description">
+                Panel de administracion con sidebar colapsable, charts placeholder,
+                tablas de datos y componentes de formulario.
+              </p>
+              <ul class="project-card__tags" aria-label="Tecnologias usadas">
+                <li>Grid Areas</li>
+                <li>Custom Properties</li>
+                <li>Dark Mode</li>
+                <li>Components</li>
+              </ul>
+            </div>
+          </article>
+          <article class="project-card" role="listitem">
+            <figure class="project-card__figure">
+              <div class="project-card__image-placeholder" aria-hidden="true">&#9835;</div>
+              <figcaption class="sr-only">Screenshot del proyecto Clone de Spotify</figcaption>
+            </figure>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Clone de Spotify</h3>
+              <p class="project-card__description">
+                Clon de la interfaz de Spotify con sidebar de navegacion,
+                grid de albums, barra de reproduccion y tema oscuro.
+              </p>
+              <ul class="project-card__tags" aria-label="Tecnologias usadas">
+                <li>Complex Grid</li>
+                <li>Sticky Elements</li>
+                <li>Scroll Snap</li>
+                <li>CSS Animations</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECURSOS -->
+    <section class="section section-alt recursos" id="recursos" aria-labelledby="recursos-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title" id="recursos-title">Recursos Recomendados</h2>
+          <p class="section-subtitle">Herramientas y sitios web que te ayudaran en tu camino como desarrollador</p>
+        </header>
+        <div class="three-columns" role="list">
+          <article class="resource-card" role="listitem">
+            <h3 class="resource-card__title">Documentacion</h3>
+            <ul>
+              <li><a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer">MDN Web Docs</a> - La referencia definitiva para HTML, CSS y JS</li>
+              <li><a href="https://web.dev" target="_blank" rel="noopener noreferrer">web.dev</a> - Guias de Google para desarrollo web moderno</li>
+              <li><a href="https://css-tricks.com" target="_blank" rel="noopener noreferrer">CSS-Tricks</a> - Tutoriales y guias de CSS</li>
+            </ul>
+          </article>
+          <article class="resource-card" role="listitem">
+            <h3 class="resource-card__title">Herramientas</h3>
+            <ul>
+              <li><a href="https://caniuse.com" target="_blank" rel="noopener noreferrer">Can I Use</a> - Compatibilidad de navegadores</li>
+              <li><a href="https://codepen.io" target="_blank" rel="noopener noreferrer">CodePen</a> - Editor de codigo online para experimentar</li>
+              <li><a href="https://cssgridgarden.com" target="_blank" rel="noopener noreferrer">CSS Grid Garden</a> - Juego para aprender Grid</li>
+            </ul>
+          </article>
+          <article class="resource-card" role="listitem">
+            <h3 class="resource-card__title">Colores y Tipografia</h3>
+            <ul>
+              <li><a href="https://coolors.co" target="_blank" rel="noopener noreferrer">Coolors</a> - Generador de paletas de colores</li>
+              <li><a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer">Google Fonts</a> - Biblioteca de fuentes gratuitas</li>
+              <li><a href="https://contrast-ratio.com" target="_blank" rel="noopener noreferrer">Contrast Ratio</a> - Verificador de contraste WCAG</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section contacto" id="contacto" aria-labelledby="contacto-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title" id="contacto-title">Contacto</h2>
+          <p class="section-subtitle">Tienes preguntas? Comentame tu idea o sugerencia</p>
+        </header>
+        <div class="contacto-grid">
+          <form class="contact-form" action="#" method="POST" aria-label="Formulario de contacto">
+            <div class="form-group">
+              <label for="contact-nombre">Nombre <span aria-hidden="true">*</span></label>
+              <input type="text" id="contact-nombre" name="nombre" required autocomplete="name" placeholder="Tu nombre completo">
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Correo electronico <span aria-hidden="true">*</span></label>
+              <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="correo@ejemplo.com">
+            </div>
+            <div class="form-group">
+              <label for="contact-asunto">Asunto</label>
+              <select id="contact-asunto" name="asunto">
+                <option value="">Seleccionar...</option>
+                <option value="pregunta">Pregunta sobre el curso</option>
+                <option value="sugerencia">Sugerencia de contenido</option>
+                <option value="error">Reportar error</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contact-mensaje">Mensaje <span aria-hidden="true">*</span></label>
+              <textarea id="contact-mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje aqui..." minlength="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+          </form>
+          <aside class="contacto-info" aria-label="Informacion de contacto">
+            <h3>Otros canales</h3>
+            <ul class="contacto-links">
+              <li>
+                <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub">
+                  <span aria-hidden="true">&#60;/&#62;</span> GitHub
+                </a>
+              </li>
+              <li>
+                <a href="mailto:correo@ejemplo.com" aria-label="Enviar correo electronico">
+                  <span aria-hidden="true">&#9993;</span> correo@ejemplo.com
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Twitter/X">
+                  <span aria-hidden="true">&#120143;</span> Twitter / X
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn">
+                  <span aria-hidden="true">&#105;&#110;</span> LinkedIn
+                </a>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="site-footer" role="contentinfo">
+    <div class="container">
+      <nav class="footer-nav" aria-label="Navegacion del pie de pagina">
+        <ul class="footer-nav__list" role="list">
+          <li><a href="#sobre-mi">Sobre Mi</a></li>
+          <li><a href="#contenido">Contenido</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="footer-social" aria-label="Redes sociales">
+        <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <span aria-hidden="true">&#60;/&#62;</span>
+        </a>
+        <a href="https://twitter.com/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <span aria-hidden="true">&#120143;</span>
+        </a>
+        <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <span aria-hidden="true">&#105;&#110;</span>
+        </a>
+      </div>
+      <p class="footer-tagline">Hecho con HTML, CSS y pasion</p>
+      <p class="footer-copy">&copy; <time datetime="2026">2026</time> Curso HTML y CSS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
