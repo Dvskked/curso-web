@@ -630,3 +630,1135 @@
         </article>
       </div>
     </section>
+
+    <!-- MODULO 2: HTML SEMANTICO Y ACCESIBILIDAD -->
+    <section class="section section-alt module" id="modulo-2" aria-labelledby="modulo-2-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">02</span>
+          <h2 class="module__title" id="modulo-2-title">Modulo 2: HTML Semantico y Accesibilidad</h2>
+          <p class="module__description">
+            Aprende a usar los elementos correctos para cada tarea. El HTML semantico mejora
+            la accesibilidad, el SEO y la mantenibilidad de tu codigo.
+          </p>
+        </header>
+
+        <!-- Leccion 2.1 -->
+        <article class="lesson" id="leccion-2-1" aria-labelledby="leccion-2-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-2-1-title">2.1 Por que no abusar de los divs</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              Usar <code>&lt;div&gt;</code> para todo es un error comun. Los divs no transmiten
+              ningun significado al navegador ni a los lectores de pantalla.
+            </p>
+            <div class="comparison">
+              <div class="comparison-bad">
+                <h4>&#10007; Codigo Malo (div soup)</h4>
+                <pre class="code-block"><code><span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"header"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"logo"</span><span class="code-tag">&gt;</span>Logo<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"nav"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"link"</span><span class="code-tag">&gt;</span>Inicio<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"content"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"title"</span><span class="code-tag">&gt;</span>Titulo<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"text"</span><span class="code-tag">&gt;</span>Texto<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span></code></pre>
+              </div>
+              <div class="comparison-good">
+                <h4>&#10003; Codigo Bueno (semantico)</h4>
+                <pre class="code-block"><code><span class="code-tag">&lt;header&gt;</span>
+  <span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"logo.svg"</span> <span class="code-attr">alt</span>=<span class="code-string">"Logo"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;nav&gt;</span>
+    <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"/"</span><span class="code-tag">&gt;</span>Inicio<span class="code-tag">&lt;/a&gt;</span>
+  <span class="code-tag">&lt;/nav&gt;</span>
+<span class="code-tag">&lt;/header&gt;</span>
+<span class="code-tag">&lt;main&gt;</span>
+  <span class="code-tag">&lt;h1&gt;</span>Titulo<span class="code-tag">&lt;/h1&gt;</span>
+  <span class="code-tag">&lt;p&gt;</span>Texto<span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;/main&gt;</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Leccion 2.2 -->
+        <article class="lesson" id="leccion-2-2" aria-labelledby="leccion-2-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-2-2-title">2.2 Elementos semanticos de estructura</h3>
+          </header>
+          <div class="lesson-content">
+            <p>HTML5 ofrece elementos semanticos que definen la estructura de la pagina:</p>
+            <div class="element-cards" role="list">
+              <article class="element-card" role="listitem">
+                <h4><code>&lt;header&gt;</code></h4>
+                <p>Contenido introductorio o de navegacion. Se puede usar varias veces (una por seccion).</p>
+              </article>
+              <article class="element-card" role="listitem">
+                <h4><code>&lt;nav&gt;</code></h4>
+                <p>Grupo de enlaces de navegacion principal o secundaria.</p>
+              </article>
+              <article class="element-card" role="listitem">
+                <h4><code>&lt;main&gt;</code></h4>
+                <p>Contenido principal unico de la pagina. Solo uno por documento.</p>
+              </article>
+              <article class="element-card" role="listitem">
+                <h4><code>&lt;article&gt;</code></h4>
+                <p>Contenido independiente y autocontenido (post, noticia, tweet).</p>
+              </article>
+              <article class="element-card" role="listitem">
+                <h4><code>&lt;section&gt;</code></h4>
+                <p>Agrupacion tematica de contenido. Usualmente con un titulo.</p>
+              </article>
+              <article class="element-card" role="listitem">
+                <h4><code>&lt;aside&gt;</code></h4>
+                <p>Contenido tangencialmente relacionado (sidebars, publicidad).</p>
+              </article>
+              <article class="element-card" role="listitem">
+                <h4><code>&lt;footer&gt;</code></h4>
+                <p>Pie de pagina o de seccion. Copyright, enlaces, etc.</p>
+              </article>
+              <article class="element-card" role="listitem">
+                <h4><code>&lt;figure&gt;</code></h4>
+                <p>Contenido ilustrativo con <code>&lt;figcaption&gt;</code> opcional.</p>
+              </article>
+            </div>
+          </div>
+        </article>
+
+        <!-- Leccion 2.3 -->
+        <article class="lesson" id="leccion-2-3" aria-labelledby="leccion-2-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-2-3-title">2.3 Estructura correcta completa</h3>
+          </header>
+          <div class="lesson-content">
+            <p>Aqui tienes la estructura semantica completa de una pagina web:</p>
+            <pre class="code-block"><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-string">"es"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-string">"UTF-8"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"viewport"</span>
+        <span class="code-attr">content</span>=<span class="code-string">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;title&gt;</span>Mi Sitio<span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+
+  <span class="code-tag">&lt;header</span> <span class="code-attr">role</span>=<span class="code-string">"banner"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"/"</span><span class="code-tag">&gt;</span><span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"logo.svg"</span> <span class="code-attr">alt</span>=<span class="code-string">"Inicio"</span><span class="code-tag">&gt;</span><span class="code-tag">&lt;/a&gt;</span>
+    <span class="code-tag">&lt;nav</span> <span class="code-attr">aria-label</span>=<span class="code-string">"Principal"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;ul&gt;</span>
+        <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#inicio"</span><span class="code-tag">&gt;</span>Inicio<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#acerca"</span><span class="code-tag">&gt;</span>Acerca<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#contacto"</span><span class="code-tag">&gt;</span>Contacto<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="code-tag">&lt;/ul&gt;</span>
+    <span class="code-tag">&lt;/nav&gt;</span>
+  <span class="code-tag">&lt;/header&gt;</span>
+
+  <span class="code-tag">&lt;main</span> <span class="code-attr">id</span>=<span class="code-string">"contenido-principal"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;article&gt;</span>
+      <span class="code-tag">&lt;header&gt;</span>
+        <span class="code-tag">&lt;h1&gt;</span>Titulo del Article<span class="code-tag">&lt;/h1&gt;</span>
+        <span class="code-tag">&lt;p&gt;</span><span class="code-tag">&lt;time</span> <span class="code-attr">datetime</span>=<span class="code-string">"2026-01-15"</span><span class="code-tag">&gt;</span>15 enero 2026<span class="code-tag">&lt;/time&gt;</span><span class="code-tag">&lt;/p&gt;</span>
+      <span class="code-tag">&lt;/header&gt;</span>
+      <span class="code-tag">&lt;p&gt;</span>Contenido del articulo...<span class="code-tag">&lt;/p&gt;</span>
+      <span class="code-tag">&lt;footer&gt;</span>
+        <span class="code-tag">&lt;p&gt;</span>Autor: Tu Nombre<span class="code-tag">&lt;/p&gt;</span>
+      <span class="code-tag">&lt;/footer&gt;</span>
+    <span class="code-tag">&lt;/article&gt;</span>
+
+    <span class="code-tag">&lt;aside</span> <span class="code-attr">aria-label</span>=<span class="code-string">"Contenido relacionado"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;h2&gt;</span>Relacionado<span class="code-tag">&lt;/h2&gt;</span>
+      <span class="code-tag">&lt;p&gt;</span>Links y recursos adicionales<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;/aside&gt;</span>
+  <span class="code-tag">&lt;/main&gt;</span>
+
+  <span class="code-tag">&lt;footer</span> <span class="code-attr">role</span>=<span class="code-string">"contentinfo"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>&amp;copy; 2026 Mi Sitio<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;nav</span> <span class="code-attr">aria-label</span>=<span class="code-string">"Legal"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#privacidad"</span><span class="code-tag">&gt;</span>Privacidad<span class="code-tag">&lt;/a&gt;</span>
+    <span class="code-tag">&lt;/nav&gt;</span>
+  <span class="code-tag">&lt;/footer&gt;</span>
+
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 2.4 -->
+        <article class="lesson" id="leccion-2-4" aria-labelledby="leccion-2-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-2-4-title">2.4 Atributos ARIA</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              ARIA (Accessible Rich Internet Applications) ayuda a los lectores de pantalla
+              a entender la interfaz cuando el HTML semantico no es suficiente.
+            </p>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- aria-label: nombre accesible --&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">aria-label</span>=<span class="code-string">"Cerrar menu"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;span</span> <span class="code-attr">aria-hidden</span>=<span class="code-string">"true"</span><span class="code-tag">&gt;</span>&amp;times;<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;/button&gt;</span>
+
+<span class="code-comment">&lt;!-- aria-labelledby: referencia a otro elemento --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">aria-labelledby</span>=<span class="code-string">"titulo-seccion"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;h2</span> <span class="code-attr">id</span>=<span class="code-string">"titulo-seccion"</span><span class="code-tag">&gt;</span>Seccion<span class="code-tag">&lt;/h2&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- aria-describedby: descripcion adicional --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">aria-describedby</span>=<span class="code-string">"clave-ayuda"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;p</span> <span class="code-attr">id</span>=<span class="code-string">"clave-ayuda"</span><span class="code-tag">&gt;</span>Minimo 8 caracteres<span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-comment">&lt;!-- aria-expanded: estado colapsable --&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">aria-expanded</span>=<span class="code-string">"false"</span>
+        <span class="code-attr">aria-controls</span>=<span class="code-string">"menu"</span><span class="code-tag">&gt;</span>Menu<span class="code-tag">&lt;/button&gt;</span>
+
+<span class="code-comment">&lt;!-- role: define la funcion --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">role</span>=<span class="code-string">"alert"</span><span class="code-tag">&gt;</span>Error de conexion<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">role</span>=<span class="code-string">"status"</span> <span class="code-attr">aria-live</span>=<span class="code-string">"polite"</span><span class="code-tag">&gt;</span>
+  3 resultados encontrados
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- aria-hidden: ocultar de lectores de pantalla --&gt;</span>
+<span class="code-tag">&lt;span</span> <span class="code-attr">aria-hidden</span>=<span class="code-string">"true"</span><span class="code-tag">&gt;</span>&#9788;<span class="code-tag">&lt;/span&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 2.5 -->
+        <article class="lesson" id="leccion-2-5" aria-labelledby="leccion-2-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-2-5-title">2.5 Tablas semanticas</h3>
+          </header>
+          <div class="lesson-content">
+            <p>
+              Las tablas se usan solo para datos tabulares, nunca para diseno.
+              Usa <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code>,
+              <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code> y <code>scope</code>.
+            </p>
+            <pre class="code-block"><code><span class="code-tag">&lt;table&gt;</span>
+  <span class="code-tag">&lt;caption&gt;</span>Horario de clases<span class="code-tag">&lt;/caption&gt;</span>
+  <span class="code-tag">&lt;thead&gt;</span>
+    <span class="code-tag">&lt;tr&gt;</span>
+      <span class="code-tag">&lt;th</span> <span class="code-attr">scope</span>=<span class="code-string">"col"</span><span class="code-tag">&gt;</span>Materia<span class="code-tag">&lt;/th&gt;</span>
+      <span class="code-tag">&lt;th</span> <span class="code-attr">scope</span>=<span class="code-string">"col"</span><span class="code-tag">&gt;</span>Lunes<span class="code-tag">&lt;/th&gt;</span>
+      <span class="code-tag">&lt;th</span> <span class="code-attr">scope</span>=<span class="code-string">"col"</span><span class="code-tag">&gt;</span>Martes<span class="code-tag">&lt;/th&gt;</span>
+    <span class="code-tag">&lt;/tr&gt;</span>
+  <span class="code-tag">&lt;/thead&gt;</span>
+  <span class="code-tag">&lt;tbody&gt;</span>
+    <span class="code-tag">&lt;tr&gt;</span>
+      <span class="code-tag">&lt;th</span> <span class="code-attr">scope</span>=<span class="code-string">"row"</span><span class="code-tag">&gt;</span>HTML<span class="code-tag">&lt;/th&gt;</span>
+      <span class="code-tag">&lt;td&gt;</span>9:00<span class="code-tag">&lt;/td&gt;</span>
+      <span class="code-tag">&lt;td&gt;</span>11:00<span class="code-tag">&lt;/td&gt;</span>
+    <span class="code-tag">&lt;/tr&gt;</span>
+    <span class="code-tag">&lt;tr&gt;</span>
+      <span class="code-tag">&lt;th</span> <span class="code-attr">scope</span>=<span class="code-string">"row"</span><span class="code-tag">&gt;</span>CSS<span class="code-tag">&lt;/th&gt;</span>
+      <span class="code-tag">&lt;td&gt;</span>10:00<span class="code-tag">&lt;/td&gt;</span>
+      <span class="code-tag">&lt;td&gt;</span>12:00<span class="code-tag">&lt;/td&gt;</span>
+    <span class="code-tag">&lt;/tr&gt;</span>
+  <span class="code-tag">&lt;/tbody&gt;</span>
+<span class="code-tag">&lt;/table&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 2.6 -->
+        <article class="lesson" id="leccion-2-6" aria-labelledby="leccion-2-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-2-6-title">2.6 Interactividad y contenido embebido</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Details / Summary (acordeon nativo) --&gt;</span>
+<span class="code-tag">&lt;details&gt;</span>
+  <span class="code-tag">&lt;summary&gt;</span>Ver mas informacion<span class="code-tag">&lt;/summary&gt;</span>
+  <span class="code-tag">&lt;p&gt;</span>Aqui va el contenido oculto que se revela al hacer clic.<span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;/details&gt;</span>
+
+<span class="code-comment">&lt;!-- Dialogo modal nativo --&gt;</span>
+<span class="code-tag">&lt;dialog</span> <span class="code-attr">id</span>=<span class="code-string">"mi-dialogo"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;h2&gt;</span>Dialogo<span class="code-tag">&lt;/h2&gt;</span>
+  <span class="code-tag">&lt;p&gt;</span>Contenido del dialogo<span class="code-tag">&lt;/p&gt;</span>
+  <span class="code-tag">&lt;form</span> <span class="code-attr">method</span>=<span class="code-string">"dialog"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-string">"submit"</span><span class="code-tag">&gt;</span>Cerrar<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;/form&gt;</span>
+<span class="code-tag">&lt;/dialog&gt;</span>
+
+<span class="code-comment">&lt;!-- Progress bar --&gt;</span>
+<span class="code-tag">&lt;progress</span> <span class="code-attr">value</span>=<span class="code-string">"70"</span> <span class="code-attr">max</span>=<span class="code-string">"100"</span><span class="code-tag">&gt;</span>70%<span class="code-tag">&lt;/progress&gt;</span>
+
+<span class="code-comment">&lt;!-- Meter --&gt;</span>
+<span class="code-tag">&lt;meter</span> <span class="code-attr">min</span>=<span class="code-string">"0"</span> <span class="code-attr">max</span>=<span class="code-string">"100"</span> <span class="code-attr">low</span>=<span class="code-string">"30"</span> <span class="code-attr">high</span>=<span class="code-string">"70"</span>
+       <span class="code-attr">optimum</span>=<span class="code-string">"50"</span> <span class="code-attr">value</span>=<span class="code-string">"65"</span><span class="code-tag">&gt;</span>65/100<span class="code-tag">&lt;/meter&gt;</span>
+
+<span class="code-comment">&lt;!-- Time --&gt;</span>
+<span class="code-tag">&lt;p&gt;</span>Publicado el
+  <span class="code-tag">&lt;time</span> <span class="code-attr">datetime</span>=<span class="code-string">"2026-03-15T14:30"</span><span class="code-tag">&gt;</span>
+    15 de marzo a las 2:30 PM
+  <span class="code-tag">&lt;/time&gt;</span>
+<span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-comment">&lt;!-- Iframe embebido --&gt;</span>
+<span class="code-tag">&lt;iframe</span>
+  <span class="code-attr">src</span>=<span class="code-string">"https://ejemplo.com"</span>
+  <span class="code-attr">title</span>=<span class="code-string">"Descripcion del contenido embebido"</span>
+  <span class="code-attr">loading</span>=<span class="code-string">"lazy"</span>
+  <span class="code-attr">width</span>=<span class="code-string">"560"</span>
+  <span class="code-attr">height</span>=<span class="code-string">"315"</span><span class="code-tag">&gt;&lt;/iframe&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 2.7 -->
+        <article class="lesson" id="leccion-2-7" aria-labelledby="leccion-2-7-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-2-7-title">2.7 Enfoque: NO abusar de divs (9 Reglas)</h3>
+          </header>
+          <div class="lesson-content">
+            <ol>
+              <li>Usa <code>&lt;header&gt;</code> en lugar de <code>&lt;div class="header"&gt;</code></li>
+              <li>Usa <code>&lt;nav&gt;</code> en lugar de <code>&lt;div class="nav"&gt;</code></li>
+              <li>Usa <code>&lt;main&gt;</code> en lugar de <code>&lt;div class="main"&gt;</code></li>
+              <li>Usa <code>&lt;article&gt;</code> para contenido independiente</li>
+              <li>Usa <code>&lt;section&gt;</code> para agrupar contenido por tema</li>
+              <li>Usa <code>&lt;aside&gt;</code> para contenido lateral</li>
+              <li>Usa <code>&lt;footer&gt;</code> para pies de pagina/seccion</li>
+              <li>Usa <code>&lt;figure&gt;</code> y <code>&lt;figcaption&gt;</code> para imagenes con caption</li>
+              <li>Reserva <code>&lt;div&gt;</code> solo para contenedor de estilos cuando ningun elemento semantico aplica</li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- Leccion 2.8 -->
+        <article class="lesson" id="leccion-2-8" aria-labelledby="leccion-2-8-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-2-8-title">2.8 Buenas practicas de accesibilidad</h3>
+          </header>
+          <div class="lesson-content">
+            <ol>
+              <li>Siempre incluye <code>alt</code> descriptivo en imagenes. Si es decorativa, usa <code>alt=""</code></li>
+              <li>Usa un solo <code>&lt;h1&gt;</code> por pagina y mantén la jerarquia de titulos</li>
+              <li>Los enlaces deben tener texto descriptivo, nunca "haz clic aqui"</li>
+              <li>Usa <code>&lt;label&gt;</code> asociado a cada campo de formulario</li>
+              <li>Maintene un orden de tabulacion logico con <code>tabindex="0"</code> cuando sea necesario</li>
+              <li>Verifica el contraste de colores (minimo 4.5:1 para texto normal)</li>
+              <li>Proporciona indicadores de foco visibles para navegacion por teclado</li>
+              <li>Usa ARIA solo cuando el HTML semantico no es suficiente</li>
+            </ol>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MODULO 3: FORMULARIOS Y VALIDACION -->
+    <section class="section module" id="modulo-3" aria-labelledby="modulo-3-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">03</span>
+          <h2 class="module__title" id="modulo-3-title">Modulo 3: Formularios y Validacion</h2>
+          <p class="module__description">
+            Los formularios son la forma principal de interaccion con el usuario.
+            Aprende a crear formularios accesibles, validos y funcionales.
+          </p>
+        </header>
+
+        <!-- Leccion 3.1 -->
+        <article class="lesson" id="leccion-3-1" aria-labelledby="leccion-3-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-3-1-title">3.1 Estructura basica de formulario</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-tag">&lt;form</span> <span class="code-attr">action</span>=<span class="code-string">"/enviar"</span>
+      <span class="code-attr">method</span>=<span class="code-string">"POST"</span>
+      <span class="code-attr">novalidate</span><span class="code-tag">&gt;</span>
+
+  <span class="code-tag">&lt;fieldset&gt;</span>
+    <span class="code-tag">&lt;legend&gt;</span>Datos Personales<span class="code-tag">&lt;/legend&gt;</span>
+
+    <span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-string">"nombre"</span><span class="code-tag">&gt;</span>Nombre:<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span>
+      <span class="code-attr">type</span>=<span class="code-string">"text"</span>
+      <span class="code-attr">id</span>=<span class="code-string">"nombre"</span>
+      <span class="code-attr">name</span>=<span class="code-string">"nombre"</span>
+      <span class="code-attr">required</span>
+      <span class="code-attr">autocomplete</span>=<span class="code-string">"name"</span><span class="code-tag">&gt;</span>
+
+  <span class="code-tag">&lt;/fieldset&gt;</span>
+
+  <span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-string">"submit"</span><span class="code-tag">&gt;</span>Enviar<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;/form&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 3.2 -->
+        <article class="lesson" id="leccion-3-2" aria-labelledby="leccion-3-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-3-2-title">3.2 Tipos de input y validacion nativa</h3>
+          </header>
+          <div class="lesson-content">
+            <p>HTML ofrece 16 tipos de input para diferentes casos de uso:</p>
+            <div class="input-grid" role="list">
+              <div class="input-type" role="listitem"><code>text</code><span>Texto general</span></div>
+              <div class="input-type" role="listitem"><code>password</code><span>Contrasena</span></div>
+              <div class="input-type" role="listitem"><code>email</code><span>Correo electronico</span></div>
+              <div class="input-type" role="listitem"><code>number</code><span>Numerico</span></div>
+              <div class="input-type" role="listitem"><code>tel</code><span>Telefono</span></div>
+              <div class="input-type" role="listitem"><code>url</code><span>URL</span></div>
+              <div class="input-type" role="listitem"><code>search</code><span>Busqueda</span></div>
+              <div class="input-type" role="listitem"><code>date</code><span>Fecha</span></div>
+              <div class="input-type" role="listitem"><code>time</code><span>Hora</span></div>
+              <div class="input-type" role="listitem"><code>datetime-local</code><span>Fecha y hora</span></div>
+              <div class="input-type" role="listitem"><code>month</code><span>Mes/Ano</span></div>
+              <div class="input-type" role="listitem"><code>week</code><span>Semana</span></div>
+              <div class="input-type" role="listitem"><code>range</code><span>Slider</span></div>
+              <div class="input-type" role="listitem"><code>color</code><span>Selector de color</span></div>
+              <div class="input-type" role="listitem"><code>file</code><span>Archivo</span></div>
+              <div class="input-type" role="listitem"><code>hidden</code><span>Oculto</span></div>
+            </div>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Cada tipo provee validacion nativa --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"email"</span> <span class="code-attr">required</span><span class="code-tag">&gt;</span>
+  <span class="code-comment">&lt;!-- Valida formato email automaticamente --&gt;</span>
+
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"url"</span><span class="code-tag">&gt;</span>
+  <span class="code-comment">&lt;!-- Valida formato URL --&gt;</span>
+
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"number"</span> <span class="code-attr">min</span>=<span class="code-string">"1"</span> <span class="code-attr">max</span>=<span class="code-string">"100"</span><span class="code-tag">&gt;</span>
+  <span class="code-comment">&lt;!-- Limita rango numerico --&gt;</span>
+
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"date"</span> <span class="code-attr">min</span>=<span class="code-string">"2026-01-01"</span>
+       <span class="code-attr">max</span>=<span class="code-string">"2026-12-31"</span><span class="code-tag">&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 3.3 -->
+        <article class="lesson" id="leccion-3-3" aria-labelledby="leccion-3-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-3-3-title">3.3 Atributos de validacion</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- required: campo obligatorio --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"text"</span> <span class="code-attr">required</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- minlength / maxlength --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"text"</span> <span class="code-attr">minlength</span>=<span class="code-string">"3"</span> <span class="code-attr">maxlength</span>=<span class="code-string">"50"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- min / max para numeros y fechas --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"number"</span> <span class="code-attr">min</span>=<span class="code-string">"0"</span> <span class="code-attr">max</span>=<span class="code-string">"10"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- pattern: expresion regular --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"text"</span>
+       <span class="code-attr">pattern</span>=<span class="code-string">"[A-Za-z]{3,20}"</span>
+       <span class="code-attr">title</span>=<span class="code-string">"Solo letras, 3 a 20 caracteres"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- placeholder (no sustituye al label) --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"text"</span> <span class="code-attr">placeholder</span>=<span class="code-string">"Ej: Juan"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- step: incremento --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"number"</span> <span class="code-attr">step</span>=<span class="code-string">"0.1"</span><span class="code-tag">&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 3.4 -->
+        <article class="lesson" id="leccion-3-4" aria-labelledby="leccion-3-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-3-4-title">3.4 Elementos avanzados de formulario</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Textarea --&gt;</span>
+<span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-string">"mensaje"</span><span class="code-tag">&gt;</span>Mensaje:<span class="code-tag">&lt;/label&gt;</span>
+<span class="code-tag">&lt;textarea</span> <span class="code-attr">id</span>=<span class="code-string">"mensaje"</span> <span class="code-attr">name</span>=<span class="code-string">"mensaje"</span>
+          <span class="code-attr">rows</span>=<span class="code-string">"5"</span> <span class="code-attr">cols</span>=<span class="code-string">"40"</span>
+          <span class="code-attr">minlength</span>=<span class="code-string">"10"</span> <span class="code-attr">required</span><span class="code-tag">&gt;&lt;/textarea&gt;</span>
+
+<span class="code-comment">&lt;!-- Select con Optgroup --&gt;</span>
+<span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-string">"pais"</span><span class="code-tag">&gt;</span>Pais:<span class="code-tag">&lt;/label&gt;</span>
+<span class="code-tag">&lt;select</span> <span class="code-attr">id</span>=<span class="code-string">"pais"</span> <span class="code-attr">name</span>=<span class="code-string">"pais"</span> <span class="code-attr">required</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-string">""</span><span class="code-tag">&gt;</span>Seleccionar...<span class="code-tag">&lt;/option&gt;</span>
+  <span class="code-tag">&lt;optgroup</span> <span class="code-attr">label</span>=<span class="code-string">"Europa"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-string">"es"</span><span class="code-tag">&gt;</span>Espana<span class="code-tag">&lt;/option&gt;</span>
+    <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-string">"fr"</span><span class="code-tag">&gt;</span>Francia<span class="code-tag">&lt;/option&gt;</span>
+  <span class="code-tag">&lt;/optgroup&gt;</span>
+  <span class="code-tag">&lt;optgroup</span> <span class="code-attr">label</span>=<span class="code-string">"America"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-string">"mx"</span><span class="code-tag">&gt;</span>Mexico<span class="code-tag">&lt;/option&gt;</span>
+    <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-string">"ar"</span><span class="code-tag">&gt;</span>Argentina<span class="code-tag">&lt;/option&gt;</span>
+  <span class="code-tag">&lt;/optgroup&gt;</span>
+<span class="code-tag">&lt;/select&gt;</span>
+
+<span class="code-comment">&lt;!-- Datalist (input con sugerencias) --&gt;</span>
+<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"text"</span> <span class="code-attr">list</span>=<span class="code-string">"lenguajes"</span>
+       <span class="code-attr">placeholder</span>=<span class="code-string">"Escribe un lenguaje"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;datalist</span> <span class="code-attr">id</span>=<span class="code-string">"lenguajes"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-string">"HTML"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-string">"CSS"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-string">"JavaScript"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/datalist&gt;</span>
+
+<span class="code-comment">&lt;!-- Output --&gt;</span>
+<span class="code-tag">&lt;output</span> <span class="code-attr">for</span>=<span class="code-string">"precio cantidad"</span><span class="code-tag">&gt;</span>Total: $0<span class="code-tag">&lt;/output&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 3.5 -->
+        <article class="lesson" id="leccion-3-5" aria-labelledby="leccion-3-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-3-5-title">3.5 Formularios accesibles</h3>
+          </header>
+          <div class="lesson-content">
+            <ol>
+              <li>Siempre asocia <code>&lt;label&gt;</code> con <code>for</code> al <code>id</code> del input</li>
+              <li>Usa <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code> para agrupar campos relacionados</li>
+              <li>Indica campos obligatorios con <code>required</code> y visualmente con <code>*</code></li>
+              <li>Proporciona mensajes de error con <code>aria-describedby</code></li>
+              <li>Usa <code>autocomplete</code> para ayudar al usuario a completar datos</li>
+              <li>Agrupa campos de forma logica con el orden de tabulacion correcto</li>
+            </ol>
+            <pre class="code-block"><code><span class="code-comment">&lt;!-- Ejemplo accesible --&gt;</span>
+<span class="code-tag">&lt;div&gt;</span>
+  <span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-string">"email"</span><span class="code-tag">&gt;</span>
+    Correo electronico <span class="code-tag">&lt;span</span> <span class="code-attr">aria-hidden</span>=<span class="code-string">"true"</span><span class="code-tag">&gt;</span>*<span class="code-tag">&lt;/span&gt;</span>
+  <span class="code-tag">&lt;/label&gt;</span>
+  <span class="code-tag">&lt;input</span>
+    <span class="code-attr">type</span>=<span class="code-string">"email"</span>
+    <span class="code-attr">id</span>=<span class="code-string">"email"</span>
+    <span class="code-attr">name</span>=<span class="code-string">"email"</span>
+    <span class="code-attr">required</span>
+    <span class="code-attr">aria-describedby</span>=<span class="code-string">"email-error"</span>
+    <span class="code-attr">aria-invalid</span>=<span class="code-string">"false"</span>
+    <span class="code-attr">autocomplete</span>=<span class="code-string">"email"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;p</span> <span class="code-attr">id</span>=<span class="code-string">"email-error"</span> <span class="code-attr">role</span>=<span class="code-string">"alert"</span> <span class="code-attr">hidden</span><span class="code-tag">&gt;</span>
+    Por favor ingresa un correo valido.
+  <span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 3.6 -->
+        <article class="lesson" id="leccion-3-6" aria-labelledby="leccion-3-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-3-6-title">3.6 Demo: Formulario completo</h3>
+          </header>
+          <div class="lesson-content">
+            <form class="demo-form" action="#" method="POST" novalidate aria-label="Formulario de demostracion">
+              <fieldset>
+                <legend>Informacion Personal</legend>
+                <div class="form-group">
+                  <label for="demo-nombre">Nombre completo <span aria-hidden="true">*</span></label>
+                  <input type="text" id="demo-nombre" name="nombre" required autocomplete="name" placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                  <label for="demo-email">Correo electronico <span aria-hidden="true">*</span></label>
+                  <input type="email" id="demo-email" name="email" required autocomplete="email" placeholder="correo@ejemplo.com">
+                </div>
+                <div class="form-group">
+                  <label for="demo-telefono">Telefono</label>
+                  <input type="tel" id="demo-telefono" name="telefono" autocomplete="tel" placeholder="+34 600 000 000">
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Tu experiencia</legend>
+                <div class="form-group">
+                  <label for="demo-nivel">Nivel actual</label>
+                  <select id="demo-nivel" name="nivel">
+                    <option value="">Seleccionar...</option>
+                    <option value="principiante">Principiante</option>
+                    <option value="intermedio">Intermedio</option>
+                    <option value="avanzado">Avanzado</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="demo-mensaje">Cuentanos sobre ti</label>
+                  <textarea id="demo-mensaje" name="mensaje" rows="4" placeholder="Cuentanos por que quieres aprender HTML y CSS..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" name="terminos" required>
+                    Acepto los terminos y condiciones
+                  </label>
+                </div>
+              </fieldset>
+              <button type="submit" class="btn btn-primary">Enviar formulario</button>
+            </form>
+          </div>
+        </article>
+
+        <!-- Leccion 3.7 -->
+        <article class="lesson" id="leccion-3-7" aria-labelledby="leccion-3-7-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-3-7-title">3.7 Validacion con JavaScript</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">// Validacion personalizada con Constraint Validation API</span>
+<span class="code-keyword">const</span> formulario = <span class="code-tag">document</span>.querySelector(<span class="code-string">'.demo-form'</span>);
+
+formulario.addEventListener(<span class="code-string">'submit'</span>, (<span class="code-tag">evento</span>) => {
+  <span class="code-tag">evento</span>.preventDefault();
+
+  <span class="code-keyword">const</span> campos = formulario.querySelectorAll(<span class="code-string">'[required]'</span>);
+  <span class="code-keyword">let</span> valido = <span class="code-keyword">true</span>;
+
+  campos.forEach(<span class="code-tag">campo</span> => {
+    <span class="code-tag">campo</span>.classList.remove(<span class="code-string">'campo-error'</span>);
+    <span class="code-tag">campo</span>.setAttribute(<span class="code-string">'aria-invalid'</span>, <span class="code-string">'false'</span>);
+
+    <span class="code-keyword">if</span> (!<span class="code-tag">campo</span>.checkValidity()) {
+      <span class="code-tag">valido</span> = <span class="code-keyword">false</span>;
+      <span class="code-tag">campo</span>.classList.add(<span class="code-string">'campo-error'</span>);
+      <span class="code-tag">campo</span>.setAttribute(<span class="code-string">'aria-invalid'</span>, <span class="code-string">'true'</span>);
+      console.log(<span class="code-string">`Error en ${campo.name}: ${campo.validationMessage}`</span>);
+    }
+  });
+
+  <span class="code-keyword">if</span> (<span class="code-tag">valido</span>) {
+    console.log(<span class="code-string">'Formulario valido, enviando...'</span>);
+    <span class="code-comment">// formulario.submit();</span>
+  }
+});</code></pre>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MODULO 4: FUNDAMENTOS DE CSS -->
+    <section class="section section-alt module" id="modulo-4" aria-labelledby="modulo-4-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">04</span>
+          <h2 class="module__title" id="modulo-4-title">Modulo 4: Fundamentos de CSS</h2>
+          <p class="module__description">
+            CSS (Cascading Style Sheets) es el lenguaje que da vida visual a tu HTML.
+            En este modulo aprenderas todo lo necesario para estilizar cualquier pagina web.
+          </p>
+        </header>
+
+        <!-- Leccion 4.1 -->
+        <article class="lesson" id="leccion-4-1" aria-labelledby="leccion-4-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-4-1-title">4.1 Que es CSS y como se aplica</h3>
+          </header>
+          <div class="lesson-content">
+            <p>CSS se puede aplicar de tres formas:</p>
+            <pre class="code-block"><code><span class="code-comment">/* 1. Hoja de estilos externa (RECOMENDADO) */</span>
+<span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-string">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-string">"styles.css"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">/* 2. Estilos internos (en el head) */</span>
+<span class="code-tag">&lt;style&gt;</span>
+  <span class="code-selector">body</span> {
+    <span class="code-property">margin</span>: <span class="code-value">0</span>;
+  }
+<span class="code-tag">&lt;/style&gt;</span>
+
+<span class="code-comment">/* 3. Estilos inline (EVITAR) */</span>
+<span class="code-tag">&lt;p</span> <span class="code-attr">style</span>=<span class="code-string">"color: red;"</span><span class="code-tag">&gt;</span>Texto rojo<span class="code-tag">&lt;/p&gt;</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 4.2 -->
+        <article class="lesson" id="leccion-4-2" aria-labelledby="leccion-4-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-4-2-title">4.2 Sintaxis de reglas CSS</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Selector { Propiedad: Valor; } */</span>
+
+<span class="code-comment">/* Regla basica */</span>
+<span class="code-selector">h1</span> {
+  <span class="code-property">color</span>: <span class="code-value">#333</span>;
+  <span class="code-property">font-size</span>: <span class="code-value">2rem</span>;
+  <span class="code-property">margin-bottom</span>: <span class="code-value">1rem</span>;
+}
+
+<span class="code-comment">/* Multiples selectores */</span>
+<span class="code-selector">h1, h2, h3</span> {
+  <span class="code-property">line-height</span>: <span class="code-value">1.2</span>;
+}
+
+<span class="code-comment">/* Comentarios de una linea y bloque */</span>
+<span class="code-comment">/* Esto es un comentario */</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 4.3 -->
+        <article class="lesson" id="leccion-4-3" aria-labelledby="leccion-4-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-4-3-title">4.3 Selectores: tipos y especificidad</h3>
+          </header>
+          <div class="lesson-content">
+            <h4 id="subtema-selectores-basicos">Selectores Basicos</h4>
+            <pre class="code-block"><code><span class="code-comment">/* Selector de tipo */</span>
+<span class="code-selector">p</span> { <span class="code-property">color</span>: <span class="code-value">black</span>; }
+
+<span class="code-comment">/* Selector de clase */</span>
+<span class="code-selector">.alerta</span> { <span class="code-property">background</span>: <span class="code-value">yellow</span>; }
+
+<span class="code-comment">/* Selector de ID */</span>
+<span class="code-selector">#header</span> { <span class="code-property">position</span>: <span class="code-value">fixed</span>; }
+
+<span class="code-comment">/* Selector universal */</span>
+<span class="code-selector">*</span> { <span class="code-property">box-sizing</span>: <span class="code-value">border-box</span>; }
+
+<span class="code-comment">/* Selector de atributo */</span>
+<span class="code-selector">input[type="email"]</span> { <span class="code-property">border</span>: <span class="code-value">2px solid green</span>; }
+<span class="code-selector">a[href^="https"]</span> { <span class="code-property">color</span>: <span class="code-value">blue</span>; }</code></pre>
+            <h4 id="subtema-combinadores">Combinadores</h4>
+            <pre class="code-block"><code><span class="code-comment">/* Descendiente (espacio) */</span>
+<span class="code-selector">nav a</span> { <span class="code-property">text-decoration</span>: <span class="code-value">none</span>; }
+
+<span class="code-comment">/* Hijo directo (&gt;) */</span>
+<span class="code-selector">ul &gt; li</span> { <span class="code-property">list-style</span>: <span class="code-value">none</span>; }
+
+<span class="code-comment">/* Hermano adyacente (+) */</span>
+<span class="code-selector">h2 + p</span> { <span class="code-property">margin-top</span>: <span class="code-value">0</span>; }
+
+<span class="code-comment">/* Hermanos generales (~) */</span>
+<span class="code-selector">h2 ~ p</span> { <span class="code-property">color</span>: <span class="code-value">gray</span>; }</code></pre>
+            <h4 id="subtema-pseudo-clases">Pseudo-clases</h4>
+            <pre class="code-block"><code><span class="code-selector">a:hover</span> { <span class="code-property">color</span>: <span class="code-value">red</span>; }
+<span class="code-selector">a:active</span> { <span class="code-property">color</span>: <span class="code-value">darkred</span>; }
+<span class="code-selector">a:visited</span> { <span class="code-property">color</span>: <span class="code-value">purple</span>; }
+<span class="code-selector">input:focus</span> { <span class="code-property">outline</span>: <span class="code-value">2px solid blue</span>; }
+<span class="code-selector">input:invalid</span> { <span class="code-property">border-color</span>: <span class="code-value">red</span>; }
+<span class="code-selector">input:valid</span> { <span class="code-property">border-color</span>: <span class="code-value">green</span>; }
+<span class="code-selector">li:first-child</span> { <span class="code-property">font-weight</span>: <span class="code-value">bold</span>; }
+<span class="code-selector">li:last-child</span> { <span class="code-property">border</span>: <span class="code-value">none</span>; }
+<span class="code-selector">li:nth-child(2n)</span> { <span class="code-property">background</span>: <span class="code-value">#f5f5f5</span>; }
+<span class="code-selector">:not(.clase)</span> { <span class="code-property">opacity</span>: <span class="code-value">0.5</span>; }
+<span class="code-selector">:has(&gt; img)</span> { <span class="code-property">display</span>: <span class="code-value">block</span>; }</code></pre>
+            <h4 id="subtema-pseudo-elementos">Pseudo-elementos</h4>
+            <pre class="code-block"><code><span class="code-selector">p::before</span> { <span class="code-property">content</span>: <span class="code-value">"&gt; "</span>; }
+<span class="code-selector">p::after</span> { <span class="code-property">content</span>: <span class="code-value">"."</span>; }
+<span class="code-selector">::selection</span> { <span class="code-property">background</span>: <span class="code-value">yellow</span>; }
+<span class="code-selector">::placeholder</span> { <span class="code-property">color</span>: <span class="code-value">gray</span>; }
+<span class="code-selector">::first-letter</span> { <span class="code-property">font-size</span>: <span class="code-value">2em</span>; }</code></pre>
+            <h4 id="subtema-especificidad">Especificidad</h4>
+            <div class="callout callout-info" role="note">
+              <strong>Orden de especificidad:</strong> inline (1000) &gt; ID (100) &gt; clase/pseudo-clase/atributo (10) &gt; tipo/pseudo-elemento (1) &gt; universal (0)
+            </div>
+          </div>
+        </article>
+
+        <!-- Leccion 4.4 -->
+        <article class="lesson" id="leccion-4-4" aria-labelledby="leccion-4-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-4-4-title">4.4 Modelo de caja</h3>
+          </header>
+          <div class="lesson-content">
+            <p>Cada elemento HTML es un rectangulo con 4 areas: contenido, padding, borde y margen.</p>
+            <div class="box-model-demo" role="img" aria-label="Demostracion del modelo de caja">
+              <div class="box-model-demo__margin">
+                <span class="box-model-demo__label">Margin</span>
+                <div class="box-model-demo__border">
+                  <span class="box-model-demo__label">Border</span>
+                  <div class="box-model-demo__padding">
+                    <span class="box-model-demo__label">Padding</span>
+                    <div class="box-model-demo__content">
+                      <span class="box-model-demo__label">Content</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <pre class="code-block"><code><span class="code-selector">.caja</span> {
+  <span class="code-comment">/* Contenido */</span>
+  <span class="code-property">width</span>: <span class="code-value">300px</span>;
+  <span class="code-property">height</span>: <span class="code-value">200px</span>;
+
+  <span class="code-comment">/* Padding: espacio interno */</span>
+  <span class="code-property">padding</span>: <span class="code-value">20px</span>;
+  <span class="code-comment">/* shorthand */</span>
+  <span class="code-property">padding</span>: <span class="code-value">10px 20px 10px 20px</span>; <span class="code-comment">/* top right bottom left */</span>
+
+  <span class="code-comment">/* Border */</span>
+  <span class="code-property">border</span>: <span class="code-value">2px solid #333</span>;
+  <span class="code-property">border-radius</span>: <span class="code-value">8px</span>;
+
+  <span class="code-comment">/* Margen: espacio externo */</span>
+  <span class="code-property">margin</span>: <span class="code-value">16px auto</span>; <span class="code-comment">/* centrado horizontal */</span>
+
+  <span class="code-comment">/* Box-sizing */</span>
+  <span class="code-property">box-sizing</span>: <span class="code-value">border-box</span>; <span class="code-comment">/* width incluye padding + border */</span>
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 4.5 -->
+        <article class="lesson" id="leccion-4-5" aria-labelledby="leccion-4-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-4-5-title">4.5 Unidades de medida</h3>
+          </header>
+          <div class="lesson-content">
+            <table class="units-table" aria-label="Tabla de unidades CSS">
+              <thead>
+                <tr><th scope="col">Unidad</th><th scope="col">Tipo</th><th scope="col">Descripcion</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>px</code></td><td>Absoluta</td><td>Pixeles fijos</td></tr>
+                <tr><td><code>rem</code></td><td>Relativa</td><td>Relativa al font-size del root (html)</td></tr>
+                <tr><td><code>em</code></td><td>Relativa</td><td>Relativa al font-size del elemento padre</td></tr>
+                <tr><td><code>%</code></td><td>Relativa</td><td>Porcentaje del elemento padre</td></tr>
+                <tr><td><code>vw</code></td><td>Relativa</td><td>1% del ancho del viewport</td></tr>
+                <tr><td><code>vh</code></td><td>Relativa</td><td>1% del alto del viewport</td></tr>
+                <tr><td><code>dvh</code></td><td>Relativa</td><td>1% del alto dinamico del viewport</td></tr>
+                <tr><td><code>svh</code></td><td>Relativa</td><td>1% del alto minimo del viewport</td></tr>
+                <tr><td><code>lvh</code></td><td>Relativa</td><td>1% del alto maximo del viewport</td></tr>
+                <tr><td><code>ch</code></td><td>Relativa</td><td>Ancho del caracter "0"</td></tr>
+                <tr><td><code>ex</code></td><td>Relativa</td><td>Altura de la "x" minuscula</td></tr>
+                <tr><td><code>clamp()</code></td><td>Funcion</td><td>Valor entre min, preferido y max</td></tr>
+                <tr><td><code>min()</code></td><td>Funcion</td><td>El menor de dos valores</td></tr>
+                <tr><td><code>max()</code></td><td>Funcion</td><td>El mayor de dos valores</td></tr>
+              </tbody>
+            </table>
+            <pre class="code-block"><code><span class="code-comment">/* Uso recomendado */</span>
+<span class="code-selector">html</span> { <span class="code-property">font-size</span>: <span class="code-value">16px</span>; } <span class="code-comment">/* Base para rem */</span>
+
+<span class="code-selector">h1</span> { <span class="code-property">font-size</span>: <span class="code-value">clamp(1.8rem, 4vw, 3rem)</span>; }
+<span class="code-selector">.contenedor</span> { <span class="code-property">max-width</span>: <span class="code-value">min(90%, 1200px)</span>; }
+<span class="code-selector">p</span> { <span class="code-property">margin-bottom</span>: <span class="code-value">1.5em</span>; }
+<span class="code-selector">.hero</span> { <span class="code-property">min-height</span>: <span class="code-value">100dvh</span>; }</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 4.6 -->
+        <article class="lesson" id="leccion-4-6" aria-labelledby="leccion-4-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-4-6-title">4.6 Colores y fondos</h3>
+          </header>
+          <div class="lesson-content">
+            <div class="color-swatches" role="list" aria-label="Paleta de colores de ejemplo">
+              <div class="swatch" style="background:#ff6b6b" role="listitem" aria-label="Rojo coral"></div>
+              <div class="swatch" style="background:#4ecdc4" role="listitem" aria-label="Turquesa"></div>
+              <div class="swatch" style="background:#45b7d1" role="listitem" aria-label="Azul claro"></div>
+              <div class="swatch" style="background:#96ceb4" role="listitem" aria-label="Verde menta"></div>
+              <div class="swatch" style="background:#ffeaa7" role="listitem" aria-label="Amarillo claro"></div>
+              <div class="swatch" style="background:#dfe6e9" role="listitem" aria-label="Gris claro"></div>
+              <div class="swatch" style="background:#2d3436" role="listitem" aria-label="Gris oscuro"></div>
+              <div class="swatch" style="background:#6c5ce7" role="listitem" aria-label="Violeta"></div>
+            </div>
+            <pre class="code-block"><code><span class="code-selector">.elemento</span> {
+  <span class="code-comment">/* Formatos de color */</span>
+  <span class="code-property">color</span>: <span class="code-value">red</span>;                    <span class="code-comment">/* Nombre */</span>
+  <span class="code-property">color</span>: <span class="code-value">#ff0000</span>;               <span class="code-comment">/* Hex */</span>
+  <span class="code-property">color</span>: <span class="code-value">#f00</span>;                  <span class="code-comment">/* Hex abreviado */</span>
+  <span class="code-property">color</span>: <span class="code-value">rgb(255, 0, 0)</span>;         <span class="code-comment">/* RGB */</span>
+  <span class="code-property">color</span>: <span class="code-value">rgba(255, 0, 0, 0.5)</span>;   <span class="code-comment">/* RGB con alpha */</span>
+  <span class="code-property">color</span>: <span class="code-value">hsl(0, 100%, 50%)</span>;     <span class="code-comment">/* HSL */</span>
+
+  <span class="code-comment">/* Funciones de color modernas */</span>
+  <span class="code-property">color</span>: <span class="code-value">oklch(0.7 0.15 30)</span>;    <span class="code-comment">/* OKLCH */</span>
+  <span class="code-property">color</span>: <span class="code-value">oklab(0.6 0.1 -0.05)</span>; <span class="code-comment">/* OKLAB */</span>
+  <span class="code-property">background</span>: <span class="code-value">color-mix(in oklch, red 50%, blue)</span>;
+
+  <span class="code-comment">/* Degradados */</span>
+  <span class="code-property">background</span>: <span class="code-value">linear-gradient(135deg, #667eea, #764ba2)</span>;
+  <span class="code-property">background</span>: <span class="code-value">radial-gradient(circle, #fff, #333)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 4.7 -->
+        <article class="lesson" id="leccion-4-7" aria-labelledby="leccion-4-7-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-4-7-title">4.7 Tipografia</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Google Fonts */</span>
+<span class="code-tag">&lt;link</span> <span class="code-attr">href</span>=<span class="code-string">"https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"</span>
+      <span class="code-attr">rel</span>=<span class="code-string">"stylesheet"</span><span class="code-tag">&gt;</span>
+
+<span class="code-selector">:root</span> {
+  <span class="code-comment">/* Escala tipografica fluida */</span>
+  <span class="code-property">--fs-sm</span>: <span class="code-value">clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem)</span>;
+  <span class="code-property">--fs-base</span>: <span class="code-value">clamp(1rem, 0.34vw + 0.91rem, 1.19rem)</span>;
+  <span class="code-property">--fs-md</span>: <span class="code-value">clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem)</span>;
+  <span class="code-property">--fs-lg</span>: <span class="code-value">clamp(1.56rem, 1vw + 1.31rem, 2.11rem)</span>;
+  <span class="code-property">--fs-xl</span>: <span class="code-value">clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem)</span>;
+  <span class="code-property">--fs-2xl</span>: <span class="code-value">clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem)</span>;
+}
+
+<span class="code-selector">body</span> {
+  <span class="code-property">font-family</span>: <span class="code-value">'Inter', system-ui, sans-serif</span>;
+  <span class="code-property">font-size</span>: <span class="code-value">var(--fs-base)</span>;
+  <span class="code-property">line-height</span>: <span class="code-value">1.6</span>;
+  <span class="code-property">font-weight</span>: <span class="code-value">400</span>;
+}
+
+<span class="code-selector">h1</span> { <span class="code-property">font-size</span>: <span class="code-value">var(--fs-2xl)</span>; <span class="code-property">font-weight</span>: <span class="code-value">700</span>; }
+<span class="code-selector">h2</span> { <span class="code-property">font-size</span>: <span class="code-value">var(--fs-xl)</span>; }
+<span class="code-selector">code</span> { <span class="code-property">font-family</span>: <span class="code-value">'Fira Code', monospace</span>; }</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 4.8 -->
+        <article class="lesson" id="leccion-4-8" aria-labelledby="leccion-4-8-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-4-8-title">4.8 Bordes, sombras y superficies</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Bordes */</span>
+<span class="code-selector">.card</span> {
+  <span class="code-property">border</span>: <span class="code-value">1px solid #e0e0e0</span>;
+  <span class="code-property">border-radius</span>: <span class="code-value">12px</span>;
+}
+
+<span class="code-comment">/* Sombras con elevaciones */</span>
+<span class="code-selector">.sombra-1</span> { <span class="code-property">box-shadow</span>: <span class="code-value">0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)</span>; }
+<span class="code-selector">.sombra-2</span> { <span class="code-property">box-shadow</span>: <span class="code-value">0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)</span>; }
+<span class="code-selector">.sombra-3</span> { <span class="code-property">box-shadow</span>: <span class="code-value">0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)</span>; }
+<span class="code-selector">.sombra-4</span> { <span class="code-property">box-shadow</span>: <span class="code-value">0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)</span>; }
+
+<span class="code-comment">/* Sombra de texto */</span>
+<span class="code-selector">.titulo-sombra</span> {
+  <span class="code-property">text-shadow</span>: <span class="code-value">2px 2px 4px rgba(0,0,0,0.5)</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 4.9 -->
+        <article class="lesson" id="leccion-4-9" aria-labelledby="leccion-4-9-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-4-9-title">4.9 Cascada, herencia y especificidad</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Herencia: propiedades de texto se heredan */</span>
+<span class="code-selector">body</span> { <span class="code-property">color</span>: <span class="code-value">#333</span>; } <span class="code-comment">/* Todos los hijos heredan */</span>
+<span class="code-selector">body</span> { <span class="code-property">border</span>: <span class="code-value">none</span>; }  <span class="code-comment">/* No se hereda */</span>
+
+<span class="code-comment">/* Valores de reinicio */</span>
+<span class="code-selector">.reset</span> {
+  <span class="code-property">color</span>: <span class="code-value">inherit</span>;    <span class="code-comment">/* Hereda del padre */</span>
+  <span class="code-property">color</span>: <span class="code-value">initial</span>;   <span class="code-comment">/* Valor por defecto del navegador */</span>
+  <span class="code-property">color</span>: <span class="code-value">unset</span>;     <span class="code-comment">/* inherit si se hereda, initial si no */</span>
+  <span class="code-property">color</span>: <span class="code-value">revert</span>;    <span class="code-comment">/* Valor del stylesheet del usuario */</span>
+  <span class="code-property">color</span>: <span class="code-value">revert-layer</span>; <span class="code-comment">/* Valor de la capa anterior */</span>
+}
+
+<span class="code-comment">/* Specificity: ID (100) > Class (10) > Type (1) */</span>
+<span class="code-selector">p</span> { <span class="code-property">color</span>: <span class="code-value">black</span>; }         <span class="code-comment">/* 0-0-1 */</span>
+<span class="code-selector">.texto</span> { <span class="code-property">color</span>: <span class="code-value">blue</span>; }      <span class="code-comment">/* 0-1-0 */</span>
+<span class="code-selector">#especial</span> { <span class="code-property">color</span>: <span class="code-value">red</span>; }  <span class="code-comment">/* 1-0-0 */</span>
+
+<span class="code-comment">/* !important sobreescribe todo (EVITAR) */</span>
+<span class="code-selector">.urgente</span> { <span class="code-property">color</span>: <span class="code-value">red !important</span>; }</code></pre>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MODULO 5: LAYOUT CON FLEXBOX -->
+    <section class="section module" id="modulo-5" aria-labelledby="modulo-5-title">
+      <div class="container">
+        <header class="module__header">
+          <span class="module__number" aria-hidden="true">05</span>
+          <h2 class="module__title" id="modulo-5-title">Modulo 5: Layout con Flexbox</h2>
+          <p class="module__description">
+            Flexbox es un sistema de layout unidimensional que facilita alinear y distribuir
+            espacio entre elementos de un contenedor, incluso cuando su tamanho es desconocido.
+          </p>
+        </header>
+
+        <!-- Leccion 5.1 -->
+        <article class="lesson" id="leccion-5-1" aria-labelledby="leccion-5-1-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-5-1-title">5.1 Contenedor flex y ejes</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Activar Flexbox */</span>
+<span class="code-selector">.contenedor</span> {
+  <span class="code-property">display</span>: <span class="code-value">flex</span>;
+
+  <span class="code-comment">/* Direccion del eje principal */</span>
+  <span class="code-property">flex-direction</span>: <span class="code-value">row</span>;           <span class="code-comment">/* -> default */</span>
+  <span class="code-property">flex-direction</span>: <span class="code-value">row-reverse</span>;  <span class="code-comment">/* <- */</span>
+  <span class="code-property">flex-direction</span>: <span class="code-value">column</span>;       <span class="code-comment">/* | */</span>
+  <span class="code-property">flex-direction</span>: <span class="code-value">column-reverse</span>; <span class="code-comment">/* ^ */</span>
+
+  <span class="code-comment">/* Envolver items */</span>
+  <span class="code-property">flex-wrap</span>: <span class="code-value">nowrap</span>;    <span class="code-comment">/* default */</span>
+  <span class="code-property">flex-wrap</span>: <span class="code-value">wrap</span>;      <span class="code-comment">/* Permite saltos de linea */</span>
+
+  <span class="code-comment">/* Espacio entre items */</span>
+  <span class="code-property">gap</span>: <span class="code-value">1rem</span>;
+  <span class="code-property">row-gap</span>: <span class="code-value">1rem</span>;
+  <span class="code-property">column-gap</span>: <span class="code-value">2rem</span>;
+}
+
+<span class="code-comment">/* En los items */</span>
+<span class="code-selector">.item</span> {
+  <span class="code-property">flex-grow</span>: <span class="code-value">1</span>;   <span class="code-comment">/* Crece para llenar espacio */</span>
+  <span class="code-property">flex-shrink</span>: <span class="code-value">0</span>; <span class="code-comment">/* No se encoge */</span>
+  <span class="code-property">flex-basis</span>: <span class="code-value">200px</span>; <span class="code-comment">/* Ancho base */</span>
+
+  <span class="code-comment">/* Shorthand */</span>
+  <span class="code-property">flex</span>: <span class="code-value">1 0 200px</span>; <span class="code-comment">/* grow shrink basis */</span>
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 5.2 -->
+        <article class="lesson" id="leccion-5-2" aria-labelledby="leccion-5-2-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-5-2-title">5.2 Alineacion con Flexbox</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-selector">.contenedor</span> {
+  <span class="code-comment">/* Alineacion en el eje principal */</span>
+  <span class="code-property">justify-content</span>: <span class="code-value">flex-start</span>;    <span class="code-comment">/* Inicio */</span>
+  <span class="code-property">justify-content</span>: <span class="code-value">flex-end</span>;      <span class="code-comment">/* Fin */</span>
+  <span class="code-property">justify-content</span>: <span class="code-value">center</span>;       <span class="code-comment">/* Centrado */</span>
+  <span class="code-property">justify-content</span>: <span class="code-value">space-between</span>; <span class="code-comment">/* Espacio entre */</span>
+  <span class="code-property">justify-content</span>: <span class="code-value">space-around</span>;  <span class="code-comment">/* Espacio alrededor */</span>
+  <span class="code-property">justify-content</span>: <span class="code-value">space-evenly</span>;  <span class="code-comment">/* Espacio uniforme */</span>
+
+  <span class="code-comment">/* Alineacion en el eje transversal */</span>
+  <span class="code-property">align-items</span>: <span class="code-value">stretch</span>;     <span class="code-comment">/* default */</span>
+  <span class="code-property">align-items</span>: <span class="code-value">flex-start</span>;
+  <span class="code-property">align-items</span>: <span class="code-value">flex-end</span>;
+  <span class="code-property">align-items</span>: <span class="code-value">center</span>;
+  <span class="code-property">align-items</span>: <span class="code-value">baseline</span>;
+
+  <span class="code-comment">/* Alineacion de lineas (flex-wrap) */</span>
+  <span class="code-property">align-content</span>: <span class="code-value">flex-start</span>;
+  <span class="code-property">align-content</span>: <span class="code-value">center</span>;
+  <span class="code-property">align-content</span>: <span class="code-value">space-between</span>;
+
+  <span class="code-comment">/* Shorthand: place-items */</span>
+  <span class="code-property">place-items</span>: <span class="code-value">center</span>;          <span class="code-comment">/* align-items + justify-items */</span>
+  <span class="code-property">place-content</span>: <span class="code-value">center</span>;        <span class="code-comment">/* align-content + justify-content */</span>
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 5.3 -->
+        <article class="lesson" id="leccion-5-3" aria-labelledby="leccion-5-3-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-5-3-title">5.3 Alineacion individual</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Alinear un item individualmente */</span>
+<span class="code-selector">.item-especial</span> {
+  <span class="code-property">align-self</span>: <span class="code-value">flex-end</span>;
+  <span class="code-property">order</span>: <span class="code-value">-1</span>; <span class="code-comment">/* Mover al inicio (default: 0) */</span>
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 5.4 -->
+        <article class="lesson" id="leccion-5-4" aria-labelledby="leccion-5-4-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-5-4-title">5.4 Patrones comunes con Flexbox</h3>
+          </header>
+          <div class="lesson-content">
+            <h4>Navbar basica</h4>
+            <pre class="code-block"><code><span class="code-selector">.navbar</span> {
+  <span class="code-property">display</span>: <span class="code-value">flex</span>;
+  <span class="code-property">align-items</span>: <span class="code-value">center</span>;
+  <span class="code-property">justify-content</span>: <span class="code-value">space-between</span>;
+  <span class="code-property">padding</span>: <span class="code-value">1rem 2rem</span>;
+}</code></pre>
+            <h4>Cards en fila</h4>
+            <pre class="code-block"><code><span class="code-selector">.cards</span> {
+  <span class="code-property">display</span>: <span class="code-value">flex</span>;
+  <span class="code-property">flex-wrap</span>: <span class="code-value">wrap</span>;
+  <span class="code-property">gap</span>: <span class="code-value">1.5rem</span>;
+}
+<span class="code-selector">.card</span> {
+  <span class="code-property">flex</span>: <span class="code-value">1 1 300px</span>;
+}</code></pre>
+            <h4>Footer sticky</h4>
+            <pre class="code-block"><code><span class="code-selector">body</span> {
+  <span class="code-property">display</span>: <span class="code-value">flex</span>;
+  <span class="code-property">flex-direction</span>: <span class="code-value">column</span>;
+  <span class="code-property">min-height</span>: <span class="code-value">100dvh</span>;
+}
+<span class="code-selector">main</span> {
+  <span class="code-property">flex</span>: <span class="code-value">1</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 5.5 -->
+        <article class="lesson" id="leccion-5-5" aria-labelledby="leccion-5-5-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-5-5-title">5.5 Shorthand flex</h3>
+          </header>
+          <div class="lesson-content">
+            <pre class="code-block"><code><span class="code-comment">/* Valores individuales */</span>
+<span class="code-selector">.item</span> {
+  <span class="code-property">flex-grow</span>: <span class="code-value">1</span>;
+  <span class="code-property">flex-shrink</span>: <span class="code-value">1</span>;
+  <span class="code-property">flex-basis</span>: <span class="code-value">0%</span>;
+}
+
+<span class="code-comment">/* Shorthand */</span>
+<span class="code-selector">.item</span> { <span class="code-property">flex</span>: <span class="code-value">1 1 0%</span>; }  <span class="code-comment">/* Todos iguales */</span>
+<span class="code-selector">.item</span> { <span class="code-property">flex</span>: <span class="code-value">1</span>; }        <span class="code-comment">/* Abreviado */</span>
+<span class="code-selector">.item</span> { <span class="code-property">flex</span>: <span class="code-value">auto</span>; }    <span class="code-comment">/* 1 1 auto */</span>
+<span class="code-selector">.item</span> { <span class="code-property">flex</span>: <span class="code-value">none</span>; }    <span class="code-comment">/* 0 0 auto */</span></code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 5.6 -->
+        <article class="lesson" id="leccion-5-6" aria-labelledby="leccion-5-6-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-5-6-title">5.6 Ejercicio: Barra de navegacion</h3>
+          </header>
+          <div class="lesson-content">
+            <h4>HTML</h4>
+            <pre class="code-block"><code><span class="code-tag">&lt;header</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-ejercicio"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"logo"</span><span class="code-tag">&gt;</span>MiLogo<span class="code-tag">&lt;/a&gt;</span>
+  <span class="code-tag">&lt;nav</span> <span class="code-attr">aria-label</span>=<span class="code-string">"Principal"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;ul</span> <span class="code-attr">class</span>=<span class="code-string">"nav-links"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">&gt;</span>Inicio<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">&gt;</span>Servicios<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">&gt;</span>Portfolio<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">&gt;</span>Contacto<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="code-tag">&lt;/ul&gt;</span>
+  <span class="code-tag">&lt;/nav&gt;</span>
+  <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"btn-cta"</span><span class="code-tag">&gt;</span>Cotizar<span class="code-tag">&lt;/a&gt;</span>
+<span class="code-tag">&lt;/header&gt;</span></code></pre>
+            <h4>CSS</h4>
+            <pre class="code-block"><code><span class="code-selector">.navbar-ejercicio</span> {
+  <span class="code-property">display</span>: <span class="code-value">flex</span>;
+  <span class="code-property">align-items</span>: <span class="code-value">center</span>;
+  <span class="code-property">justify-content</span>: <span class="code-value">space-between</span>;
+  <span class="code-property">padding</span>: <span class="code-value">1rem 2rem</span>;
+  <span class="code-property">background</span>: <span class="code-value">#1a1a2e</span>;
+  <span class="code-property">color</span>: <span class="code-value">#fff</span>;
+}
+
+<span class="code-selector">.nav-links</span> {
+  <span class="code-property">display</span>: <span class="code-value">flex</span>;
+  <span class="code-property">list-style</span>: <span class="code-value">none</span>;
+  <span class="code-property">gap</span>: <span class="code-value">2rem</span>;
+}
+
+<span class="code-selector">.nav-links a</span> {
+  <span class="code-property">color</span>: <span class="code-value">#fff</span>;
+  <span class="code-property">text-decoration</span>: <span class="code-value">none</span>;
+  <span class="code-property">transition</span>: <span class="code-value">color 0.3s</span>;
+}
+
+<span class="code-selector">.nav-links a:hover</span> {
+  <span class="code-property">color</span>: <span class="code-value">#4ecdc4</span>;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Leccion 5.7 -->
+        <article class="lesson" id="leccion-5-7" aria-labelledby="leccion-5-7-title">
+          <header class="lesson-header">
+            <h3 class="lesson__title" id="leccion-5-7-title">5.7 Cuando usar Flexbox vs Grid</h3>
+          </header>
+          <div class="lesson-content">
+            <table class="units-table" aria-label="Comparacion Flexbox vs Grid">
+              <thead>
+                <tr><th scope="col">Caracteristica</th><th scope="col">Flexbox</th><th scope="col">Grid</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Dimension</td><td>Unidimensional (1 eje)</td><td>Bidimensional (2 ejes)</td></tr>
+                <tr><td>Ideal para</td><td>Componentes, navbars, cards</td><td>Layouts de pagina completa</td></tr>
+                <tr><td>Items</td><td>Se adaptan al contenido</td><td>Se ajustan a la cuadricula</td></tr>
+                <tr><td>Overflow</td><td>Se desbordan en el eje transversal</td><td>Se ajustan al container</td></tr>
+                <tr><td>Cuando usar</td><td>Distribuir espacio en UNA direccion</td><td>Controlar filas Y columnas</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
