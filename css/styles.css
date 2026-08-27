@@ -1209,6 +1209,14 @@ blockquote p:last-child {
    11. SECTION STYLES
    ============================================================ */
 
+.section {
+  padding: var(--section-gap) 0;
+}
+
+.section-alt {
+  background-color: var(--bg-alt);
+}
+
 .section-title {
   font-size: clamp(1.875rem, 4vw, 2.75rem);
   font-weight: 800;
@@ -1334,13 +1342,15 @@ blockquote p:last-child {
   color: var(--primary);
 }
 
-.module-card h3 {
+.module-card h3,
+.module-card-title {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
-.module-card p {
+.module-card p,
+.module-card-desc {
   font-size: 0.9375rem;
   color: var(--text-muted);
   line-height: 1.7;
@@ -1369,7 +1379,7 @@ blockquote p:last-child {
   margin-bottom: 1.5rem;
 }
 
-.module-card-lessons .lesson-count-badge {
+.module-card-meta .lesson-count-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -1403,9 +1413,8 @@ blockquote p:last-child {
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   overflow: hidden;
-  transition: all 0.35s var(--ease-out-expo);
   position: relative;
 }
 
@@ -1417,54 +1426,27 @@ blockquote p:last-child {
   bottom: 0;
   width: 3px;
   background: var(--gradient-main);
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-
-.lesson:hover {
-  box-shadow: var(--shadow-md), var(--shadow-glow-sm);
-}
-
-.lesson:hover::before {
-  opacity: 1;
-}
-
-.lesson.active {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md), var(--shadow-glow-sm);
-}
-
-.lesson.active::before {
-  opacity: 1;
 }
 
 .lesson-header {
-  padding: 1.25rem 1.75rem;
-  border-bottom: 1px solid transparent;
-  cursor: pointer;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   gap: 1rem;
-  user-select: none;
-  transition: background-color var(--transition-fast);
-}
-
-.lesson.active .lesson-header {
-  border-bottom-color: var(--border-light);
-}
-
-.lesson-header:hover {
-  background-color: var(--surface-alt);
+  background: var(--gradient-card);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .lesson-header h3 {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin: 0;
   flex: 1;
+  color: var(--text);
 }
 
 .lesson-number {
@@ -1515,28 +1497,18 @@ blockquote p:last-child {
 
 .lesson-content {
   padding: 2rem;
-  display: none;
-  animation: accordionOpen 0.35s var(--ease-out-expo);
-}
-
-@keyframes accordionOpen {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.lesson-content.active {
   display: block;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  background: var(--surface);
 }
 
 .lesson-content h4 {
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  color: var(--text);
+  font-weight: 600;
 }
 
 .lesson-content h4:first-child {
@@ -1561,32 +1533,6 @@ blockquote p:last-child {
 }
 
 .lesson-content li::marker {
-  color: var(--primary);
-}
-
-/* --- Accordion Toggle Icon --- */
-
-.lesson-toggle {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-full);
-  transition: all 0.4s var(--ease-spring);
-  flex-shrink: 0;
-  color: var(--text-muted);
-  background: var(--surface-alt);
-}
-
-.lesson-toggle svg,
-.lesson-toggle::after {
-  transition: transform 0.4s var(--ease-spring);
-}
-
-.lesson.active .lesson-toggle {
-  transform: rotate(180deg);
-  background: var(--primary-light);
   color: var(--primary);
 }
 
@@ -2362,7 +2308,7 @@ blockquote p:last-child {
   box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
-.project-card-image {
+.project-card__figure {
   height: 200px;
   background: var(--gradient-card);
   display: flex;
@@ -2373,13 +2319,13 @@ blockquote p:last-child {
   position: relative;
 }
 
-.project-card-image img {
+.project-card__figure img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.project-card-content {
+.project-card__body {
   padding: 1.5rem;
 }
 
@@ -2395,14 +2341,14 @@ blockquote p:last-child {
   line-height: 1.7;
 }
 
-.project-card-tags {
+.project-card__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
 }
 
-.project-card-tags span {
+.project-card__tags li {
   padding: 0.25rem 0.75rem;
   background: var(--gradient-card);
   border: 1px solid var(--border);
@@ -2410,6 +2356,29 @@ blockquote p:last-child {
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--text-muted);
+}
+
+.project-card__image-placeholder {
+  width: 100%;
+  height: 200px;
+  background: var(--gradient-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.project-card__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.project-card__description {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 0;
 }
 
 
@@ -2503,14 +2472,16 @@ blockquote p:last-child {
   position: relative;
 }
 
-.contact-grid {
+.contact-grid,
+.contacto-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: start;
 }
 
-.contact-info {
+.contact-info,
+.contacto-info {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -2693,6 +2664,67 @@ blockquote p:last-child {
   color: #ffffff;
   box-shadow: var(--shadow-glow-sm);
   transform: translateY(-2px);
+}
+
+.footer-nav {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.footer-nav__list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-nav__list a {
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.footer-nav__list a:hover {
+  color: var(--primary);
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+
+.footer-social a:hover {
+  background: var(--gradient-main);
+  border-color: transparent;
+  color: #fff;
+}
+
+.footer-tagline {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-copy {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.8125rem;
 }
 
 
@@ -3028,6 +3060,115 @@ blockquote p:last-child {
 
 
 /* ============================================================
+   COURSE PLAYER — Sequential Module Display
+   ============================================================ */
+
+.course-player {
+  display: none;
+  padding-top: calc(var(--header-height) + 2rem);
+}
+
+.course-player.active {
+  display: block;
+}
+
+.site-main > .hero,
+.site-main > .about,
+.site-main > .section,
+.site-main > .module {
+  transition: opacity 0.4s ease;
+}
+
+/* Nav sections always visible — course mode only hides hero/about/contenido cards */
+
+body.course-mode .module {
+  display: none;
+}
+
+body.course-mode .module.active-module {
+  display: block;
+}
+
+.module-next-bar {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 0;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.module-next-bar h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.module-next-bar p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.module-next-bar .btn {
+  min-width: 220px;
+}
+
+.module-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.module-progress-header .module-progress-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.module-progress-header .progress-bar-container {
+  flex: 1;
+  min-width: 150px;
+}
+
+.module-back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.3s;
+}
+
+.module-back-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.course-complete {
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+.course-complete h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.course-complete p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+
+/* ============================================================
    33. RESPONSIVE BREAKPOINTS
    ============================================================ */
 
@@ -3079,7 +3220,8 @@ blockquote p:last-child {
     grid-template-columns: 1fr;
   }
 
-  .contact-grid {
+  .contact-grid,
+  .contacto-grid {
     grid-template-columns: 1fr;
   }
 
@@ -3419,7 +3561,7 @@ blockquote p:last-child {
   }
 
   .lesson-content {
-    display: block !important;
+    display: block;
   }
 
   .comparison {
@@ -3645,7 +3787,7 @@ blockquote p:last-child {
   padding-bottom: 1rem;
 }
 
-.project-card:has(.project-card-image img) .project-card-image {
+.project-card:has(.project-card__figure img) .project-card__figure {
   background: none;
 }
 
