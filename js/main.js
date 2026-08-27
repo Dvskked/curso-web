@@ -224,76 +224,25 @@ const initReadingProgress = () => {
 };
 
 // ============================================================
-// 5. ACORDIONES DE LECCIONES
+// 5. LESSON HEADINGS (Accessible, no accordion)
 // ============================================================
 
-const initLessonAccordions = () => {
+const initLessonHeadings = () => {
   const lessonHeaders = $$('.lesson-header');
 
   if (!lessonHeaders.length) {
-    console.warn('[Acordeón] No se encontraron .lesson-header.');
+    console.warn('[Lecciones] No se encontraron .lesson-header.');
     return;
   }
 
-  /** Cierra un acordeón. */
-  const closeAccordion = (header) => {
-    const content = header.nextElementSibling;
-    if (!content) return;
-    header.classList.remove('active');
-    header.setAttribute('aria-expanded', 'false');
-    content.style.maxHeight = null;
-    content.classList.remove('active');
-  };
-
-  /** Abre un acordeón. */
-  const openAccordion = (header) => {
-    const content = header.nextElementSibling;
-    if (!content) return;
-    header.classList.add('active');
-    header.setAttribute('aria-expanded', 'true');
-    content.classList.add('active');
-    content.style.maxHeight = `${content.scrollHeight}px`;
-  };
-
-  /** Alterna un acordeón y cierra los demás del mismo módulo. */
-  const toggleAccordion = (header) => {
-    const isOpen = header.classList.contains('active');
-    const module = header.closest('.module') || header.closest('section');
-
-    // Cerrar todos los acordeones del mismo módulo (solo uno abierto a la vez)
-    if (module) {
-      $$('.lesson-header', module).forEach(closeAccordion);
-    }
-
-    if (!isOpen) {
-      openAccordion(header);
-    }
-  };
-
   lessonHeaders.forEach((header) => {
-    // Atributos accesibles iniciales
     const content = header.nextElementSibling;
     if (content) {
       content.classList.add('lesson-content');
-      content.setAttribute('role', 'region');
     }
-    header.setAttribute('role', 'button');
-    header.setAttribute('tabindex', '0');
-    header.setAttribute('aria-expanded', 'false');
-
-    // Clic
-    header.addEventListener('click', () => toggleAccordion(header));
-
-    // Teclado: Enter / Space
-    header.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleAccordion(header);
-      }
-    });
   });
 
-  console.log('[Acordeones] Inicializados.');
+  console.log(`[Lecciones] ${lessonHeaders.length} encabezados configurados.`);
 };
 
 // ============================================================
@@ -743,292 +692,272 @@ const initResponsive = () => {
 // Esta función existe para mantener la numeración del enunciado.
 
 // ============================================================
-// 16. TRACKING DE PROGRESO DE MÓDULOS
+// 16. COURSE PROGRESS (localStorage)
 // ============================================================
 
 const COURSE_PROGRESS_KEY = 'course-progress';
+const COURSE_STATE_KEY = 'course-state';
 
-/** Lee el progreso del curso desde localStorage. */
 const getCourseProgress = () => {
   try {
     const raw = localStorage.getItem(COURSE_PROGRESS_KEY);
     return raw ? JSON.parse(raw) : { modules: {} };
-  } catch {
-    return { modules: {} };
-  }
+  } catch { return { modules: {} }; }
 };
 
-/** Guarda el progreso del curso en localStorage. */
 const saveCourseProgress = (progress) => {
+  try { localStorage.setItem(COURSE_PROGRESS_KEY, JSON.stringify(progress)); } catch {}
+};
+
+const getCourseState = () => {
   try {
-    localStorage.setItem(COURSE_PROGRESS_KEY, JSON.stringify(progress));
-  } catch (err) {
-    console.warn('[Progreso] No se pudo guardar en localStorage:', err);
+    const raw = localStorage.getItem(COURSE_STATE_KEY);
+    return raw ? JSON.parse(raw) : { currentModule: 1, started: false };
+  } catch { return { currentModule: 1, started: false }; }
+};
+
+const saveCourseState = (state) => {
+  try { localStorage.setItem(COURSE_STATE_KEY, JSON.stringify(state)); } catch {}
+};
+
+// ============================================================
+// 17. COURSE PLAYER — Sequential Module Display
+// ============================================================
+
+const initCoursePlayer = () => {
+  const state = getCourseState();
+  const allModules = $$('.module[id]');
+  if (!allModules.length) return;
+
+  // If course was started, jump to course mode
+  if (state.started) {
+    enterCourseMode(state.currentModule);
   }
-};
 
-/** Recopila todas las lecciones y módulos del DOM. */
-const getCourseStructure = () => {
-  const modules = $$('.module[id]');
-  const structure = {};
-
-  modules.forEach((mod) => {
-    const moduleId = mod.id;
-    const lessons = $$('.lesson-header', mod);
-    structure[moduleId] = {
-      totalLessons: lessons.length,
-      lessonIds: lessons.map((l) => l.getAttribute('data-lesson-id') || l.id || ''),
-    };
-  });
-
-  return structure;
-};
-
-const initModuleProgress = () => {
-  const progress = getCourseProgress();
-  const structure = getCourseStructure();
-  const allModuleIds = Object.keys(structure);
-
-  // Inicializar módulos que no existan aún en el progreso
-  allModuleIds.forEach((id) => {
-    if (!progress.modules[id]) {
-      progress.modules[id] = { started: false, completedLessons: [] };
-    }
-  });
-
-  saveCourseProgress(progress);
-
-  // Aplicar estado visual a cada módulo
-  allModuleIds.forEach((moduleId) => {
-    const modData = progress.modules[moduleId];
-    const modEl = $(`#${moduleId}`);
-    if (!modEl) return;
-
-    const startBtn = $('.module-start-btn', modEl);
-    if (startBtn) {
-      startBtn.textContent = modData.started ? 'Continuar' : 'Iniciar';
-    }
-
-    // Marcar lecciones completadas
-    modData.completedLessons.forEach((lessonId) => {
-      if (!lessonId) return;
-      const checkbox = $(`.lesson-complete-checkbox[data-lesson-id="${lessonId}"]`, modEl);
-      if (checkbox) checkbox.checked = true;
-
-      const lessonItem = checkbox?.closest('.lesson-item') || checkbox?.closest('li');
-      if (lessonItem) {
-        lessonItem.classList.add('completed');
-        const title = $('.lesson-title, h3, h4', lessonItem);
-        if (title) title.classList.add('strikethrough');
-      }
+  // "Empezar Ahora" buttons on landing page
+  $$('a[href="#modulo-1"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      enterCourseMode(1);
     });
-
-    // Actualizar barra de progreso del módulo
-    updateModuleProgressBar(moduleId);
   });
 
-  // Actualizar progreso general
-  updateOverallProgress();
-
-  console.log('[Progreso módulos] Inicializado.');
+  // Module card start buttons
+  $$('.module-start-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = btn.closest('.module-card');
+      if (!card) return;
+      const num = parseInt(card.id.replace('module-card-', ''), 10);
+      enterCourseMode(num);
+    });
+  });
 };
 
-// ============================================================
-// 17. BOTÓN INICIAR / CONTINUAR MÓDULO
-// ============================================================
+const enterCourseMode = (moduleNum) => {
+  const state = getCourseState();
+  state.started = true;
+  state.currentModule = moduleNum;
+  saveCourseState(state);
 
-const initModuleStartButtons = () => {
-  const startButtons = $$('.module-start-btn');
+  document.body.classList.add('course-mode');
 
-  startButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const modEl = btn.closest('.module[id]') || btn.closest('section[id]');
-      if (!modEl) return;
+  // Hide all modules, show only current
+  $$('.module[id]').forEach(mod => mod.classList.remove('active-module'));
+  const target = $(`#modulo-${moduleNum}`);
+  if (target) {
+    target.classList.add('active-module');
+    // Scroll to top of module
+    setTimeout(() => {
+      const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }, 100);
+  }
 
-      const moduleId = modEl.id;
-      const progress = getCourseProgress();
-
-      if (!progress.modules[moduleId]) {
-        progress.modules[moduleId] = { started: false, completedLessons: [] };
-      }
-
-      progress.modules[moduleId].started = true;
-      saveCourseProgress(progress);
-
+  // Update module card buttons
+  $$('.module-start-btn').forEach(btn => {
+    const card = btn.closest('.module-card');
+    if (!card) return;
+    const num = parseInt(card.id.replace('module-card-', ''), 10);
+    const progress = getCourseProgress();
+    const modData = progress.modules[`modulo-${num}`];
+    if (num < moduleNum || (modData && modData.completed)) {
+      btn.textContent = 'Completado';
+      btn.classList.remove('btn-primary');
+      btn.classList.add('btn-ghost');
+    } else if (num === moduleNum) {
       btn.textContent = 'Continuar';
-
-      // Scroll a la primera lección del módulo
-      const firstLesson = $('.lesson-header', modEl);
-      if (firstLesson) {
-        const top = firstLesson.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-
-      console.log(`[Iniciar módulo] "${moduleId}" marcado como iniciado.`);
-    });
+    } else {
+      btn.textContent = 'Iniciar';
+      btn.classList.remove('btn-ghost');
+      btn.classList.add('btn-primary');
+    }
   });
+};
 
-  console.log(`[Botones iniciar] ${startButtons.length} botones configurados.`);
+const exitCourseMode = () => {
+  document.body.classList.remove('course-mode');
+  $$('.module[id]').forEach(mod => mod.classList.remove('active-module'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
 // ============================================================
-// 18. TOGGLE DE COMPLETADO DE LECCIÓN
+// 18. MODULE NEXT BUTTONS
 // ============================================================
 
-const updateModuleProgressBar = (moduleId) => {
-  const modEl = $(`#${moduleId}`);
-  if (!modEl) return;
+const initModuleNextButtons = () => {
+  $$('.module-next-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const nextNum = parseInt(btn.getAttribute('data-next'), 10);
+      if (nextNum && nextNum <= 10) {
+        enterCourseMode(nextNum);
+      } else {
+        // Course complete
+        exitCourseMode();
+        const completeEl = $('.course-complete');
+        if (completeEl) {
+          document.body.classList.add('course-mode');
+          completeEl.style.display = 'block';
+        }
+      }
+    });
+  });
+
+  // Back to home buttons
+  $$('.module-back-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      exitCourseMode();
+    });
+  });
+};
+
+// ============================================================
+// 19. LESSON COMPLETION TOGGLE
+// ============================================================
+
+const updateModuleProgressInCard = (moduleNum) => {
+  const moduleId = `modulo-${moduleNum}`;
+  const card = $(`#module-card-${moduleNum}`);
+  if (!card) return;
 
   const progress = getCourseProgress();
   const modData = progress.modules[moduleId];
   if (!modData) return;
 
-  const totalCheckboxes = $$('.lesson-complete-checkbox', modEl);
-  const total = totalCheckboxes.length || 1;
-  const completed = modData.completedLessons.filter(Boolean).length;
-  const pct = Math.round((completed / total) * 100);
+  const modEl = $(`#${moduleId}`);
+  if (!modEl) return;
 
-  const bar = $('.module-progress-fill', modEl);
+  const totalLessons = $$('.lesson', modEl).length || 1;
+  const completed = (modData.completedLessons || []).filter(Boolean).length;
+  const pct = Math.round((completed / totalLessons) * 100);
+
+  const bar = $('.progress-fill', card);
   if (bar) bar.style.width = `${pct}%`;
 
-  const text = $('.module-progress-text', modEl);
-  if (text) text.textContent = `${pct}%`;
-};
-
-const updateOverallProgress = () => {
-  const structure = getCourseStructure();
-  const progress = getCourseProgress();
-  let totalLessons = 0;
-  let completedLessons = 0;
-
-  Object.keys(structure).forEach((moduleId) => {
-    totalLessons += structure[moduleId].totalLessons;
-    const modData = progress.modules[moduleId];
-    if (modData) {
-      completedLessons += modData.completedLessons.filter(Boolean).length;
+  const status = $('.module-status', card);
+  if (status) {
+    status.className = 'module-status';
+    if (pct >= 100) {
+      status.classList.add('completed');
+      status.textContent = 'Completado';
+      modData.completed = true;
+      saveCourseProgress(progress);
+    } else if (pct > 0 || modData.started) {
+      status.classList.add('in-progress');
+      status.textContent = `${pct}%`;
+    } else {
+      status.classList.add('not-started');
+      status.textContent = 'No iniciado';
     }
-  });
-
-  const overallText = $('.overall-progress-text');
-  if (overallText) {
-    overallText.textContent = `${completedLessons} de ${totalLessons} lecciones completadas`;
   }
 
-  const overallFill = $('.overall-progress-fill');
-  if (overallFill) {
-    const pct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
-    overallFill.style.width = `${pct}%`;
-  }
+  // Update module progress header if visible
+  const modHeader = $(`.module-progress-label`, $(`#${moduleId}`));
+  if (modHeader) modHeader.textContent = `Modulo ${moduleNum} — ${completed}/${totalLessons} lecciones`;
 };
 
 const initLessonCompletion = () => {
-  const checkboxes = $$('.lesson-complete-checkbox');
+  $$('.lesson-complete-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const checkbox = $('.lesson-complete-checkbox', btn);
+      if (!checkbox) return;
 
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', () => {
-      const lessonId = checkbox.getAttribute('data-lesson-id') || '';
-      const modEl = checkbox.closest('.module[id]') || checkbox.closest('section[id]');
-      if (!modEl) return;
+      const lessonId = checkbox.getAttribute('data-lesson') || '';
+      const lessonArticle = btn.closest('.lesson');
+      if (!lessonArticle) return;
 
-      const moduleId = modEl.id;
+      const moduleSection = lessonArticle.closest('.module[id]');
+      if (!moduleSection) return;
+
+      const moduleId = moduleSection.id;
+      const moduleNum = parseInt(moduleId.replace('modulo-', ''), 10);
       const progress = getCourseProgress();
 
       if (!progress.modules[moduleId]) {
-        progress.modules[moduleId] = { started: false, completedLessons: [] };
+        progress.modules[moduleId] = { started: true, completedLessons: [] };
       }
 
       const modData = progress.modules[moduleId];
+      const isCompleted = btn.classList.contains('completed');
 
-      if (checkbox.checked) {
-        // Añadir lección completada
+      if (!isCompleted) {
+        btn.classList.add('completed');
+        checkbox.classList.add('completed');
+        lessonArticle.classList.add('completed');
+        const title = $('h3', lessonArticle);
+        if (title) title.style.textDecoration = 'line-through';
         if (!modData.completedLessons.includes(lessonId)) {
           modData.completedLessons.push(lessonId);
         }
-
-        // Feedback visual
-        const lessonItem = checkbox.closest('.lesson-item') || checkbox.closest('li');
-        if (lessonItem) {
-          lessonItem.classList.add('completed');
-          const title = $('.lesson-title, h3, h4', lessonItem);
-          if (title) title.classList.add('strikethrough');
-        }
       } else {
-        // Quitar lección completada
-        modData.completedLessons = modData.completedLessons.filter((id) => id !== lessonId);
-
-        // Quitar feedback visual
-        const lessonItem = checkbox.closest('.lesson-item') || checkbox.closest('li');
-        if (lessonItem) {
-          lessonItem.classList.remove('completed');
-          const title = $('.lesson-title, h3, h4', lessonItem);
-          if (title) title.classList.remove('strikethrough');
-        }
+        btn.classList.remove('completed');
+        checkbox.classList.remove('completed');
+        lessonArticle.classList.remove('completed');
+        const title = $('h3', lessonArticle);
+        if (title) title.style.textDecoration = '';
+        modData.completedLessons = modData.completedLessons.filter(id => id !== lessonId);
       }
 
-      // Marcar módulo como iniciado si no lo estaba
       modData.started = true;
-      const startBtn = $('.module-start-btn', modEl);
-      if (startBtn) startBtn.textContent = 'Continuar';
-
       saveCourseProgress(progress);
-
-      // Actualizar barras de progreso
-      updateModuleProgressBar(moduleId);
-      updateOverallProgress();
-
-      console.log(`[Lección] "${lessonId}" ${checkbox.checked ? 'completada' : 'desmarcada'}.`);
+      updateModuleProgressInCard(moduleNum);
     });
   });
-
-  console.log(`[Completado lecciones] ${checkboxes.length} checkboxes configurados.`);
 };
 
 // ============================================================
-// 19. DISPLAY DE PROGRESO GENERAL
+// 20. RESTORE COMPLETED STATE ON LOAD
 // ============================================================
 
-const initOverallProgress = () => {
-  updateOverallProgress();
-  console.log('[Progreso general] Inicializado.');
-};
+const initRestoreProgress = () => {
+  const progress = getCourseProgress();
+  Object.keys(progress.modules).forEach(moduleId => {
+    const modData = progress.modules[moduleId];
+    if (!modData || !modData.completedLessons) return;
+    const modEl = $(`#${moduleId}`);
+    if (!modEl) return;
 
-// ============================================================
-// 20. NAVEGACIÓN SUAVE A MÓDULOS
-// ============================================================
-
-const initModuleNavigation = () => {
-  $$('.module-card, .toc-item a[href^="#"]').forEach((card) => {
-    card.addEventListener('click', (e) => {
-      let targetId = null;
-
-      // Si es un enlace con href
-      if (card.tagName === 'A') {
-        targetId = card.getAttribute('href');
-      } else {
-        // Buscar el id del módulo asociado
-        targetId = card.getAttribute('data-target') || card.getAttribute('href');
+    modData.completedLessons.forEach(lessonId => {
+      if (!lessonId) return;
+      const checkbox = $(`span[data-lesson="${lessonId}"]`, modEl);
+      if (checkbox) {
+        const btn = checkbox.closest('.lesson-complete-btn');
+        if (btn) btn.classList.add('completed');
+        checkbox.classList.add('completed');
       }
-
-      if (!targetId) {
-        // Intentar extraer de data-module o clase
-        const moduleAttr = card.getAttribute('data-module');
-        if (moduleAttr) targetId = `#${moduleAttr}`;
+      const lessonArticle = $(`#${lessonId}`, modEl);
+      if (lessonArticle) {
+        lessonArticle.classList.add('completed');
+        const title = $('h3', lessonArticle);
+        if (title) title.style.textDecoration = 'line-through';
       }
-
-      if (!targetId) return;
-
-      const target = $(targetId);
-      if (!target) return;
-
-      e.preventDefault();
-
-      const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-      window.scrollTo({ top, behavior: 'smooth' });
-      history.pushState(null, '', targetId);
     });
-  });
 
-  console.log('[Navegación módulos] Inicializada.');
+    const num = parseInt(moduleId.replace('modulo-', ''), 10);
+    updateModuleProgressInCard(num);
+  });
 };
 
 // ============================================================
@@ -1040,28 +969,26 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log(' Inicializando sitio HTML & CSS...');
   console.log('========================================');
 
-  initThemeToggle();            //  1. Tema claro / oscuro
-  initHamburgerMenu();          //  2. Menú hamburguesa
-  initScrollToTop();            //  3. Botón volver arriba
-  initReadingProgress();        //  4. Barra de progreso
-  initLessonAccordions();       //  5. Acordeones de lecciones
-  initSmoothScrollLinks();      //  6. Scroll suave en anclas
-  initScrollAnimations();       //  7. Animaciones al desplazar
-  initActiveNavigation();       //  8. Navegación activa
-  initCodeCopyButtons();        //  9. Copiar código
-  initFormValidation();         // 10. Validación de formulario
-  initTOCSmoothScroll();       // 11. TOC scroll suave
-  initKeyboardNavigation();    // 12. Navegación por teclado
-  initTOCScrollSpy();          // 13. Scroll Spy TOC
-  initResponsive();             // 14. Manejo responsive
-  // 15. Persistencia de tema (ya incluida en initThemeToggle)
+  initThemeToggle();
+  initHamburgerMenu();
+  initScrollToTop();
+  initReadingProgress();
+  initLessonHeadings();
+  initSmoothScrollLinks();
+  initScrollAnimations();
+  initActiveNavigation();
+  initCodeCopyButtons();
+  initFormValidation();
+  initTOCSmoothScroll();
+  initKeyboardNavigation();
+  initTOCScrollSpy();
+  initResponsive();
 
-  // --- Nuevos módulos de progreso ---
-  initModuleProgress();         // 16. Tracking de progreso de módulos
-  initModuleStartButtons();     // 17. Botones iniciar / continuar
-  initLessonCompletion();       // 18. Toggle completado de lecciones
-  initOverallProgress();        // 19. Display de progreso general
-  initModuleNavigation();       // 20. Navegación suave a módulos
+  // Course player & progress
+  initRestoreProgress();
+  initLessonCompletion();
+  initCoursePlayer();
+  initModuleNextButtons();
 
   console.log('========================================');
   console.log(' Todos los módulos inicializados.');
